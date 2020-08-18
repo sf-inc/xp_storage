@@ -11,16 +11,21 @@ import net.minecraft.util.TypedActionResult;
 import net.minecraft.world.World;
 
 public class XpItem extends Item {
-    private static final int maxExperience = 1395;    // First 30lvl
+    private final static int maxExperience = 1395;    // First 30lvl
 
     public XpItem() {
         super(new Item.Settings().maxDamage(maxExperience).group(ItemGroup.MISC));
     }
 
     @Override
+    public void onCraft(ItemStack stack, World world, PlayerEntity player) {
+        stack.setDamage(maxExperience);
+    }
+
+    @Override
     public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {
         ItemStack stack = user.getMainHandStack();
-        int storedExperience = stack.getDamage();
+        int remainingPlace = stack.getDamage();
         int playerExperience = user.totalExperience;
 
         user.playSound(SoundEvents.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0F, 1.0F);
@@ -28,19 +33,19 @@ public class XpItem extends Item {
         if(!world.isClient) {
             // Empty / Fill
             if (user.isSneaking()) {
-                user.addExperience(storedExperience);
-                stack.setDamage(0);
+                user.addExperience(maxExperience-remainingPlace);
+                stack.setDamage(maxExperience);
             } else {
                 user.totalExperience = 0;
                 user.experienceProgress = 0;
                 user.experienceLevel = 0;
 
                 // Check max value
-                if (storedExperience+playerExperience > maxExperience) {
-                    stack.setDamage(maxExperience);
-                    user.addExperience(playerExperience - maxExperience);
+                if (remainingPlace < playerExperience) {
+                    stack.setDamage(0);
+                    user.addExperience(playerExperience-remainingPlace);
                 } else {
-                    stack.setDamage(storedExperience+playerExperience);
+                    stack.setDamage(remainingPlace-playerExperience);
                 }
             }
         }
@@ -50,7 +55,7 @@ public class XpItem extends Item {
 
     @Override
     public boolean hasGlint(ItemStack stack) {
-        return stack.getDamage() > 0;
+        return stack.getDamage() < 1395;
     }
 
 }
