@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " L ",
+    "DBD",
+    " L "
+  ],
+  "key": {
+    "B": {
+      "item": "minecraft:book"
+    },
+    "L": {
+      "item": "minecraft:lapis_lazuli"
+    },
+    "D": {
+      "item": "minecraft:diamond"
+    }
+  },
+  "result": {
+    "item": "xp_storage:xp_book",
+    "count": 1
+  }
+}
