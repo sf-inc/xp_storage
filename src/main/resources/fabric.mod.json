@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 1,
+  "id": "xpstorage",
+  "version": "${version}",
+  "name": "Xpstorage",
+  "description": "A mod that lets you store your experience into an item!",
+  "authors": [
+    "Pardys"
+  ],
+  "contact": {},
+  "license": "MIT",
+  "icon": "assets/xpstorage/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "client": [
+      "com.github.charlyb01.xpstorage.client.XpstorageClient"
+    ],
+    "main": [
+      "com.github.charlyb01.xpstorage.Xpstorage"
+    ]
+  },
+  "mixins": [
+    "xpstorage.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.9.1+build.205",
+    "fabric": "*",
+    "minecraft": "1.16.1"
+  }
+}
