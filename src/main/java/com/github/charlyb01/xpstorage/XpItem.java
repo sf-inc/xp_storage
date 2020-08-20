@@ -55,7 +55,7 @@ public class XpItem extends Item {
 
     @Override
     public boolean hasGlint(ItemStack stack) {
-        return stack.getDamage() < 1395;
+        return stack.getDamage() < maxExperience;
     }
 
 }
