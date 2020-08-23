@@ -42,16 +42,13 @@ public class XpItem extends Item {
                 user.addExperience(maxExperience-remainingPlace);
                 stack.setDamage(maxExperience);
             } else {
-                user.totalExperience = 0;
-                user.experienceProgress = 0;
-                user.experienceLevel = 0;
-
                 // Check max value
                 if (remainingPlace < playerExperience) {
+                    user.addExperience(-remainingPlace);
                     stack.setDamage(0);
-                    user.addExperience(playerExperience-remainingPlace);
                 } else {
                     stack.setDamage(remainingPlace-playerExperience);
+                    user.addExperience(-playerExperience);
                 }
             }
         }
