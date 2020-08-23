@@ -28,9 +28,15 @@ public class XpItem extends Item {
         int remainingPlace = stack.getDamage();
         int playerExperience = user.totalExperience;
 
-        user.playSound(SoundEvents.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0F, 1.0F);
+        if(world.isClient) {
+            if( (user.isSneaking() && remainingPlace < maxExperience)
+                || (!user.isSneaking() && playerExperience > 0) ) {
 
-        if(!world.isClient) {
+                user.playSound(SoundEvents.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0F, 1.0F);
+            }
+        }
+
+        else {
             // Empty / Fill
             if (user.isSneaking()) {
                 user.addExperience(maxExperience-remainingPlace);
