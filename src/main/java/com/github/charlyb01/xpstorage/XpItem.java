@@ -17,6 +17,14 @@ public class XpItem extends Item {
         super(new Item.Settings().maxDamage(maxExperience).group(ItemGroup.MISC));
     }
 
+    private static int getLevelExperience(int experienceLevel) {
+        if (experienceLevel >= 30) {
+            return 112 + (experienceLevel - 30) * 9;
+        } else {
+            return experienceLevel >= 15 ? 37 + (experienceLevel - 15) * 5 : 7 + experienceLevel * 2;
+        }
+    }
+
     @Override
     public void onCraft(ItemStack stack, World world, PlayerEntity player) {
         stack.setDamage(maxExperience);
@@ -26,13 +34,19 @@ public class XpItem extends Item {
     public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {
         ItemStack stack = user.getMainHandStack();
         int remainingPlace = stack.getDamage();
-        int playerExperience = user.totalExperience;
+        int playerExperience = 0;
+
+        for (int level = 0; level < user.experienceLevel; level++) {
+            playerExperience += getLevelExperience(level);
+        }
+        playerExperience += user.experienceProgress*getLevelExperience(user.experienceLevel);
 
         if(world.isClient) {
             if( (user.isSneaking() && remainingPlace < maxExperience)
                 || (!user.isSneaking() && playerExperience > 0) ) {
 
                 user.playSound(SoundEvents.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0F, 1.0F);
+                System.out.println(playerExperience);
             }
         }
 
