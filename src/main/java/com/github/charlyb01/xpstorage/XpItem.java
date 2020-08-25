@@ -43,7 +43,7 @@ public class XpItem extends Item {
 
         if(world.isClient) {
             if( (user.isSneaking() && remainingPlace < maxExperience)
-                || (!user.isSneaking() && playerExperience > 0) ) {
+                || (!user.isSneaking() && playerExperience > 0 && remainingPlace > 0) ) {
 
                 user.playSound(SoundEvents.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0F, 1.0F);
                 System.out.println(playerExperience);
