@@ -32,7 +32,7 @@ public class XpItem extends Item {
 
     @Override
     public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {
-        ItemStack stack = user.getMainHandStack();
+        ItemStack stack = (user.getMainHandStack().getItem() instanceof XpItem)?user.getMainHandStack():user.getOffHandStack();
         int remainingPlace = stack.getDamage();
         int playerExperience = 0;
 
