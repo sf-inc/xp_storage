@@ -2,26 +2,26 @@
   "schemaVersion": 1,
   "id": "xpstorage",
   "version": "${version}",
-  "name": "Xpstorage",
+  "name": "XP Storage",
   "description": "A mod that lets you store your experience into an item!",
   "authors": [
     "Pardys"
   ],
-  "contact": {},
+  "contact": {
+    "homepage": "https://www.curseforge.com/minecraft/mc-mods/xp-storage",
+    "issues": "https://github.com/charlyb01/xp_storage/issues",
+    "sources": "https://github.com/charlyb01/xp_storage"
+  },
   "license": "MIT",
-  "icon": "assets/xpstorage/icon.png",
+  "icon": "assets/xp_storage/icon.png",
   "environment": "*",
   "entrypoints": {
-    "client": [
-      "com.github.charlyb01.xpstorage.client.XpstorageClient"
-    ],
+    "client": [],
     "main": [
       "com.github.charlyb01.xpstorage.Xpstorage"
     ]
   },
-  "mixins": [
-    "xpstorage.mixins.json"
-  ],
+  "mixins": [],
   "depends": {
     "fabricloader": ">=0.9.1+build.205",
     "fabric": "*",
