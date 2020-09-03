@@ -17,7 +17,7 @@ public abstract class XpBook extends Item {
 
     @Override
     public boolean hasGlint(ItemStack stack) {
-        return stack.getDamage() < getMaxExperience();
+        return stack.getDamage() == 0;
     }
 
     @Override
