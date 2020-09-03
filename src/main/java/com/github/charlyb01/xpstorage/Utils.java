@@ -19,7 +19,7 @@ public class Utils {
     }
 
     public static TypedActionResult<ItemStack> onUse(World world, PlayerEntity user, Hand hand, int maxExperience) {
-        ItemStack stack = (user.getMainHandStack().getItem() instanceof XpItem)?user.getMainHandStack():user.getOffHandStack();
+        ItemStack stack = (user.getMainHandStack().getItem() instanceof XpBook)?user.getMainHandStack():user.getOffHandStack();
         int remainingPlace = stack.getDamage();
         int playerExperience = 0;
 
@@ -27,13 +27,11 @@ public class Utils {
             playerExperience += getLevelExperience(level);
         }
         playerExperience += user.experienceProgress*getLevelExperience(user.experienceLevel);
-
         if(world.isClient) {
             if( (user.isSneaking() && remainingPlace < maxExperience)
                     || (!user.isSneaking() && playerExperience > 0 && remainingPlace > 0) ) {
 
                 user.playSound(SoundEvents.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0F, 1.0F);
-                System.out.println(playerExperience);
             }
         }
 
