@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " N ",
+    "LBL",
+    " L "
+  ],
+  "key": {
+    "B": {
+      "item": "xp_storage:xp_book1"
+    },
+    "L": {
+      "item": "minecraft:lapis_lazuli"
+    },
+    "N": {
+      "item": "minecraft:netherite_ingot"
+    }
+  },
+  "result": {
+    "item": "xp_storage:xp_book2",
+    "count": 1
+  }
+}

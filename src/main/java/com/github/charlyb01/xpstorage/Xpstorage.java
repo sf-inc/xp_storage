@@ -6,10 +6,14 @@ import net.minecraft.util.registry.Registry;
 
 public class Xpstorage implements ModInitializer {
 
-    public static final XpItem xp_item = new XpItem();
+    public static final XpBookI xp_book1 = new XpBookI();
+    public static final XpBookII xp_book2 = new XpBookII();
+    public static final XpBookIII xp_book3 = new XpBookIII();
 
     @Override
     public void onInitialize() {
-        Registry.register(Registry.ITEM, new Identifier("xp_storage", "xp_book"), xp_item);
+        Registry.register(Registry.ITEM, new Identifier("xp_storage", "xp_book1"), xp_book1);
+        Registry.register(Registry.ITEM, new Identifier("xp_storage", "xp_book2"), xp_book2);
+        Registry.register(Registry.ITEM, new Identifier("xp_storage", "xp_book3"), xp_book3);
     }
 }

@@ -1,23 +1,23 @@
 {
   "type": "minecraft:crafting_shaped",
   "pattern": [
-    " L ",
-    "DBD",
+    " N ",
+    "LBL",
     " L "
   ],
   "key": {
     "B": {
-      "item": "minecraft:book"
+      "item": "xp_storage:xp_book2"
     },
     "L": {
       "item": "minecraft:lapis_lazuli"
     },
-    "D": {
-      "item": "minecraft:diamond"
+    "N": {
+      "item": "minecraft:nether_star"
     }
   },
   "result": {
-    "item": "xp_storage:xp_book",
+    "item": "xp_storage:xp_book3",
     "count": 1
   }
 }
