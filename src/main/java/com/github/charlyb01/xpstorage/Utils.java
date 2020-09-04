@@ -18,15 +18,20 @@ public class Utils {
         }
     }
 
+    public static int getExperienceToLevel(int level) {
+        int experience = 0;
+        for (int i = 0; i < level; i++) {
+            experience += getLevelExperience(i);
+        }
+        return experience;
+    }
+
     public static TypedActionResult<ItemStack> onUse(World world, PlayerEntity user, Hand hand, int maxExperience) {
         ItemStack stack = (user.getMainHandStack().getItem() instanceof XpBook)?user.getMainHandStack():user.getOffHandStack();
         int remainingPlace = stack.getDamage();
-        int playerExperience = 0;
-
-        for (int level = 0; level < user.experienceLevel; level++) {
-            playerExperience += getLevelExperience(level);
-        }
+        int playerExperience = getExperienceToLevel(user.experienceLevel);
         playerExperience += user.experienceProgress*getLevelExperience(user.experienceLevel);
+
         if(world.isClient) {
             if( (user.isSneaking() && remainingPlace < maxExperience)
                     || (!user.isSneaking() && playerExperience > 0 && remainingPlace > 0) ) {
