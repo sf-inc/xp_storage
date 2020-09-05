@@ -10,6 +10,11 @@ public class XpBookI extends XpBook {
     }
 
     @Override
+    protected int getMaxLevel() {
+        return maxLevel;
+    }
+
+    @Override
     protected int getMaxExperience() {
         return maxExperience;
     }
