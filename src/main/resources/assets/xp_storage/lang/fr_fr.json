@@ -1,5 +1,6 @@
 {
   "item.xp_storage.xp_book1": "Livre d'expérience I",
   "item.xp_storage.xp_book2": "Livre d'expérience II",
-  "item.xp_storage.xp_book3": "Livre d'expérience III"
+  "item.xp_storage.xp_book3": "Livre d'expérience III",
+  "item.xp_storage.xp_books.tooltip": "Peut stocker jusqu'à %1$s niveaux !"
 }
