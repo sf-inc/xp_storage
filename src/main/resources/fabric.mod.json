@@ -21,7 +21,9 @@
       "com.github.charlyb01.xpstorage.Xpstorage"
     ]
   },
-  "mixins": [],
+  "mixins": [
+    "xpstorage.mixins.json"
+  ],
   "depends": {
     "fabricloader": ">=0.9.2+build.206",
     "fabric": "*",
