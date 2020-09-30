@@ -23,7 +23,7 @@ public class Utils {
         for (int i = 0; i < level; i++) {
             experience += getLevelExperience(i);
         }
-        return experience;
+        return experience+1;
     }
 
     public static TypedActionResult<ItemStack> onUse(World world, PlayerEntity user, Hand hand, int maxExperience) {
