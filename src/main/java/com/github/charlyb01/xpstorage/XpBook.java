@@ -20,7 +20,7 @@ public abstract class XpBook extends Item {
     }
 
     protected abstract int getMaxLevel();
-    protected abstract int getMaxExperience();
+    public abstract int getMaxExperience();
 
     @Override
     public void appendTooltip(ItemStack stack, @Nullable World world, List<Text> tooltip, TooltipContext context) {
@@ -30,11 +30,6 @@ public abstract class XpBook extends Item {
     @Override
     public boolean hasGlint(ItemStack stack) {
         return stack.getDamage() == 0;
-    }
-
-    @Override
-    public void onCraft(ItemStack stack, World world, PlayerEntity player) {
-        stack.setDamage(getMaxExperience());
     }
 
     @Override

@@ -17,7 +17,7 @@ public class XpBookIII extends XpBook {
     }
 
     @Override
-    protected int getMaxExperience() {
+    public int getMaxExperience() {
         return maxExperience;
     }
 }
