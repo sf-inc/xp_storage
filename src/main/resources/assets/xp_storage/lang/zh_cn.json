@@ -1,5 +1,6 @@
 {
-  "item.xp_storage.xp_book": "经验书一",
-  "item.xp_storage.xp_book2": "经验书二",
-  "item.xp_storage.xp_book3": "经验书三"
+  "item.xp_storage.xp_book": "一阶经验书",
+  "item.xp_storage.xp_book2": "二阶经验书",
+  "item.xp_storage.xp_book3": "三阶经验书",
+  "item.xp_storage.xp_books.tooltip": "可存储至多 %1$s 级经验!"
 }
