@@ -23,18 +23,18 @@ public class Utils {
         for (int i = 0; i < level; i++) {
             experience += getLevelExperience(i);
         }
-        return experience+1;
+        return experience;
     }
 
     public static TypedActionResult<ItemStack> onUse(World world, PlayerEntity user, Hand hand, int maxExperience) {
         ItemStack stack = (user.getMainHandStack().getItem() instanceof XpBook)?user.getMainHandStack():user.getOffHandStack();
-        int remainingPlace = stack.getDamage();
+        int bookExperience = stack.getDamage();
         int playerExperience = getExperienceToLevel(user.experienceLevel);
         playerExperience += user.experienceProgress*getLevelExperience(user.experienceLevel);
 
         if(world.isClient) {
-            if( (user.isSneaking() && remainingPlace < maxExperience)
-                    || (!user.isSneaking() && playerExperience > 0 && remainingPlace > 0) ) {
+            if( (user.isSneaking() && bookExperience > 0)
+                    || (!user.isSneaking() && playerExperience > 0 && bookExperience < maxExperience) ) {
 
                 user.playSound(SoundEvents.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0F, 1.0F);
             }
@@ -43,15 +43,15 @@ public class Utils {
         else {
             // Empty / Fill
             if (user.isSneaking()) {
-                user.addExperience(maxExperience-remainingPlace);
-                stack.setDamage(maxExperience);
+                user.addExperience(bookExperience);
+                stack.setDamage(0);
             } else {
                 // Check max value
-                if (remainingPlace < playerExperience) {
-                    user.addExperience(-remainingPlace);
-                    stack.setDamage(0);
+                if (maxExperience-bookExperience < playerExperience) {
+                    user.addExperience(bookExperience-maxExperience);
+                    stack.setDamage(maxExperience);
                 } else {
-                    stack.setDamage(remainingPlace-playerExperience);
+                    stack.setDamage(bookExperience+playerExperience);
                     user.addExperience(-playerExperience);
                 }
             }

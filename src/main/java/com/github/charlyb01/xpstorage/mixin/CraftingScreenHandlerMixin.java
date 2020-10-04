@@ -20,12 +20,11 @@ public class CraftingScreenHandlerMixin {
                     target = "Lnet/minecraft/inventory/CraftingResultInventory;setStack(ILnet/minecraft/item/ItemStack;)V")
     )
     private static ItemStack transferExperience(ItemStack itemStack, int syncId, World world, PlayerEntity player, CraftingInventory craftingInventory, CraftingResultInventory resultInventory) {
-        if(itemStack.getItem() instanceof XpBook) {
-            int experience = 0;
-            if (craftingInventory.getStack(4).getItem() instanceof XpBook)
-                experience = ((XpBook)craftingInventory.getStack(4).getItem()).getMaxExperience()-craftingInventory.getStack(4).getDamage();
+        if(itemStack.getItem() instanceof XpBook &&
+                craftingInventory.getStack(4).getItem() instanceof XpBook) {
 
-            itemStack.setDamage(((XpBook)itemStack.getItem()).getMaxExperience()-experience);
+            int experience = craftingInventory.getStack(4).getDamage();
+            itemStack.setDamage(experience);
         }
         return itemStack;
     }
