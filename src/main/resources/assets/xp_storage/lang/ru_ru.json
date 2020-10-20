@@ -1,0 +1,6 @@
+{
+  "item.xp_storage.xp_book": "Книга опыта I",
+  "item.xp_storage.xp_book2": "Книга опыта II",
+  "item.xp_storage.xp_book3": "Книга опыта III",
+  "item.xp_storage.xp_books.tooltip": "Может хранить до %1$s уровней!"
+}
