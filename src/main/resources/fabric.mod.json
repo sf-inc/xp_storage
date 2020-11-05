@@ -5,7 +5,7 @@
   "name": "XP Storage",
   "description": "A mod that lets you store your experience into an item!",
   "authors": [
-    "Pardys"
+    "sfinc"
   ],
   "contact": {
     "homepage": "https://www.curseforge.com/minecraft/mc-mods/xp-storage",
@@ -25,9 +25,9 @@
     "xpstorage.mixins.json"
   ],
   "depends": {
-    "fabricloader": ">=0.10.0+build.208",
+    "fabricloader": ">=0.10.6+build.214",
     "fabric": "*",
-    "minecraft": "1.16.3"
+    "minecraft": "1.16.4"
   },
   "custom": {
     "modupdater": {
