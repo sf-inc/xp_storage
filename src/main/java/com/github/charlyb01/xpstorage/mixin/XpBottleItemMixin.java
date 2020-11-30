@@ -39,10 +39,13 @@ public class XpBottleItemMixin extends Item {
         }
     }
 
-    @ModifyVariable(method = "use", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/World;spawnEntity(Lnet/minecraft/entity/Entity;)Z"))
-    private ExperienceBottleEntity setXpAmount(ExperienceBottleEntity experienceBottleEntity, World world, PlayerEntity user, Hand hand) {
-        if (xpAmount > 0)
-            ((XpBottleEntityIMixin)experienceBottleEntity).setAmount(xpAmount);
+    @ModifyVariable(method = "use", at = @At(value = "INVOKE",
+            target = "Lnet/minecraft/world/World;spawnEntity(Lnet/minecraft/entity/Entity;)Z"))
+    private ExperienceBottleEntity setXpAmount(ExperienceBottleEntity experienceBottleEntity, World world,
+                                               PlayerEntity user, Hand hand) {
+        if (xpAmount > 0) {
+            ((XpBottleEntityIMixin) experienceBottleEntity).setAmount(xpAmount);
+        }
         return experienceBottleEntity;
     }
 }
