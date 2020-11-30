@@ -2,5 +2,8 @@
   "item.xp_storage.xp_book": "Книга опыта I",
   "item.xp_storage.xp_book2": "Книга опыта II",
   "item.xp_storage.xp_book3": "Книга опыта III",
-  "item.xp_storage.xp_books.tooltip": "Может хранить до %1$s уровней!"
+  "item.xp_storage.xp_books.tooltip": "Может хранить до %1$s уровней!",
+  "item.xp_storage.experience_bottle.tooltip.classic": "This one seems to be normal",
+  "item.xp_storage.experience_bottle.tooltip.strange": "That one seems to be different...",
+  "item.xp_storage.experience_bottle.tooltip.amount": "Experience stored: %1$s"
 }
