@@ -18,14 +18,14 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 @Mixin(ExperienceBottleEntity.class)
 public abstract class XpBottleEntityMixin extends ThrownItemEntity implements XpBottleEntityIMixin {
     @Unique
-    int xpAmount = 0;
+    private int xpAmount = 0;
 
     public XpBottleEntityMixin(EntityType<? extends ThrownItemEntity> entityType, World world) {
         super(entityType, world);
     }
 
     @Override
-    public void setAmount(final int xpAmount) {
+    public void setXpAmount(final int xpAmount) {
         this.xpAmount = xpAmount;
     }
 

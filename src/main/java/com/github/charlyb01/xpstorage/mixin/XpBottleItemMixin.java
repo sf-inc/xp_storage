@@ -22,7 +22,7 @@ import java.util.List;
 @Mixin(ExperienceBottleItem.class)
 public class XpBottleItemMixin extends Item {
     @Unique
-    int xpAmount = 0;
+    private int xpAmount = 0;
 
     public XpBottleItemMixin(Settings settings) {
         super(settings);
@@ -44,7 +44,7 @@ public class XpBottleItemMixin extends Item {
     private ExperienceBottleEntity setXpAmount(ExperienceBottleEntity experienceBottleEntity, World world,
                                                PlayerEntity user, Hand hand) {
         if (xpAmount > 0) {
-            ((XpBottleEntityIMixin) experienceBottleEntity).setAmount(xpAmount);
+            ((XpBottleEntityIMixin) experienceBottleEntity).setXpAmount(xpAmount);
         }
         return experienceBottleEntity;
     }
