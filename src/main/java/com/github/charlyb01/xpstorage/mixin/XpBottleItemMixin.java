@@ -20,12 +20,17 @@ import org.spongepowered.asm.mixin.injection.ModifyVariable;
 import java.util.List;
 
 @Mixin(ExperienceBottleItem.class)
-public class XpBottleItemMixin extends Item {
+public class XpBottleItemMixin extends Item implements XpBottleIMixin {
     @Unique
     private int xpAmount = 0;
 
     public XpBottleItemMixin(Settings settings) {
         super(settings);
+    }
+
+    @Override
+    public void setXpAmount(final int xpAmount) {
+        this.xpAmount = xpAmount;
     }
 
     @Override
