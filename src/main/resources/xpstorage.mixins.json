@@ -4,6 +4,8 @@
   "package": "com.github.charlyb01.xpstorage.mixin",
   "compatibilityLevel": "JAVA_8",
   "mixins": [
+    "BrewingRecipeMixin",
+    "BrewingStandMixin",
     "CraftingScreenHandlerMixin",
     "XpBottleEntityMixin",
     "XpBottleItemMixin"
