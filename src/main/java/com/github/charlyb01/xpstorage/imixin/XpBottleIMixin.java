@@ -1,5 +1,5 @@
 package com.github.charlyb01.xpstorage.imixin;
 
-public interface XpBottleEntityIMixin {
+public interface XpBottleIMixin {
     void setXpAmount(int xpAmount);
 }

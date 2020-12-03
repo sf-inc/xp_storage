@@ -1,6 +1,6 @@
 package com.github.charlyb01.xpstorage.mixin;
 
-import com.github.charlyb01.xpstorage.imixin.XpBottleEntityIMixin;
+import com.github.charlyb01.xpstorage.imixin.XpBottleIMixin;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.ExperienceOrbEntity;
 import net.minecraft.entity.projectile.thrown.ExperienceBottleEntity;
@@ -16,7 +16,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(ExperienceBottleEntity.class)
-public abstract class XpBottleEntityMixin extends ThrownItemEntity implements XpBottleEntityIMixin {
+public abstract class XpBottleEntityMixin extends ThrownItemEntity implements XpBottleIMixin {
     @Unique
     private int xpAmount = 0;
 
