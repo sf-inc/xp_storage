@@ -19,6 +19,9 @@
     "client": [],
     "main": [
       "com.github.charlyb01.xpstorage.Xpstorage"
+    ],
+    "cardinal-components": [
+      "com.github.charlyb01.xpstorage.cardinal.MyComponents"
     ]
   },
   "mixins": [
@@ -33,6 +36,9 @@
     "modupdater": {
       "strategy": "curseforge",
       "projectID": 403434
-    }
+    },
+    "cardinal-components": [
+      "xp_storage:xp_amount"
+    ]
   }
 }
