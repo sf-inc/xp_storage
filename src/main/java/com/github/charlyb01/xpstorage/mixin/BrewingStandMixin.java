@@ -33,7 +33,9 @@ public abstract class BrewingStandMixin extends LockableContainerBlockEntity {
                 && itemStack.getDamage() > 0) {
             for(int i = 0; i < 3; ++i) {
                 ItemStack itemStack2 = this.inventory.get(i);
-                if (!itemStack2.isEmpty()) {
+                if (!itemStack2.isEmpty()
+                        && itemStack2.getTag() != null
+                        && itemStack2.getTag().toString().contains("minecraft:mundane")) {
                     cir.setReturnValue(true);
                 }
             }
