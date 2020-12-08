@@ -10,6 +10,11 @@ class XpAmountComponent implements RandIntComponent {
     public int getValue() { return this.value; }
 
     @Override
+    public void setValue(final int value) {
+        this.value = value;
+    }
+
+    @Override
     public void setRandomValue(final int bookAmount) {
         float random = (ConstantsConfig.UPPER_BOUND_RANDOM - ConstantsConfig.LOWER_BOUND_RANDOM) / 100.f;
         random = (int) (random * bookAmount) + 1;
