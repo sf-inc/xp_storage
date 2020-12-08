@@ -47,7 +47,9 @@ public abstract class BrewingStandMixin extends LockableContainerBlockEntity {
         ItemStack xpBook = this.inventory.get(3);
         if (xpBook.getItem() instanceof XpBook) {
             for (int i = 0; i < 3; ++i) {
-                if (!this.inventory.get(i).isEmpty()) {
+                if (!this.inventory.get(i).isEmpty()
+                        && this.inventory.get(i).getTag() != null
+                        && this.inventory.get(i).getTag().toString().contains("minecraft:mundane")) {
                     ItemStack xpBottle = new ItemStack(Items.EXPERIENCE_BOTTLE);
                     int experience = Math.min(ConstantsConfig.XP_FROM_BOOK, xpBook.getDamage());
                     xpBook.setDamage(xpBook.getDamage() - experience);
