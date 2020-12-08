@@ -45,12 +45,14 @@ public abstract class BrewingStandMixin extends LockableContainerBlockEntity {
         ItemStack xpBook = this.inventory.get(3);
         if (xpBook.getItem() instanceof XpBook) {
             for (int i = 0; i < 3; ++i) {
-                ItemStack xpBottle = new ItemStack(Items.EXPERIENCE_BOTTLE);
-                int experience = Math.min(ConstantsConfig.XP_FROM_BOOK, xpBook.getDamage());
-                xpBook.setDamage(xpBook.getDamage()-experience);
+                if (!this.inventory.get(i).isEmpty()) {
+                    ItemStack xpBottle = new ItemStack(Items.EXPERIENCE_BOTTLE);
+                    int experience = Math.min(ConstantsConfig.XP_FROM_BOOK, xpBook.getDamage());
+                    xpBook.setDamage(xpBook.getDamage() - experience);
 
-                MyComponents.XP_AMOUNT.get(xpBottle).setRandomValue(experience);
-                this.inventory.set(i, xpBottle);
+                    MyComponents.XP_AMOUNT.get(xpBottle).setRandomValue(experience);
+                    this.inventory.set(i, xpBottle);
+                }
             }
 
             this.inventory.set(3, xpBook);
