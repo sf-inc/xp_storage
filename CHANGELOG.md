@@ -6,6 +6,14 @@ Currently, every **stable** mod versions are available on **1.16.X** Minecraft v
 * **x.X versions** are either updates that add content or major bug fixes
 * **x.x.X versions** are either small content update (language translation, new textures, ...) or bug fixes
 
+## v1.2
+* You can brew the experience of your XP Book into XP Bottles
+  * 100 experiences is taken for each bottles
+  * 80-130% of the amount is effectively on the bottle
+  * you brew it into mundane potions
+* XP Bottles can have a nbt tag for a specific amount (see previous line)
+* XP Bottles display a tooltip to tell the player if it's a normal one or not. If not, it also displays the XP amount
+
 ## v1.1.1
 * Added russian language, thanks to *@Romz24*
 
