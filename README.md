@@ -22,17 +22,18 @@ more experience.
 * **XP Book upgrade recipe:** you can upgrade the book so that it can store more experience. Same recipe but replace the 
   book with your XP Book and the diamond with either a netherite ingot or a nether star (depending on your current XP 
   Book level)
+* **XP Book maximum amount:** They can store up to 30, 42, or 69 levels depending on the XP Book level
 * **Store experience:** Store the maximum amount of your experience in the book by ***right clicking***. If you have 
   more experience than the maximum amount, you will keep the remaining experience
 * **Retrieve experience:** 
   * Get the exact amount of experience stored in the book by ***right clicking while sneaking***
-  * Take 100 of experience stored in the book and put a random percentage of it between 85% and 130% for each 
-    ***mundane potions*** placed in the brewing stand
+  * Take 100 of experience stored in the book for each ***mundane potions*** placed in the brewing stand and put a 
+    random percentage of it (between 85% and 130%) in the resulting Experience Bottle
 
 ## FAQ
 
-* **Does it work on a server?** Yes it works on a server. File needed for both client and server. And yes, it means you 
-  can share experience with other players.
+* **Does it work on a server?** Yes it works on a server. File needed for ***both client and server***. And yes, it 
+  means you can share experience with other players.
 * **Can I include it in my modpack?** Yes, you are free to include this mod into your modpack. Just let me know if you 
   do so! 😉
 * **For any other things:** Feel free to share your experience, problems (prefer the Issue link instead of Comment, but 
