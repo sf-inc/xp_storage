@@ -16,7 +16,9 @@
   "icon": "assets/xp_storage/icon.png",
   "environment": "*",
   "entrypoints": {
-    "client": [],
+    "client": [
+      "com.github.charlyb01.xpstorage.client.XpstorageClient"
+    ],
     "main": [
       "com.github.charlyb01.xpstorage.Xpstorage"
     ],
