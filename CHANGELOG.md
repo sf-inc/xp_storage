@@ -6,6 +6,10 @@ Currently, every **stable** mod versions are available on **1.16.X** Minecraft v
 * **x.X versions** are either updates that add content or major bug fixes
 * **x.x.X versions** are either small content update (language translation, new textures, ...) or bug fixes
 
+## v1.3
+
+* Server crash (added in v1.2) fix because of initializing something client only in server side
+
 ## v1.2
 * You can brew the experience of your XP Book into XP Bottles
   * 100 experiences is taken for each bottles
