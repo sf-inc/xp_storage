@@ -2,8 +2,8 @@
   "item.xp_storage.xp_book": "一阶经验书",
   "item.xp_storage.xp_book2": "二阶经验书",
   "item.xp_storage.xp_book3": "三阶经验书",
-  "item.xp_storage.xp_books.tooltip": "可存储至多 %1$s 级经验!",
-  "item.xp_storage.experience_bottle.tooltip.classic": "This one seems to be normal",
-  "item.xp_storage.experience_bottle.tooltip.strange": "That one seems to be different...",
-  "item.xp_storage.experience_bottle.tooltip.amount": "Experience stored: %1$s"
+  "item.xp_storage.xp_books.tooltip": "可以存储最高 %1$s 级的经验！",
+  "item.xp_storage.experience_bottle.tooltip.classic": "这瓶看上去很寻常。",
+  "item.xp_storage.experience_bottle.tooltip.strange": "这瓶似乎有些与众不同……",
+  "item.xp_storage.experience_bottle.tooltip.amount": "当前已存储经验: %1$s"
 }
