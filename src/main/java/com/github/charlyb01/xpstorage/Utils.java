@@ -53,6 +53,7 @@ public class Utils {
                 } else {
                     stack.setDamage(bookExperience+playerExperience);
                     user.addExperience(-playerExperience);
+                    user.experienceProgress = 0.0F;
                 }
             }
         }
