@@ -5,5 +5,13 @@
   "item.xp_storage.xp_books.tooltip": "Peut stocker jusqu'à %1$s niveaux !",
   "item.xp_storage.experience_bottle.tooltip.classic": "Celle-ci a l'air d'être normale",
   "item.xp_storage.experience_bottle.tooltip.strange": "Celle-là a l'air d'être différente...",
-  "item.xp_storage.experience_bottle.tooltip.amount": "Expérience stockée : %1$s"
+  "item.xp_storage.experience_bottle.tooltip.amount": "Expérience stockée : %1$s",
+
+  "text.autoconfig.xp_storage.title": "XP Storage Configs",
+  "text.autoconfig.xp_storage.option.MAX_LEVEL_I": "Capacité du Livre d'expérience I (niveau)",
+  "text.autoconfig.xp_storage.option.MAX_LEVEL_II": "Capacité du Livre d'expérience II (niveau)",
+  "text.autoconfig.xp_storage.option.MAX_LEVEL_III": "Capacité du Livre d'expérience III (niveau)",
+  "text.autoconfig.xp_storage.option.XP_FROM_BOOK": "Expérience extraite d'un Livre d'expérience",
+  "text.autoconfig.xp_storage.option.LOWER_BOUND_RANDOM": "Min d'expérience récupérée par potion (%)",
+  "text.autoconfig.xp_storage.option.UPPER_BOUND_RANDOM": "Max d'expérience récupérée par potion (%)"
 }
