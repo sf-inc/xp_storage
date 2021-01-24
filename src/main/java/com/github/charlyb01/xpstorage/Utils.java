@@ -1,5 +1,6 @@
 package com.github.charlyb01.xpstorage;
 
+import com.github.charlyb01.xpstorage.config.ModConfig;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.sound.SoundEvents;
@@ -43,7 +44,8 @@ public class Utils {
         else {
             // Empty / Fill
             if (user.isSneaking()) {
-                user.addExperience(bookExperience);
+                int retrievedExperience = (int) (bookExperience * (ModConfig.get().XP_FROM_BOOK_USE / 100.0F));
+                user.addExperience(retrievedExperience);
                 stack.setDamage(0);
             } else {
                 // Check max value

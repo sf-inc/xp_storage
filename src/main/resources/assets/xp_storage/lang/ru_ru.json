@@ -11,7 +11,8 @@
   "text.autoconfig.xp_storage.option.MAX_LEVEL_I": "Capacity of XP Book I (lvl)",
   "text.autoconfig.xp_storage.option.MAX_LEVEL_II": "Capacity of XP Book II (lvl)",
   "text.autoconfig.xp_storage.option.MAX_LEVEL_III": "Capacity of XP Book III (lvl)",
-  "text.autoconfig.xp_storage.option.XP_FROM_BOOK": "Experience brawn from a XP Book",
+  "text.autoconfig.xp_storage.option.XP_FROM_BOOK_USE": "Experience retrieved from XP Book use (%)",
+  "text.autoconfig.xp_storage.option.XP_FROM_BOOK_BREW": "Experience brawn from a XP Book",
   "text.autoconfig.xp_storage.option.LOWER_BOUND_RANDOM": "Min experience retrieved from brewing (%)",
   "text.autoconfig.xp_storage.option.UPPER_BOUND_RANDOM": "Max experience retrieved from brewing (%)"
 }

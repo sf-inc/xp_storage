@@ -11,7 +11,8 @@
   "text.autoconfig.xp_storage.option.MAX_LEVEL_I": "Capacité du Livre d'expérience I (niveau)",
   "text.autoconfig.xp_storage.option.MAX_LEVEL_II": "Capacité du Livre d'expérience II (niveau)",
   "text.autoconfig.xp_storage.option.MAX_LEVEL_III": "Capacité du Livre d'expérience III (niveau)",
-  "text.autoconfig.xp_storage.option.XP_FROM_BOOK": "Expérience extraite d'un Livre d'expérience",
+  "text.autoconfig.xp_storage.option.XP_FROM_BOOK_USE": "Expérience récupérée par Livre d'expérience (%)",
+  "text.autoconfig.xp_storage.option.XP_FROM_BOOK_BREW": "Expérience extraite d'un Livre d'expérience",
   "text.autoconfig.xp_storage.option.LOWER_BOUND_RANDOM": "Min d'expérience récupérée par potion (%)",
   "text.autoconfig.xp_storage.option.UPPER_BOUND_RANDOM": "Max d'expérience récupérée par potion (%)"
 }

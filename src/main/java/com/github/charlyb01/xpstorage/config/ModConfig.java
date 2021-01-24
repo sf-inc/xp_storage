@@ -16,9 +16,11 @@ public class ModConfig implements ConfigData {
     @ConfigEntry.BoundedDiscrete(min = 30, max = 200)
     @ConfigEntry.Gui.RequiresRestart
     public int MAX_LEVEL_III = 69;
+    @ConfigEntry.BoundedDiscrete(min = 50, max = 100)
+    public int XP_FROM_BOOK_USE = 90;
 
     @ConfigEntry.BoundedDiscrete(min = 10, max = 1000)
-    public int XP_FROM_BOOK = 100;
+    public int XP_FROM_BOOK_BREW = 100;
     @ConfigEntry.BoundedDiscrete(min = 0, max = 100)
     public int LOWER_BOUND_RANDOM = 85;
     @ConfigEntry.BoundedDiscrete(min = 100, max = 200)
