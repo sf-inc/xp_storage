@@ -6,6 +6,23 @@ Currently, every **stable** mod versions are available on **1.16.X** Minecraft v
 * **x.X versions** are either updates that add content or major bug fixes
 * **x.x.X versions** are either small content update (language translation, new textures, ...) or bug fixes
 
+## v1.4
+
+* You can now change the mod configs:
+  * The capacity of each XP Books *(needs restart)*
+  * The experience retrieved for XP Books use
+  * The experience taken and retrieved for XP Bottles
+  * You can change the configs directly in the mod menu
+
+## v1.3.2
+
+* The XP Book now retrieve only 90% of the experience by using it
+
+## v1.3.1
+
+* Fix a small graphic bug: sometimes when filling the XP Book, it seems you still have one experience on your xp bar 
+while you don't have experience anymore
+
 ## v1.3
 
 * Server crash (added in v1.2) fix because of initializing something client only in server side
