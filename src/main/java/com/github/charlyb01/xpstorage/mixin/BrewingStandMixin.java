@@ -2,7 +2,7 @@ package com.github.charlyb01.xpstorage.mixin;
 
 import com.github.charlyb01.xpstorage.XpBook;
 import com.github.charlyb01.xpstorage.cardinal.MyComponents;
-import com.github.charlyb01.xpstorage.config.ConstantsConfig;
+import com.github.charlyb01.xpstorage.config.ModConfig;
 import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.block.entity.BrewingStandBlockEntity;
 import net.minecraft.block.entity.LockableContainerBlockEntity;
@@ -51,7 +51,7 @@ public abstract class BrewingStandMixin extends LockableContainerBlockEntity {
                         && this.inventory.get(i).getTag() != null
                         && this.inventory.get(i).getTag().toString().contains("minecraft:mundane")) {
                     ItemStack xpBottle = new ItemStack(Items.EXPERIENCE_BOTTLE);
-                    int experience = Math.min(ConstantsConfig.XP_FROM_BOOK, xpBook.getDamage());
+                    int experience = Math.min(ModConfig.get().XP_FROM_BOOK, xpBook.getDamage());
                     xpBook.setDamage(xpBook.getDamage() - experience);
 
                     MyComponents.XP_AMOUNT.get(xpBottle).setRandomValue(experience);

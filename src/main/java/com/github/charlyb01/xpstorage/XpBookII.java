@@ -1,11 +1,11 @@
 package com.github.charlyb01.xpstorage;
 
 
-import com.github.charlyb01.xpstorage.config.ConstantsConfig;
+import com.github.charlyb01.xpstorage.config.ModConfig;
 import net.minecraft.util.Rarity;
 
 public class XpBookII extends XpBook {
-    private final static int maxLevel = ConstantsConfig.MAX_LEVEL_II;
+    private final static int maxLevel = ModConfig.get().MAX_LEVEL_II;
     private final static int maxExperience = Utils.getExperienceToLevel(maxLevel);
 
     public XpBookII() {

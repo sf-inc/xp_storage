@@ -24,6 +24,9 @@
     ],
     "cardinal-components": [
       "com.github.charlyb01.xpstorage.cardinal.MyComponents"
+    ],
+    "modmenu": [
+      "com.github.charlyb01.xpstorage.config.ModMenuIntegration"
     ]
   },
   "mixins": [
