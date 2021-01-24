@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "id": "xpstorage",
+  "id": "xp_storage",
   "version": "${version}",
   "name": "XP Storage",
   "description": "A mod that lets you store your experience in multiple ways!",
