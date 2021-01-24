@@ -15,20 +15,20 @@ and adds new features.
 In this mod, you can craft XP Books in order to store your experience and save it from a coming death. After storing 
 it, you can retrieve your experience back in two different ways: same way that you stored it OR you can brew the 
 experience of the XP Book with the brewing stand in order to create special Experience Bottles that can give you even 
-more experience.
+more experience. Now fully configurable!
 
 * **XP Book recipe:** 1 book (of course, it's a book), 3 lapis lazuli (it stores experience so lapis needed makes senses),
   and 1 diamond (it's quite powerful and precious so still makes senses)
 * **XP Book upgrade recipe:** you can upgrade the book so that it can store more experience. Same recipe but replace the 
   book with your XP Book and the diamond with either a netherite ingot or a nether star (depending on your current XP 
   Book level)
-* **XP Book maximum amount:** They can store up to 30, 42, or 69 levels depending on the XP Book level
+* **XP Book maximum amount:** They can store up to 30, 42, or 69 levels depending on the XP Book level *(config)*
 * **Store experience:** Store the maximum amount of your experience in the book by ***right clicking***. If you have 
   more experience than the maximum amount, you will keep the remaining experience
 * **Retrieve experience:** 
-  * Get the exact amount of experience stored in the book by ***right clicking while sneaking***
+  * Get 90% of the experience *(config)* stored in the book by ***right clicking while sneaking***
   * Take 100 of experience stored in the book for each ***mundane potions*** placed in the brewing stand and put a 
-    random percentage of it (between 85% and 130%) in the resulting Experience Bottle
+    random percentage of it (between 85% and 130%) in the resulting Experience Bottle *(config)*
 
 ## FAQ
 
