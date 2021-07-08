@@ -1,7 +1,7 @@
 package com.github.charlyb01.xpstorage;
 
-
 import com.github.charlyb01.xpstorage.config.ModConfig;
+import net.minecraft.item.Item;
 import net.minecraft.util.Rarity;
 
 public class XpBookII extends XpBook {
@@ -9,7 +9,7 @@ public class XpBookII extends XpBook {
     private final static int maxExperience = Utils.getExperienceToLevel(maxLevel);
 
     public XpBookII() {
-        super(new Settings().maxDamage(maxExperience).rarity(Rarity.UNCOMMON).fireproof());
+        super(new Item.Settings().maxDamage(maxExperience).rarity(Rarity.UNCOMMON).fireproof());
     }
 
     @Override

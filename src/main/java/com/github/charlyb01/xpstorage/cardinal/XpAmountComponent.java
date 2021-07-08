@@ -1,7 +1,7 @@
 package com.github.charlyb01.xpstorage.cardinal;
 
 import com.github.charlyb01.xpstorage.config.ModConfig;
-import net.minecraft.nbt.CompoundTag;
+import net.minecraft.nbt.NbtCompound;
 
 class XpAmountComponent implements RandIntComponent {
     private int value = 0;
@@ -23,10 +23,10 @@ class XpAmountComponent implements RandIntComponent {
     }
 
     @Override
-    public void readFromNbt(CompoundTag tag) { this.value = tag.getInt("xp_amount"); }
+    public void readFromNbt(NbtCompound tag) { this.value = tag.getInt("xp_amount"); }
 
     @Override
-    public void writeToNbt(CompoundTag tag) { tag.putInt("xp_amount", this.value); }
+    public void writeToNbt(NbtCompound tag) { tag.putInt("xp_amount", this.value); }
 
     @Override
     public boolean equals(Object obj) {

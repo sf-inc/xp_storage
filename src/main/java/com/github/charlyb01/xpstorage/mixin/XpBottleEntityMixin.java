@@ -34,7 +34,7 @@ public abstract class XpBottleEntityMixin extends ThrownItemEntity {
             this.world.spawnEntity(new ExperienceOrbEntity(this.world, this.getX(), this.getY(), this.getZ(), j));
             }
 
-            this.remove();
+            this.discard();
             }
             ci.cancel();
         }
