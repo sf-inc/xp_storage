@@ -2,10 +2,12 @@ package com.github.charlyb01.xpstorage;
 
 import com.github.charlyb01.xpstorage.config.ModConfig;
 import net.minecraft.client.item.TooltipContext;
+import net.minecraft.entity.ExperienceOrbEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
+import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.text.Text;
 import net.minecraft.text.TranslatableText;
@@ -48,17 +50,15 @@ public class XpBook extends Item {
         playerExperience += user.experienceProgress * Utils.getLevelExperience(user.experienceLevel);
 
         if (world.isClient) {
-            // Play sound
-            if ((user.isSneaking() && bookExperience > 0)
-                    || (!user.isSneaking() && playerExperience > 0 && bookExperience < maxExperience)) {
-
+            // Play sound when emptying
+            if (!user.isSneaking() && playerExperience > 0 && bookExperience < maxExperience) {
                 user.playSound(SoundEvents.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0F, 1.0F);
             }
         } else {
             // Empty / Fill
             if (user.isSneaking()) {
                 int retrievedExperience = (int) (bookExperience * (ModConfig.get().XP_FROM_BOOK_USE / 100.0F));
-                user.addExperience(retrievedExperience);
+                ExperienceOrbEntity.spawn((ServerWorld) world, user.getPos(), retrievedExperience);
                 stack.setDamage(0);
             } else {
                 // Check max value
