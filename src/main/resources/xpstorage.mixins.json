@@ -8,7 +8,9 @@
     "BrewingStandMixin",
     "CraftingScreenHandlerMixin",
     "XpBottleEntityMixin",
-    "XpBottleItemMixin"
+    "XpBottleItemMixin",
+    "enchant.EnchantmentTargetMixin",
+    "enchant.UnbreakingEnchantMixin"
   ],
   "client": [
   ],
