@@ -6,6 +6,13 @@ Currently, every **stable** mod versions are available on **1.16.X** Minecraft v
 * **x.X versions** are either updates that add content or major bug fixes
 * **x.x.X versions** are either small content update (language translation, new textures, ...) or bug fixes
 
+## v1.4.1
+
+* Using an XP Book now spawns experience orbs on the player instead of adding xp directly. By doing so, it's nicer and 
+  the retrieved experience can repair your armor, etc
+* Now XP Book can't get Mending or Unbreaking with anvil (they were able before). Even though it would be stupid to do 
+  so, it's better that we can't do it at all
+
 ## v1.4
 
 * You can now change the mod configs:
