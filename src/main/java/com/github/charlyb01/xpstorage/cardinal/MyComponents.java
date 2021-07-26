@@ -21,6 +21,6 @@ public final class MyComponents implements EntityComponentInitializer, ItemCompo
 
     @Override
     public void registerItemComponentFactories(ItemComponentFactoryRegistry registry) {
-        registry.registerFor(Items.EXPERIENCE_BOTTLE, XP_AMOUNT, stack -> new XpAmountComponent());
+        registry.register(Items.EXPERIENCE_BOTTLE, XP_AMOUNT, XpAmountItemComponent::new);
     }
 }

@@ -54,7 +54,7 @@ public abstract class BrewingStandMixin extends LockableContainerBlockEntity {
                     int experience = Math.min(ModConfig.get().XP_FROM_BOOK_BREW, xpBook.getDamage());
                     xpBook.setDamage(xpBook.getDamage() - experience);
 
-                    MyComponents.XP_AMOUNT.get(xpBottle).setRandomValue(experience);
+                    MyComponents.XP_AMOUNT.get(xpBottle).setRandomValue(experience, world.getRandom());
                     slots.set(i, xpBottle);
                 }
             }
