@@ -10,7 +10,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 // BREAKABLE enchantment target
 @Mixin(targets = "net/minecraft/enchantment/EnchantmentTarget$2")
 public class EnchantmentTargetMixin {
-    @Inject(method = "isAcceptableItem", at = @At("HEAD"), cancellable = true)
+    @Inject(method = "Lnet/minecraft/enchantment/EnchantmentTarget$2;isAcceptableItem(Lnet/minecraft/item/Item;)Z", at = @At("HEAD"), cancellable = true)
     private void cantEnchantXPBookItem(Item item, CallbackInfoReturnable<Boolean> cir) {
         if (item instanceof XpBook) {
             cir.setReturnValue(false);
