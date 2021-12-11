@@ -34,8 +34,8 @@ public abstract class BrewingStandMixin extends LockableContainerBlockEntity {
             for(int i = 0; i < 3; ++i) {
                 ItemStack itemStack2 = slots.get(i);
                 if (!itemStack2.isEmpty()
-                        && itemStack2.getTag() != null
-                        && itemStack2.getTag().toString().contains("minecraft:mundane")) {
+                        && itemStack2.getNbt() != null
+                        && itemStack2.getNbt().toString().contains("minecraft:mundane")) {
                     cir.setReturnValue(true);
                 }
             }
@@ -48,8 +48,8 @@ public abstract class BrewingStandMixin extends LockableContainerBlockEntity {
         if (xpBook.getItem() instanceof XpBook) {
             for (int i = 0; i < 3; ++i) {
                 if (!slots.get(i).isEmpty()
-                        && slots.get(i).getTag() != null
-                        && slots.get(i).getTag().toString().contains("minecraft:mundane")) {
+                        && slots.get(i).getNbt() != null
+                        && slots.get(i).getNbt().toString().contains("minecraft:mundane")) {
                     ItemStack xpBottle = new ItemStack(Items.EXPERIENCE_BOTTLE);
                     int experience = Math.min(ModConfig.get().XP_FROM_BOOK_BREW, xpBook.getDamage());
                     xpBook.setDamage(xpBook.getDamage() - experience);
