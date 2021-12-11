@@ -66,6 +66,12 @@ public class XpBook extends Item {
         int playerExperience = Utils.getExperienceToLevel(user.experienceLevel);
         playerExperience += user.experienceProgress * Utils.getLevelExperience(user.experienceLevel);
 
+        int xpFromUse = ModConfig.get().books.book1.xpFromUsing;
+        if (stack.isOf(Xpstorage.xp_book2))
+            xpFromUse = ModConfig.get().books.book2.xpFromUsing;
+        else if (stack.isOf(Xpstorage.xp_book3))
+            xpFromUse = ModConfig.get().books.book3.xpFromUsing;
+
         if (world.isClient) {
             // Play sound when emptying
             if (!user.isSneaking() && playerExperience > 0 && bookExperience < maxExperience) {
@@ -74,7 +80,7 @@ public class XpBook extends Item {
         } else {
             // Empty / Fill
             if (user.isSneaking()) {
-                int retrievedExperience = (int) (bookExperience * (ModConfig.get().XP_FROM_BOOK_USE / 100.0F));
+                int retrievedExperience = (int) (bookExperience * (xpFromUse / 100.0F));
                 ExperienceOrbEntity.spawn((ServerWorld) world, user.getPos(), retrievedExperience);
                 stack.setDamage(0);
             } else {

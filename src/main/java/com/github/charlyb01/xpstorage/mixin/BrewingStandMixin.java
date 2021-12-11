@@ -51,7 +51,7 @@ public abstract class BrewingStandMixin extends LockableContainerBlockEntity {
                         && slots.get(i).getNbt() != null
                         && slots.get(i).getNbt().toString().contains("minecraft:mundane")) {
                     ItemStack xpBottle = new ItemStack(Items.EXPERIENCE_BOTTLE);
-                    int experience = Math.min(ModConfig.get().XP_FROM_BOOK_BREW, xpBook.getDamage());
+                    int experience = Math.min(ModConfig.get().bottles.xpFromBrewing, xpBook.getDamage());
                     xpBook.setDamage(xpBook.getDamage() - experience);
 
                     MyComponents.XP_AMOUNT.get(xpBottle).setRandomValue(experience, world.getRandom());

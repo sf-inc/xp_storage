@@ -3,16 +3,26 @@
   "item.xp_storage.xp_book2": "Livre d'expérience II",
   "item.xp_storage.xp_book3": "Livre d'expérience III",
   "item.xp_storage.xp_books.tooltip": "Peut stocker jusqu'à %1$s niveaux !",
+  "item.xp_storage.xp_books.tooltip2": "Expérience: %1$s / %2$s",
   "item.xp_storage.experience_bottle.tooltip.classic": "Celle-ci a l'air d'être normale",
   "item.xp_storage.experience_bottle.tooltip.strange": "Celle-là a l'air d'être différente...",
   "item.xp_storage.experience_bottle.tooltip.amount": "Expérience stockée : %1$s",
 
   "text.autoconfig.xp_storage.title": "XP Storage Configs",
-  "text.autoconfig.xp_storage.option.MAX_LEVEL_I": "Capacité du Livre d'expérience I (niveau)",
-  "text.autoconfig.xp_storage.option.MAX_LEVEL_II": "Capacité du Livre d'expérience II (niveau)",
-  "text.autoconfig.xp_storage.option.MAX_LEVEL_III": "Capacité du Livre d'expérience III (niveau)",
-  "text.autoconfig.xp_storage.option.XP_FROM_BOOK_USE": "Expérience récupérée par Livre d'expérience (%)",
-  "text.autoconfig.xp_storage.option.XP_FROM_BOOK_BREW": "Expérience extraite d'un Livre d'expérience",
-  "text.autoconfig.xp_storage.option.LOWER_BOUND_RANDOM": "Min d'expérience récupérée par potion (%)",
-  "text.autoconfig.xp_storage.option.UPPER_BOUND_RANDOM": "Max d'expérience récupérée par potion (%)"
+
+  "text.autoconfig.xp_storage.category.books": "Livres",
+  "text.autoconfig.xp_storage.option.books.book1": "Livre d'expérience I",
+  "text.autoconfig.xp_storage.option.books.book1.maxLevel": "Capacité (niveaux)",
+  "text.autoconfig.xp_storage.option.books.book1.xpFromUsing": "Expérience récupérée par utilisation (%)",
+  "text.autoconfig.xp_storage.option.books.book2": "Livre d'expérience II",
+  "text.autoconfig.xp_storage.option.books.book2.maxLevel": "Capacité (niveaux)",
+  "text.autoconfig.xp_storage.option.books.book2.xpFromUsing": "Expérience récupérée par utilisation (%)",
+  "text.autoconfig.xp_storage.option.books.book3": "Livre d'expérience III",
+  "text.autoconfig.xp_storage.option.books.book3.maxLevel": "Capacité (niveaux)",
+  "text.autoconfig.xp_storage.option.books.book3.xpFromUsing": "Expérience récupérée par utilisation (%)",
+
+  "text.autoconfig.xp_storage.category.bottles": "Bouteilles",
+  "text.autoconfig.xp_storage.option.bottles.xpFromBrewing": "Expérience utilisée par bouteille",
+  "text.autoconfig.xp_storage.option.bottles.lowerBoundRandom": "Min d'expérience récupérée (%)",
+  "text.autoconfig.xp_storage.option.bottles.upperBoundRandom": "Max d'expérience récupérée (%)"
 }

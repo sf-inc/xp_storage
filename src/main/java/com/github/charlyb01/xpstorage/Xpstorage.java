@@ -2,7 +2,8 @@ package com.github.charlyb01.xpstorage;
 
 import com.github.charlyb01.xpstorage.config.ModConfig;
 import me.shedaniel.autoconfig.AutoConfig;
-import me.shedaniel.autoconfig.serializer.JanksonConfigSerializer;
+import me.shedaniel.autoconfig.serializer.GsonConfigSerializer;
+import me.shedaniel.autoconfig.serializer.PartitioningSerializer;
 import net.fabricmc.api.ModInitializer;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
@@ -15,11 +16,11 @@ public class Xpstorage implements ModInitializer {
 
     @Override
     public void onInitialize() {
-        AutoConfig.register(ModConfig.class, JanksonConfigSerializer::new);
+        AutoConfig.register(ModConfig.class, PartitioningSerializer.wrap(GsonConfigSerializer::new));
 
-        xp_book1 = new XpBook(ModConfig.get().MAX_LEVEL_I, Utils.getExperienceToLevel(ModConfig.get().MAX_LEVEL_I));
-        xp_book2 = new XpBook(ModConfig.get().MAX_LEVEL_II, Utils.getExperienceToLevel(ModConfig.get().MAX_LEVEL_II));
-        xp_book3 = new XpBook(ModConfig.get().MAX_LEVEL_III, Utils.getExperienceToLevel(ModConfig.get().MAX_LEVEL_III));
+        xp_book1 = new XpBook(ModConfig.get().books.book1.maxLevel, Utils.getExperienceToLevel(ModConfig.get().books.book1.maxLevel));
+        xp_book2 = new XpBook(ModConfig.get().books.book2.maxLevel, Utils.getExperienceToLevel(ModConfig.get().books.book2.maxLevel));
+        xp_book3 = new XpBook(ModConfig.get().books.book3.maxLevel, Utils.getExperienceToLevel(ModConfig.get().books.book3.maxLevel));
 
         Registry.register(Registry.ITEM, new Identifier("xp_storage", "xp_book"), xp_book1);
         Registry.register(Registry.ITEM, new Identifier("xp_storage", "xp_book2"), xp_book2);

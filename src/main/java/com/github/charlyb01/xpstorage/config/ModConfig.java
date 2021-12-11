@@ -1,30 +1,19 @@
 package com.github.charlyb01.xpstorage.config;
 
 import me.shedaniel.autoconfig.AutoConfig;
-import me.shedaniel.autoconfig.ConfigData;
 import me.shedaniel.autoconfig.annotation.Config;
 import me.shedaniel.autoconfig.annotation.ConfigEntry;
+import me.shedaniel.autoconfig.serializer.PartitioningSerializer;
 
 @Config(name = "xp_storage")
-public class ModConfig implements ConfigData {
-    @ConfigEntry.BoundedDiscrete(min = 10, max = 50)
-    @ConfigEntry.Gui.RequiresRestart
-    public int MAX_LEVEL_I = 30;
-    @ConfigEntry.BoundedDiscrete(min = 20, max = 100)
-    @ConfigEntry.Gui.RequiresRestart
-    public int MAX_LEVEL_II = 42;
-    @ConfigEntry.BoundedDiscrete(min = 30, max = 200)
-    @ConfigEntry.Gui.RequiresRestart
-    public int MAX_LEVEL_III = 69;
-    @ConfigEntry.BoundedDiscrete(min = 50, max = 100)
-    public int XP_FROM_BOOK_USE = 90;
+public class ModConfig extends PartitioningSerializer.GlobalData {
+    @ConfigEntry.Category("books")
+    @ConfigEntry.Gui.TransitiveObject
+    public BookConfig books = new BookConfig();
 
-    @ConfigEntry.BoundedDiscrete(min = 10, max = 1000)
-    public int XP_FROM_BOOK_BREW = 100;
-    @ConfigEntry.BoundedDiscrete(min = 0, max = 100)
-    public int LOWER_BOUND_RANDOM = 85;
-    @ConfigEntry.BoundedDiscrete(min = 100, max = 200)
-    public int UPPER_BOUND_RANDOM = 130;
+    @ConfigEntry.Category("bottles")
+    @ConfigEntry.Gui.TransitiveObject
+    public BottleConfig bottles = new BottleConfig();
 
     public static ModConfig get() {
         return AutoConfig.getConfigHolder(ModConfig.class).getConfig();

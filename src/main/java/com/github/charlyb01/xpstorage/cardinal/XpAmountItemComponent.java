@@ -22,9 +22,9 @@ class XpAmountItemComponent extends ItemComponent implements RandIntComponent {
 
     @Override
     public void setRandomValue(int bookAmount, final Random random) {
-        float randomF = (ModConfig.get().UPPER_BOUND_RANDOM - ModConfig.get().LOWER_BOUND_RANDOM) / 100.f;
+        float randomF = (ModConfig.get().bottles.upperBoundRandom - ModConfig.get().bottles.lowerBoundRandom) / 100.f;
         int randomI = (int) (randomF * bookAmount) + 1;
-        int value = (int) (bookAmount * (ModConfig.get().LOWER_BOUND_RANDOM / 100.f));
+        int value = (int) (bookAmount * (ModConfig.get().bottles.lowerBoundRandom / 100.f));
         value += random.nextInt(randomI);
         this.setValue(value);
     }
