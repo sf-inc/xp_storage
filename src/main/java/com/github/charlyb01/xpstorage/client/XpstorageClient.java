@@ -1,6 +1,7 @@
 package com.github.charlyb01.xpstorage.client;
 
 import com.github.charlyb01.xpstorage.cardinal.MyComponents;
+import com.github.charlyb01.xpstorage.config.ModConfig;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
@@ -18,7 +19,7 @@ public class XpstorageClient implements ClientModInitializer {
                 if (xpAmount > 0) {
                     lines.add(new TranslatableText("item.xp_storage.experience_bottle.tooltip.strange"));
                     lines.add(new TranslatableText("item.xp_storage.experience_bottle.tooltip.amount", xpAmount));
-                } else {
+                } else if (ModConfig.get().bottles.enableBrewing) {
                     lines.add(new TranslatableText("item.xp_storage.experience_bottle.tooltip.classic"));
                 }
             }

@@ -1,6 +1,7 @@
 package com.github.charlyb01.xpstorage.mixin;
 
 import com.github.charlyb01.xpstorage.XpBook;
+import com.github.charlyb01.xpstorage.config.ModConfig;
 import net.minecraft.item.ItemStack;
 import net.minecraft.recipe.BrewingRecipeRegistry;
 import org.spongepowered.asm.mixin.Mixin;
@@ -12,7 +13,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 public class BrewingRecipeMixin {
     @Inject(method = "isValidIngredient", at = @At("HEAD"), cancellable = true)
     private static void registerXpBookIngredient(ItemStack stack, CallbackInfoReturnable<Boolean> cir) {
-        if (stack.getItem() instanceof XpBook) {
+        if (ModConfig.get().bottles.enableBrewing && stack.getItem() instanceof XpBook) {
             cir.setReturnValue(true);
         }
     }

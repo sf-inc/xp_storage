@@ -6,6 +6,8 @@ import me.shedaniel.autoconfig.annotation.ConfigEntry;
 
 @Config(name = "bottles")
 public class BottleConfig implements ConfigData {
+    public boolean enableBrewing = true;
+
     @ConfigEntry.BoundedDiscrete(min = 10, max = 1000)
     public int xpFromBrewing = 100;
 

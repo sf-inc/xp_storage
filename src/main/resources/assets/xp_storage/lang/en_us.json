@@ -11,6 +11,7 @@
   "text.autoconfig.xp_storage.title": "XP Storage Configs",
 
   "text.autoconfig.xp_storage.category.books": "Books",
+  "text.autoconfig.xp_storage.option.books.nbBooks": "Number of books",
   "text.autoconfig.xp_storage.option.books.book1": "XP Book I",
   "text.autoconfig.xp_storage.option.books.book1.maxLevel": "Capacity (lvl)",
   "text.autoconfig.xp_storage.option.books.book1.xpFromUsing": "Experience retrieved from use (%)",
@@ -22,6 +23,7 @@
   "text.autoconfig.xp_storage.option.books.book3.xpFromUsing": "Experience retrieved from use (%)",
 
   "text.autoconfig.xp_storage.category.bottles": "Bottles",
+  "text.autoconfig.xp_storage.option.bottles.enableBrewing": "Enable brewing experience",
   "text.autoconfig.xp_storage.option.bottles.xpFromBrewing": "Experience brawn per bottle",
   "text.autoconfig.xp_storage.option.bottles.lowerBoundRandom": "Min experience retrieved from brewing (%)",
   "text.autoconfig.xp_storage.option.bottles.upperBoundRandom": "Max experience retrieved from brewing (%)"

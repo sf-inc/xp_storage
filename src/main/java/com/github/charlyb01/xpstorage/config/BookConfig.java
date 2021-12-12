@@ -6,6 +6,10 @@ import me.shedaniel.autoconfig.annotation.ConfigEntry;
 
 @Config(name = "books")
 public class BookConfig implements ConfigData {
+    @ConfigEntry.BoundedDiscrete(min = 1, max = 3)
+    @ConfigEntry.Gui.RequiresRestart
+    public int nbBooks = 3;
+
     @ConfigEntry.Gui.CollapsibleObject
     public Book book1 = new Book(30, 85);
 

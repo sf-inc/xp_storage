@@ -11,6 +11,7 @@
   "text.autoconfig.xp_storage.title": "XP Storage Configs",
 
   "text.autoconfig.xp_storage.category.books": "Livres",
+  "text.autoconfig.xp_storage.option.books.nbBooks": "Nombre de livres",
   "text.autoconfig.xp_storage.option.books.book1": "Livre d'expérience I",
   "text.autoconfig.xp_storage.option.books.book1.maxLevel": "Capacité (niveaux)",
   "text.autoconfig.xp_storage.option.books.book1.xpFromUsing": "Expérience récupérée par utilisation (%)",
@@ -22,6 +23,7 @@
   "text.autoconfig.xp_storage.option.books.book3.xpFromUsing": "Expérience récupérée par utilisation (%)",
 
   "text.autoconfig.xp_storage.category.bottles": "Bouteilles",
+  "text.autoconfig.xp_storage.option.bottles.enableBrewing": "Activer le brassage d'expérience",
   "text.autoconfig.xp_storage.option.bottles.xpFromBrewing": "Expérience utilisée par bouteille",
   "text.autoconfig.xp_storage.option.bottles.lowerBoundRandom": "Min d'expérience récupérée (%)",
   "text.autoconfig.xp_storage.option.bottles.upperBoundRandom": "Max d'expérience récupérée (%)"

@@ -23,7 +23,9 @@ public class Xpstorage implements ModInitializer {
         xp_book3 = new XpBook(ModConfig.get().books.book3.maxLevel, Utils.getExperienceToLevel(ModConfig.get().books.book3.maxLevel));
 
         Registry.register(Registry.ITEM, new Identifier("xp_storage", "xp_book"), xp_book1);
-        Registry.register(Registry.ITEM, new Identifier("xp_storage", "xp_book2"), xp_book2);
-        Registry.register(Registry.ITEM, new Identifier("xp_storage", "xp_book3"), xp_book3);
+        if (ModConfig.get().books.nbBooks > 1)
+            Registry.register(Registry.ITEM, new Identifier("xp_storage", "xp_book2"), xp_book2);
+        if (ModConfig.get().books.nbBooks > 2)
+            Registry.register(Registry.ITEM, new Identifier("xp_storage", "xp_book3"), xp_book3);
     }
 }
