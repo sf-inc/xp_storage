@@ -1,10 +1,19 @@
 # Versions Changelog
 
-Currently, every **stable** mod versions are available on **1.16.X** Minecraft versions.
-
 * **X versions** are major update with lots of new content. Very rare
 * **x.X versions** are either updates that add content or major bug fixes
 * **x.x.X versions** are either small content update (language translation, new textures, ...) or bug fixes
+
+## v1.4.3
+
+* Reworked configs in tabs
+* You can (de)activate features such as the number of XP Books wanted and the brewing feature
+* You can now choose the percentage of xp a book gives you back per tier
+* Same with bottles parameters: xp taken, and random bounds
+* Added cosmetic configs for client
+  * item bar color for each book
+  * when books start to glint (percentage of xp)
+  * book and bottles tooltips
 
 ## v1.4.2
 
