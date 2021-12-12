@@ -1,6 +1,5 @@
 package com.github.charlyb01.xpstorage.cardinal;
 
-import com.github.charlyb01.xpstorage.config.ModConfig;
 import net.minecraft.nbt.NbtCompound;
 
 import java.util.Random;
@@ -17,10 +16,11 @@ class XpAmountComponent implements RandIntComponent {
     }
 
     @Override
-    public void setRandomValue(final int bookAmount, final Random random) {
-        float randomF = (ModConfig.get().bottles.upperBoundRandom - ModConfig.get().bottles.lowerBoundRandom) / 100.f;
+    public void setRandomValue(final int bookAmount, final Random random,
+                               final int lowerBoundRandom, final int upperBoundRandom) {
+        float randomF = (upperBoundRandom - lowerBoundRandom) / 100.f;
         int randomI = (int) (randomF * bookAmount) + 1;
-        int value = (int) (bookAmount * (ModConfig.get().bottles.lowerBoundRandom / 100.f));
+        int value = (int) (bookAmount * (lowerBoundRandom / 100.f));
         value += random.nextInt(randomI);
         this.setValue(value);
     }

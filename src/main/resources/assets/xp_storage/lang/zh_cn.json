@@ -19,6 +19,13 @@
   "text.autoconfig.xp_storage.option.books.book3.maxLevel": "三阶经验书容量 (lvl)",
   "text.autoconfig.xp_storage.option.books.book3.xpFromUsing": "使用经验书获得的经验 (%)",
 
-  "text.autoconfig.xp_storage.option.bottles.lowerBoundRandom": "从酿造中获得的最小经验 (%)",
-  "text.autoconfig.xp_storage.option.bottles.upperBoundRandom": "从酿造中获得的最大经验 (%)"
+  "text.autoconfig.xp_storage.option.bottles.book1": "一阶经验书",
+  "text.autoconfig.xp_storage.option.bottles.book1.lowerBoundRandom": "从酿造中获得的最小经验 (%)",
+  "text.autoconfig.xp_storage.option.bottles.book1.upperBoundRandom": "从酿造中获得的最大经验 (%)",
+  "text.autoconfig.xp_storage.option.bottles.book2": "二阶经验书",
+  "text.autoconfig.xp_storage.option.bottles.book2.lowerBoundRandom": "从酿造中获得的最小经验 (%)",
+  "text.autoconfig.xp_storage.option.bottles.book2.upperBoundRandom": "从酿造中获得的最大经验 (%)",
+  "text.autoconfig.xp_storage.option.bottles.book3": "三阶经验书",
+  "text.autoconfig.xp_storage.option.bottles.book3.lowerBoundRandom": "从酿造中获得的最小经验 (%)",
+  "text.autoconfig.xp_storage.option.bottles.book3.upperBoundRandom": "从酿造中获得的最大经验 (%)"
 }

@@ -1,6 +1,7 @@
 package com.github.charlyb01.xpstorage.mixin;
 
 import com.github.charlyb01.xpstorage.XpBook;
+import com.github.charlyb01.xpstorage.Xpstorage;
 import com.github.charlyb01.xpstorage.cardinal.MyComponents;
 import com.github.charlyb01.xpstorage.config.ModConfig;
 import net.minecraft.block.BlockState;
@@ -46,15 +47,30 @@ public abstract class BrewingStandMixin extends LockableContainerBlockEntity {
     private static void craftXpBottles(World world, BlockPos pos, DefaultedList<ItemStack> slots, CallbackInfo ci) {
         ItemStack xpBook = slots.get(3);
         if (xpBook.getItem() instanceof XpBook) {
+            int xpFromBrewing = ModConfig.get().bottles.book1.xpFromBrewing;
+            int lowerBoundRandom = ModConfig.get().bottles.book1.lowerBoundRandom;
+            int upperBoundRandom = ModConfig.get().bottles.book1.upperBoundRandom;
+
+            if (xpBook.isOf(Xpstorage.xp_book2)) {
+                xpFromBrewing = ModConfig.get().bottles.book2.xpFromBrewing;
+                lowerBoundRandom = ModConfig.get().bottles.book2.lowerBoundRandom;
+                upperBoundRandom = ModConfig.get().bottles.book2.upperBoundRandom;
+            } else if (xpBook.isOf(Xpstorage.xp_book3)) {
+                xpFromBrewing = ModConfig.get().bottles.book3.xpFromBrewing;
+                lowerBoundRandom = ModConfig.get().bottles.book3.lowerBoundRandom;
+                upperBoundRandom = ModConfig.get().bottles.book3.upperBoundRandom;
+            }
+
             for (int i = 0; i < 3; ++i) {
                 if (!slots.get(i).isEmpty()
                         && slots.get(i).getNbt() != null
                         && slots.get(i).getNbt().toString().contains("minecraft:mundane")) {
                     ItemStack xpBottle = new ItemStack(Items.EXPERIENCE_BOTTLE);
-                    int experience = Math.min(ModConfig.get().bottles.xpFromBrewing, xpBook.getDamage());
+                    int experience = Math.min(xpFromBrewing, xpBook.getDamage());
                     xpBook.setDamage(xpBook.getDamage() - experience);
 
-                    MyComponents.XP_AMOUNT.get(xpBottle).setRandomValue(experience, world.getRandom());
+                    MyComponents.XP_AMOUNT.get(xpBottle).setRandomValue(experience, world.getRandom(),
+                            lowerBoundRandom, upperBoundRandom);
                     slots.set(i, xpBottle);
                 }
             }

@@ -7,5 +7,5 @@ import java.util.Random;
 public interface RandIntComponent extends Component {
     int getValue();
     void setValue(int value);
-    void setRandomValue(int bookAmount, Random random);
+    void setRandomValue(int bookAmount, Random random, int lowerBoundRandom, int upperBoundRandom);
 }

@@ -8,12 +8,30 @@ import me.shedaniel.autoconfig.annotation.ConfigEntry;
 public class BottleConfig implements ConfigData {
     public boolean enableBrewing = true;
 
-    @ConfigEntry.BoundedDiscrete(min = 10, max = 1000)
-    public int xpFromBrewing = 100;
+    @ConfigEntry.Gui.CollapsibleObject
+    public Book book1 = new Book(100, 95, 110);
 
-    @ConfigEntry.BoundedDiscrete(min = 0, max = 100)
-    public int lowerBoundRandom = 85;
+    @ConfigEntry.Gui.CollapsibleObject
+    public Book book2 = new Book(250, 90, 120);
 
-    @ConfigEntry.BoundedDiscrete(min = 100, max = 200)
-    public int upperBoundRandom = 130;
+    @ConfigEntry.Gui.CollapsibleObject
+    public Book book3 = new Book(500, 85, 130);
+
+    public static class Book {
+        @ConfigEntry.BoundedDiscrete(min = 10, max = 1000)
+        public int xpFromBrewing;
+
+        @ConfigEntry.BoundedDiscrete(min = 0, max = 100)
+        public int lowerBoundRandom;
+
+        @ConfigEntry.BoundedDiscrete(min = 100, max = 200)
+        public int upperBoundRandom;
+
+        public Book(final int xpFromBrewing, final int lowerBoundRandom, final int upperBoundRandom) {
+            this.xpFromBrewing = xpFromBrewing;
+            this.lowerBoundRandom = lowerBoundRandom;
+            this.upperBoundRandom = upperBoundRandom;
+        }
+    }
+
 }

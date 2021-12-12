@@ -24,7 +24,16 @@
 
   "text.autoconfig.xp_storage.category.bottles": "Bouteilles",
   "text.autoconfig.xp_storage.option.bottles.enableBrewing": "Activer le brassage d'expérience",
-  "text.autoconfig.xp_storage.option.bottles.xpFromBrewing": "Expérience utilisée par bouteille",
-  "text.autoconfig.xp_storage.option.bottles.lowerBoundRandom": "Min d'expérience récupérée (%)",
-  "text.autoconfig.xp_storage.option.bottles.upperBoundRandom": "Max d'expérience récupérée (%)"
+  "text.autoconfig.xp_storage.option.bottles.book1": "Livre d'expérience I",
+  "text.autoconfig.xp_storage.option.bottles.book1.xpFromBrewing": "Expérience utilisée par bouteille",
+  "text.autoconfig.xp_storage.option.bottles.book1.lowerBoundRandom": "Min d'expérience récupérée (%)",
+  "text.autoconfig.xp_storage.option.bottles.book1.upperBoundRandom": "Max d'expérience récupérée (%)",
+  "text.autoconfig.xp_storage.option.bottles.book2": "Livre d'expérience II",
+  "text.autoconfig.xp_storage.option.bottles.book2.xpFromBrewing": "Expérience utilisée par bouteille",
+  "text.autoconfig.xp_storage.option.bottles.book2.lowerBoundRandom": "Min d'expérience récupérée (%)",
+  "text.autoconfig.xp_storage.option.bottles.book2.upperBoundRandom": "Max d'expérience récupérée (%)",
+  "text.autoconfig.xp_storage.option.bottles.book3": "Livre d'expérience III",
+  "text.autoconfig.xp_storage.option.bottles.book3.xpFromBrewing": "Expérience utilisée par bouteille",
+  "text.autoconfig.xp_storage.option.bottles.book3.lowerBoundRandom": "Min d'expérience récupérée (%)",
+  "text.autoconfig.xp_storage.option.bottles.book3.upperBoundRandom": "Max d'expérience récupérée (%)"
 }

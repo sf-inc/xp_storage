@@ -24,7 +24,16 @@
 
   "text.autoconfig.xp_storage.category.bottles": "Bottles",
   "text.autoconfig.xp_storage.option.bottles.enableBrewing": "Enable brewing experience",
-  "text.autoconfig.xp_storage.option.bottles.xpFromBrewing": "Experience brawn per bottle",
-  "text.autoconfig.xp_storage.option.bottles.lowerBoundRandom": "Min experience retrieved from brewing (%)",
-  "text.autoconfig.xp_storage.option.bottles.upperBoundRandom": "Max experience retrieved from brewing (%)"
+  "text.autoconfig.xp_storage.option.bottles.book1": "XP Book I",
+  "text.autoconfig.xp_storage.option.bottles.book1.xpFromBrewing": "Experience brawn per bottle",
+  "text.autoconfig.xp_storage.option.bottles.book1.lowerBoundRandom": "Min experience retrieved from brewing (%)",
+  "text.autoconfig.xp_storage.option.bottles.book1.upperBoundRandom": "Max experience retrieved from brewing (%)",
+  "text.autoconfig.xp_storage.option.bottles.book2": "XP Book II",
+  "text.autoconfig.xp_storage.option.bottles.book2.xpFromBrewing": "Experience brawn per bottle",
+  "text.autoconfig.xp_storage.option.bottles.book2.lowerBoundRandom": "Min experience retrieved from brewing (%)",
+  "text.autoconfig.xp_storage.option.bottles.book2.upperBoundRandom": "Max experience retrieved from brewing (%)",
+  "text.autoconfig.xp_storage.option.bottles.book3": "XP Book III",
+  "text.autoconfig.xp_storage.option.bottles.book3.xpFromBrewing": "Experience brawn per bottle",
+  "text.autoconfig.xp_storage.option.bottles.book3.lowerBoundRandom": "Min experience retrieved from brewing (%)",
+  "text.autoconfig.xp_storage.option.bottles.book3.upperBoundRandom": "Max experience retrieved from brewing (%)"
 }
