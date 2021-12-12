@@ -15,6 +15,10 @@ public class ModConfig extends PartitioningSerializer.GlobalData {
     @ConfigEntry.Gui.TransitiveObject
     public BottleConfig bottles = new BottleConfig();
 
+    @ConfigEntry.Category("cosmetic")
+    @ConfigEntry.Gui.TransitiveObject
+    public CosmeticConfig cosmetic = new CosmeticConfig();
+
     public static ModConfig get() {
         return AutoConfig.getConfigHolder(ModConfig.class).getConfig();
     }

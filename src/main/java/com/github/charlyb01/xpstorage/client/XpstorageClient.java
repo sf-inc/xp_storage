@@ -17,9 +17,10 @@ public class XpstorageClient implements ClientModInitializer {
             if (stack.getItem() == Items.EXPERIENCE_BOTTLE) {
                 int xpAmount = MyComponents.XP_AMOUNT.get(stack).getValue();
                 if (xpAmount > 0) {
-                    lines.add(new TranslatableText("item.xp_storage.experience_bottle.tooltip.strange"));
+                    if (ModConfig.get().cosmetic.bottleTooltip)
+                        lines.add(new TranslatableText("item.xp_storage.experience_bottle.tooltip.strange"));
                     lines.add(new TranslatableText("item.xp_storage.experience_bottle.tooltip.amount", xpAmount));
-                } else if (ModConfig.get().bottles.enableBrewing) {
+                } else if (ModConfig.get().bottles.enableBrewing && ModConfig.get().cosmetic.bottleTooltip) {
                     lines.add(new TranslatableText("item.xp_storage.experience_bottle.tooltip.classic"));
                 }
             }

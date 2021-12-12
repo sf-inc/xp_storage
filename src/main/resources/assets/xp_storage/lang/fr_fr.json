@@ -35,5 +35,13 @@
   "text.autoconfig.xp_storage.option.bottles.book3": "Livre d'expérience III",
   "text.autoconfig.xp_storage.option.bottles.book3.xpFromBrewing": "Expérience utilisée par bouteille",
   "text.autoconfig.xp_storage.option.bottles.book3.lowerBoundRandom": "Min d'expérience récupérée (%)",
-  "text.autoconfig.xp_storage.option.bottles.book3.upperBoundRandom": "Max d'expérience récupérée (%)"
+  "text.autoconfig.xp_storage.option.bottles.book3.upperBoundRandom": "Max d'expérience récupérée (%)",
+
+  "text.autoconfig.xp_storage.category.cosmetic": "Cosmétique",
+  "text.autoconfig.xp_storage.option.cosmetic.bookTooltip": "Les livres affichent leur xp",
+  "text.autoconfig.xp_storage.option.cosmetic.bottleTooltip": "Les bouteilles affichent leur statut",
+  "text.autoconfig.xp_storage.option.cosmetic.glint": "Les livres commencent à briller (%)",
+  "text.autoconfig.xp_storage.option.cosmetic.colorBar1": "Couleur de barre du Livre d'expérience I",
+  "text.autoconfig.xp_storage.option.cosmetic.colorBar2": "Couleur de barre du Livre d'expérience II",
+  "text.autoconfig.xp_storage.option.cosmetic.colorBar3": "Couleur de barre du Livre d'expérience III"
 }
