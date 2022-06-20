@@ -10,7 +10,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.text.Text;
-import net.minecraft.text.TranslatableText;
+import net.minecraft.text.TranslatableTextContent;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Formatting;
 import net.minecraft.util.Hand;
@@ -35,9 +35,9 @@ public class XpBook extends Item {
 
     @Override
     public void appendTooltip(ItemStack stack, @Nullable World world, List<Text> tooltip, TooltipContext context) {
-        tooltip.add(new TranslatableText("item.xp_storage.xp_books.tooltip", maxLevel));
+        tooltip.add(Text.translatable("item.xp_storage.xp_books.tooltip", maxLevel));
         if (ModConfig.get().cosmetic.bookTooltip)
-            tooltip.add(new TranslatableText("item.xp_storage.xp_books.tooltip2", stack.getDamage(), maxExperience)
+            tooltip.add(Text.translatable("item.xp_storage.xp_books.tooltip2", stack.getDamage(), maxExperience)
                     .formatted(Formatting.GRAY).formatted(Formatting.ITALIC));
     }
 

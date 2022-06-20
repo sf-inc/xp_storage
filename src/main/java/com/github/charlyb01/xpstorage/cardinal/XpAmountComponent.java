@@ -1,8 +1,7 @@
 package com.github.charlyb01.xpstorage.cardinal;
 
 import net.minecraft.nbt.NbtCompound;
-
-import java.util.Random;
+import net.minecraft.util.math.random.Random;
 
 class XpAmountComponent implements RandIntComponent {
     private int value = 0;
