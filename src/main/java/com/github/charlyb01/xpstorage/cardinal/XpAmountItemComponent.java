@@ -2,8 +2,7 @@ package com.github.charlyb01.xpstorage.cardinal;
 
 import dev.onyxstudios.cca.api.v3.item.ItemComponent;
 import net.minecraft.item.ItemStack;
-
-import java.util.Random;
+import net.minecraft.util.math.random.Random;
 
 class XpAmountItemComponent extends ItemComponent implements RandIntComponent {
     public XpAmountItemComponent(ItemStack stack) {

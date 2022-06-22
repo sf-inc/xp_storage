@@ -7,7 +7,8 @@ import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.fabricmc.fabric.api.client.item.v1.ItemTooltipCallback;
 import net.minecraft.item.Items;
-import net.minecraft.text.TranslatableText;
+import net.minecraft.text.Text;
+import net.minecraft.text.TranslatableTextContent;
 
 @Environment(EnvType.CLIENT)
 public class XpstorageClient implements ClientModInitializer {
@@ -18,10 +19,10 @@ public class XpstorageClient implements ClientModInitializer {
                 int xpAmount = MyComponents.XP_AMOUNT.get(stack).getValue();
                 if (xpAmount > 0) {
                     if (ModConfig.get().cosmetic.bottleTooltip)
-                        lines.add(new TranslatableText("item.xp_storage.experience_bottle.tooltip.strange"));
-                    lines.add(new TranslatableText("item.xp_storage.experience_bottle.tooltip.amount", xpAmount));
+                        lines.add(Text.translatable("item.xp_storage.experience_bottle.tooltip.strange"));
+                    lines.add(Text.translatable("item.xp_storage.experience_bottle.tooltip.amount", xpAmount));
                 } else if (ModConfig.get().bottles.enableBrewing && ModConfig.get().cosmetic.bottleTooltip) {
-                    lines.add(new TranslatableText("item.xp_storage.experience_bottle.tooltip.classic"));
+                    lines.add(Text.translatable("item.xp_storage.experience_bottle.tooltip.classic"));
                 }
             }
         });
