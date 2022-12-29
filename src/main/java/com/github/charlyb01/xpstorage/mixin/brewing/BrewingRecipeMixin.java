@@ -1,4 +1,4 @@
-package com.github.charlyb01.xpstorage.mixin;
+package com.github.charlyb01.xpstorage.mixin.brewing;
 
 import com.github.charlyb01.xpstorage.XpBook;
 import com.github.charlyb01.xpstorage.config.ModConfig;

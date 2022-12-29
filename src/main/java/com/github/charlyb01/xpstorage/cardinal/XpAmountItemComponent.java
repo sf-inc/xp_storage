@@ -2,9 +2,8 @@ package com.github.charlyb01.xpstorage.cardinal;
 
 import dev.onyxstudios.cca.api.v3.item.ItemComponent;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.math.random.Random;
 
-class XpAmountItemComponent extends ItemComponent implements RandIntComponent {
+class XpAmountItemComponent extends ItemComponent implements IntComponent {
     public XpAmountItemComponent(ItemStack stack) {
         super(stack);
     }
@@ -15,16 +14,6 @@ class XpAmountItemComponent extends ItemComponent implements RandIntComponent {
     @Override
     public void setValue(final int value) {
         this.putInt("xp_amount", value);
-    }
-
-    @Override
-    public void setRandomValue(int bookAmount, final Random random,
-                               final int lowerBoundRandom, final int upperBoundRandom) {
-        float randomF = (upperBoundRandom - lowerBoundRandom) / 100.f;
-        int randomI = (int) (randomF * bookAmount) + 1;
-        int value = (int) (bookAmount * (lowerBoundRandom / 100.f));
-        value += random.nextInt(randomI);
-        this.setValue(value);
     }
 
     @Override

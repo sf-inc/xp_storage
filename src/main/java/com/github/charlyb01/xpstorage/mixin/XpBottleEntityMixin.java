@@ -1,5 +1,6 @@
 package com.github.charlyb01.xpstorage.mixin;
 
+import com.github.charlyb01.xpstorage.Utils;
 import com.github.charlyb01.xpstorage.cardinal.MyComponents;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.ExperienceOrbEntity;
@@ -7,6 +8,7 @@ import net.minecraft.entity.projectile.thrown.ExperienceBottleEntity;
 import net.minecraft.entity.projectile.thrown.ThrownItemEntity;
 import net.minecraft.potion.PotionUtil;
 import net.minecraft.potion.Potions;
+import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.hit.HitResult;
 import net.minecraft.world.World;
 import org.spongepowered.asm.mixin.Mixin;
@@ -22,21 +24,18 @@ public abstract class XpBottleEntityMixin extends ThrownItemEntity {
 
     @Inject(method = "onCollision", at = @At("HEAD"), cancellable = true)
     private void changeXpAmount(HitResult hitResult, CallbackInfo ci) {
-        int xpAmount = MyComponents.XP_AMOUNT.get(this).getValue();
-        if (xpAmount > 0) {
-            if (!this.world.isClient) {
-            this.world.syncWorldEvent(2002, this.getBlockPos(), PotionUtil.getColor(Potions.WATER));
-            int i = xpAmount;
+        final int xpLevels = MyComponents.XP_AMOUNT.get(this).getValue();
+        if (xpLevels <= 0)
+            return;
 
-            while(i > 0) {
-            int j = ExperienceOrbEntity.roundToOrbSize(i);
-            i -= j;
-            this.world.spawnEntity(new ExperienceOrbEntity(this.world, this.getX(), this.getY(), this.getZ(), j));
-            }
+        if (this.world instanceof ServerWorld serverWorld) {
+            this.world.syncWorldEvent(2002, this.getBlockPos(), PotionUtil.getColor(Potions.WATER));
+            int xpAmount = Utils.getExperienceToLevel(xpLevels);
+            ExperienceOrbEntity.spawn(serverWorld, this.getPos(), xpAmount);
 
             this.discard();
-            }
-            ci.cancel();
         }
+
+        ci.cancel();
     }
 }

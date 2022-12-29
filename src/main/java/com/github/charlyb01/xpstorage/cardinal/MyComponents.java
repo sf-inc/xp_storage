@@ -11,8 +11,8 @@ import net.minecraft.item.Items;
 import net.minecraft.util.Identifier;
 
 public final class MyComponents implements EntityComponentInitializer, ItemComponentInitializer {
-    public static final ComponentKey<RandIntComponent> XP_AMOUNT =
-            ComponentRegistry.getOrCreate(new Identifier("xp_storage", "xp_amount"), RandIntComponent.class);
+    public static final ComponentKey<IntComponent> XP_AMOUNT =
+            ComponentRegistry.getOrCreate(new Identifier("xp_storage", "xp_amount"), IntComponent.class);
 
     @Override
     public void registerEntityComponentFactories(EntityComponentFactoryRegistry registry) {

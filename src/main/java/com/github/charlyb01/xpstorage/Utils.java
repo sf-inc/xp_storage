@@ -2,7 +2,7 @@ package com.github.charlyb01.xpstorage;
 
 public class Utils {
 
-    public static int getLevelExperience(int experienceLevel) {
+    public static int getLevelExperience(final int experienceLevel) {
         if (experienceLevel >= 30) {
             return 112 + (experienceLevel - 30) * 9;
         } else {
@@ -10,11 +10,15 @@ public class Utils {
         }
     }
 
-    public static int getExperienceToLevel(int level) {
+    public static int getExperienceFromLevelToLevel(final int fromLevel, final int toLevel) {
         int experience = 0;
-        for (int i = 0; i < level; i++) {
+        for (int i = fromLevel; i < toLevel; i++) {
             experience += getLevelExperience(i);
         }
         return experience;
+    }
+
+    public static int getExperienceToLevel(int toLevel) {
+        return getExperienceFromLevelToLevel(0, toLevel);
     }
 }

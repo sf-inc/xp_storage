@@ -20,7 +20,7 @@ public class BookConfig implements ConfigData {
     public Book book3 = new Book(69, 95);
 
     public static class Book {
-        @ConfigEntry.BoundedDiscrete(min = 10, max = 200)
+        @ConfigEntry.BoundedDiscrete(min = 10, max = 100)
         @ConfigEntry.Gui.RequiresRestart
         public int maxLevel;
 

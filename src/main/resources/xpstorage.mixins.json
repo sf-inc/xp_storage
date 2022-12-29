@@ -4,11 +4,12 @@
   "package": "com.github.charlyb01.xpstorage.mixin",
   "compatibilityLevel": "JAVA_17",
   "mixins": [
-    "BrewingRecipeMixin",
-    "BrewingStandMixin",
     "CraftingScreenHandlerMixin",
     "XpBottleEntityMixin",
     "XpBottleItemMixin",
+    "brewing.BrewingPotionSlotMixin",
+    "brewing.BrewingRecipeMixin",
+    "brewing.BrewingStandMixin",
     "enchant.EnchantmentTargetMixin",
     "enchant.UnbreakingEnchantMixin"
   ],
