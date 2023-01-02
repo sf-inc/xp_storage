@@ -1,6 +1,5 @@
 package com.github.charlyb01.xpstorage.mixin;
 
-import com.github.charlyb01.xpstorage.Utils;
 import com.github.charlyb01.xpstorage.cardinal.MyComponents;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.ExperienceOrbEntity;
@@ -24,14 +23,13 @@ public abstract class XpBottleEntityMixin extends ThrownItemEntity {
 
     @Inject(method = "onCollision", at = @At("HEAD"), cancellable = true)
     private void changeXpAmount(HitResult hitResult, CallbackInfo ci) {
-        final int xpLevels = MyComponents.XP_AMOUNT.get(this).getValue();
-        if (xpLevels <= 0)
+        final int amount = MyComponents.XP_COMPONENT.get(this).getAmount();
+        if (amount <= 0)
             return;
 
         if (this.world instanceof ServerWorld serverWorld) {
             this.world.syncWorldEvent(2002, this.getBlockPos(), PotionUtil.getColor(Potions.WATER));
-            int xpAmount = Utils.getExperienceToLevel(xpLevels);
-            ExperienceOrbEntity.spawn(serverWorld, this.getPos(), xpAmount);
+            ExperienceOrbEntity.spawn(serverWorld, this.getPos(), amount);
 
             this.discard();
         }

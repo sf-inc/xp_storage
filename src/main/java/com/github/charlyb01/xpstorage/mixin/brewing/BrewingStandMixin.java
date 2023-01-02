@@ -32,10 +32,15 @@ public abstract class BrewingStandMixin extends LockableContainerBlockEntity {
     @Inject(method = "canCraft", at = @At("HEAD"), cancellable = true)
     private static void canUseXpBooks(DefaultedList<ItemStack> slots, CallbackInfoReturnable<Boolean> cir) {
         ItemStack ingredient = slots.get(3);
-        if (ingredient.isEmpty()
-                || !(ingredient.getItem() instanceof XpBook)
-                || ingredient.getDamage() <= 0) {
+        if (ingredient.isEmpty() || !(ingredient.getItem() instanceof XpBook))
             return;
+
+        final int bookExperience = MyComponents.XP_COMPONENT.get(ingredient).getAmount();
+        int levelIncrement = ModConfig.get().bottles.xpFromBrewing1;
+        if (ingredient.isOf(Xpstorage.xp_book2)) {
+            levelIncrement = ModConfig.get().bottles.xpFromBrewing2;
+        } else if (ingredient.isOf(Xpstorage.xp_book3)) {
+            levelIncrement = ModConfig.get().bottles.xpFromBrewing3;
         }
 
         for (int i = 0; i < 3; ++i) {
@@ -43,55 +48,63 @@ public abstract class BrewingStandMixin extends LockableContainerBlockEntity {
             if (potion.isEmpty())
                 continue;
 
-            if (potion.isOf(Items.EXPERIENCE_BOTTLE)
-                    || (potion.isOf(Items.POTION) && PotionUtil.getPotion(potion).equals(Potions.MUNDANE))) {
-                cir.setReturnValue(true);
+            if (potion.isOf(Items.EXPERIENCE_BOTTLE)) {
+                final int currentLevel = MyComponents.XP_COMPONENT.get(potion).getLevel();
+                final int nextLevel = currentLevel + levelIncrement;
+                final int xpForNextLevel = Utils.getExperienceFromLevelToLevel(currentLevel, nextLevel);
+                if (bookExperience >= xpForNextLevel) {
+                    cir.setReturnValue(true);
+                }
+            } else if (potion.isOf(Items.POTION) && PotionUtil.getPotion(potion).equals(Potions.MUNDANE)) {
+                if (bookExperience >= Utils.getExperienceFromLevel(levelIncrement)) {
+                    cir.setReturnValue(true);
+                }
             }
         }
     }
 
     @Inject(method = "craft", at = @At("HEAD"), cancellable = true)
     private static void craftXpBottles(World world, BlockPos pos, DefaultedList<ItemStack> slots, CallbackInfo ci) {
-        ItemStack xpBook = slots.get(3);
-        if (xpBook.getItem() instanceof XpBook) {
-            int levelIncrement = ModConfig.get().bottles.xpFromBrewing1;
-            if (xpBook.isOf(Xpstorage.xp_book2)) {
-                levelIncrement = ModConfig.get().bottles.xpFromBrewing2;
-            } else if (xpBook.isOf(Xpstorage.xp_book3)) {
-                levelIncrement = ModConfig.get().bottles.xpFromBrewing3;
-            }
+        ItemStack ingredient = slots.get(3);
+        if (ingredient.isEmpty() || !(ingredient.getItem() instanceof XpBook))
+            return;
 
-            for (int i = 0; i < 3; ++i) {
-                ItemStack potion = slots.get(i);
-                if (potion.isEmpty())
-                    continue;
+        int levelIncrement = ModConfig.get().bottles.xpFromBrewing1;
+        if (ingredient.isOf(Xpstorage.xp_book2)) {
+            levelIncrement = ModConfig.get().bottles.xpFromBrewing2;
+        } else if (ingredient.isOf(Xpstorage.xp_book3)) {
+            levelIncrement = ModConfig.get().bottles.xpFromBrewing3;
+        }
 
-                if (potion.isOf(Items.EXPERIENCE_BOTTLE)) {
-                    final int currentLevel = MyComponents.XP_AMOUNT.get(potion).getValue();
-                    final int nextLevel = currentLevel + levelIncrement;
-                    final int xpForNextLevel = Utils.getExperienceFromLevelToLevel(currentLevel, nextLevel);
-                    final int bookExperience = xpBook.getDamage();
-                    if (bookExperience >= xpForNextLevel) {
-                        MyComponents.XP_AMOUNT.get(potion).setValue(nextLevel);
-                        xpBook.setDamage(bookExperience - xpForNextLevel);
-                    }
+        for (int i = 0; i < 3; ++i) {
+            ItemStack potion = slots.get(i);
+            if (potion.isEmpty())
+                continue;
 
-                } else if (potion.isOf(Items.POTION) && PotionUtil.getPotion(potion).equals(Potions.MUNDANE)) {
-                    final int xpForFirstLevels = Utils.getExperienceToLevel(levelIncrement);
-                    final int bookExperience = xpBook.getDamage();
-                    if (bookExperience >= xpForFirstLevels) {
-                        ItemStack xpBottle = new ItemStack(Items.EXPERIENCE_BOTTLE);
-                        slots.set(i, xpBottle);
-                        MyComponents.XP_AMOUNT.get(xpBottle).setValue(levelIncrement);
-                        xpBook.setDamage(bookExperience - xpForFirstLevels);
-                    }
+            if (potion.isOf(Items.EXPERIENCE_BOTTLE)) {
+                final int currentLevel = MyComponents.XP_COMPONENT.get(potion).getLevel();
+                final int nextLevel = currentLevel + levelIncrement;
+                final int xpForNextLevel = Utils.getExperienceFromLevelToLevel(currentLevel, nextLevel);
+                final int bookExperience = MyComponents.XP_COMPONENT.get(ingredient).getAmount();
+                if (bookExperience >= xpForNextLevel) {
+                    MyComponents.XP_COMPONENT.get(potion).setLevel(nextLevel);
+                    MyComponents.XP_COMPONENT.get(ingredient).setAmount(bookExperience - xpForNextLevel);
+                }
+            } else if (potion.isOf(Items.POTION) && PotionUtil.getPotion(potion).equals(Potions.MUNDANE)) {
+                final int xpForFirstLevels = Utils.getExperienceToLevel(levelIncrement);
+                final int bookExperience = MyComponents.XP_COMPONENT.get(ingredient).getAmount();
+                if (bookExperience >= xpForFirstLevels) {
+                    ItemStack xpBottle = new ItemStack(Items.EXPERIENCE_BOTTLE);
+                    slots.set(i, xpBottle);
+                    MyComponents.XP_COMPONENT.get(xpBottle).setLevel(levelIncrement);
+                    MyComponents.XP_COMPONENT.get(ingredient).setAmount(bookExperience - xpForFirstLevels);
                 }
             }
-
-            if (world != null) {
-                world.syncWorldEvent(1035, pos, 0);
-            }
-            ci.cancel();
         }
+
+        if (world != null) {
+            world.syncWorldEvent(1035, pos, 0);
+        }
+        ci.cancel();
     }
 }

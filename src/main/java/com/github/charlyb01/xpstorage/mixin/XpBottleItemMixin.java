@@ -20,13 +20,13 @@ public class XpBottleItemMixin extends Item {
 
     @ModifyVariable(method = "use", at = @At(value = "INVOKE",
             target = "Lnet/minecraft/world/World;spawnEntity(Lnet/minecraft/entity/Entity;)Z"))
-    private ExperienceBottleEntity setXpAmountEntity(ExperienceBottleEntity experienceBottleEntity, World world,
-                                               PlayerEntity user, Hand hand) {
-        ItemStack stack = (user.getMainHandStack().getItem() instanceof ExperienceBottleItem)
+    private ExperienceBottleEntity setExperienceToEntity(ExperienceBottleEntity experienceBottleEntity, World world,
+                                                         PlayerEntity user, Hand hand) {
+        ItemStack experienceBottleItem = (user.getMainHandStack().getItem() instanceof ExperienceBottleItem)
                 ?user.getMainHandStack():user.getOffHandStack();
-        int xpAmount = MyComponents.XP_AMOUNT.get(stack).getValue();
-        if (xpAmount > 0) {
-            MyComponents.XP_AMOUNT.get(experienceBottleEntity).setValue(xpAmount);
+        final int level = MyComponents.XP_COMPONENT.get(experienceBottleItem).getLevel();
+        if (level > 0) {
+            MyComponents.XP_COMPONENT.get(experienceBottleEntity).setLevel(level);
         }
         return experienceBottleEntity;
     }

@@ -42,7 +42,7 @@
       "projectID": 403434
     },
     "cardinal-components": [
-      "xp_storage:xp_amount"
+      "xp_storage:xp_component"
     ]
   }
 }

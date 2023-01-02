@@ -15,7 +15,7 @@ public class XpstorageClient implements ClientModInitializer {
     public void onInitializeClient() {
         ItemTooltipCallback.EVENT.register((stack, context, lines) -> {
             if (stack.getItem() == Items.EXPERIENCE_BOTTLE) {
-                int xpAmount = MyComponents.XP_AMOUNT.get(stack).getValue();
+                int xpAmount = MyComponents.XP_COMPONENT.get(stack).getLevel();
                 if (xpAmount > 0) {
                     if (ModConfig.get().cosmetic.bottleTooltip)
                         lines.add(Text.translatable("item.xp_storage.experience_bottle.tooltip.strange"));

@@ -18,9 +18,9 @@ public class Xpstorage implements ModInitializer {
     public void onInitialize() {
         AutoConfig.register(ModConfig.class, PartitioningSerializer.wrap(GsonConfigSerializer::new));
 
-        xp_book1 = new XpBook(ModConfig.get().books.book1.maxLevel, Utils.getExperienceToLevel(ModConfig.get().books.book1.maxLevel));
-        xp_book2 = new XpBook(ModConfig.get().books.book2.maxLevel, Utils.getExperienceToLevel(ModConfig.get().books.book2.maxLevel));
-        xp_book3 = new XpBook(ModConfig.get().books.book3.maxLevel, Utils.getExperienceToLevel(ModConfig.get().books.book3.maxLevel));
+        xp_book1 = new XpBook(ModConfig.get().books.book1.maxLevel);
+        xp_book2 = new XpBook(ModConfig.get().books.book2.maxLevel);
+        xp_book3 = new XpBook(ModConfig.get().books.book3.maxLevel);
 
         Registry.register(Registry.ITEM, new Identifier("xp_storage", "xp_book"), xp_book1);
         if (ModConfig.get().books.nbBooks > 1)

@@ -1,5 +1,6 @@
 package com.github.charlyb01.xpstorage;
 
+import com.github.charlyb01.xpstorage.cardinal.MyComponents;
 import com.github.charlyb01.xpstorage.config.ModConfig;
 import net.minecraft.client.item.TooltipContext;
 import net.minecraft.entity.ExperienceOrbEntity;
@@ -23,26 +24,29 @@ public class XpBook extends Item {
     private final int maxLevel;
     private final int maxExperience;
 
-    public XpBook(final int maxLevel, final int maxExperience) {
-        super(new Item.Settings()
-                .group(ItemGroup.MISC)
-                .maxDamage(maxExperience));
+    public XpBook(final int maxLevel) {
+        super(new Item.Settings().group(ItemGroup.MISC));
 
         this.maxLevel = maxLevel;
-        this.maxExperience = maxExperience;
+        this.maxExperience = Utils.getExperienceToLevel(maxLevel);
     }
 
     @Override
     public void appendTooltip(ItemStack stack, @Nullable World world, List<Text> tooltip, TooltipContext context) {
-        tooltip.add(Text.translatable("item.xp_storage.xp_books.tooltip", maxLevel));
-        if (ModConfig.get().cosmetic.bookTooltip)
-            tooltip.add(Text.translatable("item.xp_storage.xp_books.tooltip2", stack.getDamage(), maxExperience)
+        final int bookLevel = MyComponents.XP_COMPONENT.get(stack).getLevel();
+        tooltip.add(Text.translatable("item.xp_storage.xp_books.tooltip", bookLevel, maxLevel));
+
+        if (ModConfig.get().cosmetic.bookTooltip) {
+            final int bookExperience = MyComponents.XP_COMPONENT.get(stack).getAmount();
+            tooltip.add(Text.translatable("item.xp_storage.xp_books.advanced_tooltip", bookExperience, maxExperience)
                     .formatted(Formatting.GRAY).formatted(Formatting.ITALIC));
+        }
     }
 
     @Override
     public boolean hasGlint(ItemStack stack) {
-        return (stack.getDamage() / (float) this.maxExperience) * 100 >= ModConfig.get().cosmetic.glint;
+        final int bookLevel = MyComponents.XP_COMPONENT.get(stack).getLevel();
+        return (bookLevel / (float) this.maxExperience) * 100 >= ModConfig.get().cosmetic.glint;
     }
 
     @Override
@@ -57,15 +61,15 @@ public class XpBook extends Item {
 
     @Override
     public int getItemBarStep(ItemStack stack) {
-        return Math.round((float)stack.getDamage() * 13.0F / (float)this.maxExperience);
+        final int bookLevel = MyComponents.XP_COMPONENT.get(stack).getLevel();
+        return Math.round((bookLevel * 13) / (float)this.maxExperience);
     }
 
     @Override
     public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {
         ItemStack stack = (user.getMainHandStack().getItem() instanceof XpBook) ? user.getMainHandStack() : user.getOffHandStack();
-        int bookExperience = stack.getDamage();
-        int playerExperience = Utils.getExperienceToLevel(user.experienceLevel);
-        playerExperience += user.experienceProgress * Utils.getLevelExperience(user.experienceLevel);
+        final int bookExperience = MyComponents.XP_COMPONENT.get(stack).getAmount();
+        final int playerExperience = user.totalExperience;
 
         int xpFromUse = ModConfig.get().books.book1.xpFromUsing;
         if (stack.isOf(Xpstorage.xp_book2))
@@ -74,23 +78,23 @@ public class XpBook extends Item {
             xpFromUse = ModConfig.get().books.book3.xpFromUsing;
 
         if (world.isClient) {
-            // Play sound when emptying
+            // Play sound when filling
             if (!user.isSneaking() && playerExperience > 0 && bookExperience < maxExperience) {
                 user.playSound(SoundEvents.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0F, 1.0F);
             }
         } else {
             // Empty / Fill
             if (user.isSneaking()) {
-                int retrievedExperience = (int) (bookExperience * (xpFromUse / 100.0F));
+                final int retrievedExperience = Math.round(bookExperience * (xpFromUse / 100.0F));
                 ExperienceOrbEntity.spawn((ServerWorld) world, user.getPos(), retrievedExperience);
-                stack.setDamage(0);
+                MyComponents.XP_COMPONENT.get(stack).setAmount(0);
             } else {
                 // Check max value
                 if (maxExperience - bookExperience < playerExperience) {
                     user.addExperience(bookExperience - maxExperience);
-                    stack.setDamage(maxExperience);
+                    MyComponents.XP_COMPONENT.get(stack).setAmount(maxExperience);
                 } else {
-                    stack.setDamage(bookExperience + playerExperience);
+                    MyComponents.XP_COMPONENT.get(stack).setAmount(bookExperience + playerExperience);
                     user.addExperience(-playerExperience);
                     user.experienceProgress = 0.0F;
                 }
