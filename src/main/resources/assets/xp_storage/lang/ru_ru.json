@@ -23,6 +23,7 @@
 
   "text.autoconfig.xp_storage.category.bottles": "Бутылки",
   "text.autoconfig.xp_storage.option.bottles.enableBrewing": "Включить опыт варки",
+  "text.autoconfig.xp_storage.option.bottles.maxLevel": "Вместимость (lvl)",
   "text.autoconfig.xp_storage.option.bottles.xpFromBrewing1": "Levels brawn per bottle with XP Book I",
   "text.autoconfig.xp_storage.option.bottles.xpFromBrewing2": "Levels brawn per bottle with XP Book II",
   "text.autoconfig.xp_storage.option.bottles.xpFromBrewing3": "Levels brawn per bottle with XP Book III",

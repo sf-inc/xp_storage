@@ -23,6 +23,7 @@
 
   "text.autoconfig.xp_storage.category.bottles": "Bouteilles",
   "text.autoconfig.xp_storage.option.bottles.enableBrewing": "Activer le brassage d'expérience",
+  "text.autoconfig.xp_storage.option.bottles.maxLevel": "Capacité (niveaux)",
   "text.autoconfig.xp_storage.option.bottles.xpFromBrewing1": "Niveaux ajoutés par bouteille avec Livre d'expérience I",
   "text.autoconfig.xp_storage.option.bottles.xpFromBrewing2": "Niveaux ajoutés par bouteille avec Livre d'expérience II",
   "text.autoconfig.xp_storage.option.bottles.xpFromBrewing3": "Niveaux ajoutés par bouteille avec Livre d'expérience III",

@@ -23,6 +23,7 @@
 
   "text.autoconfig.xp_storage.category.bottles": "Bottles",
   "text.autoconfig.xp_storage.option.bottles.enableBrewing": "Enable brewing experience",
+  "text.autoconfig.xp_storage.option.bottles.maxLevel": "容量 (lvl)",
   "text.autoconfig.xp_storage.option.bottles.xpFromBrewing1": "Levels added per bottle with XP Book I",
   "text.autoconfig.xp_storage.option.bottles.xpFromBrewing2": "Levels added per bottle with XP Book II",
   "text.autoconfig.xp_storage.option.bottles.xpFromBrewing3": "Levels added per bottle with XP Book III",

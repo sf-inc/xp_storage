@@ -9,6 +9,9 @@ public class BottleConfig implements ConfigData {
     public boolean enableBrewing = true;
 
     @ConfigEntry.BoundedDiscrete(min = 1, max = 100)
+    public int maxLevel = 30;
+
+    @ConfigEntry.BoundedDiscrete(min = 1, max = 100)
     public int xpFromBrewing1 = 1;
 
     @ConfigEntry.BoundedDiscrete(min = 1, max = 100)

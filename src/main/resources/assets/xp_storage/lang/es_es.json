@@ -23,6 +23,7 @@
 
   "text.autoconfig.xp_storage.category.bottles": "Bottles",
   "text.autoconfig.xp_storage.option.bottles.enableBrewing": "Habilitar la experiencia de pociones",
+  "text.autoconfig.xp_storage.option.bottles.maxLevel": "Capacidad (nivel)",
   "text.autoconfig.xp_storage.option.bottles.xpFromBrewing1": "Niveles agregados por frasco con Libro de XP I",
   "text.autoconfig.xp_storage.option.bottles.xpFromBrewing2": "Niveles agregados por frasco con Libro de XP II",
   "text.autoconfig.xp_storage.option.bottles.xpFromBrewing3": "Niveles agregados por frasco con Libro de XP III",
