@@ -11,10 +11,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.text.Text;
-import net.minecraft.util.ActionResult;
-import net.minecraft.util.Formatting;
-import net.minecraft.util.Hand;
-import net.minecraft.util.TypedActionResult;
+import net.minecraft.util.*;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 
@@ -24,8 +21,9 @@ public class XpBook extends Item {
     private final int maxLevel;
     private final int maxExperience;
 
-    public XpBook(final int maxLevel) {
-        super(new Item.Settings().group(ItemGroup.MISC));
+    public XpBook(final int maxLevel, final boolean isFireproof, final Rarity rarity) {
+        super(isFireproof ? new Item.Settings().group(ItemGroup.MISC).rarity(rarity).fireproof()
+                : new Item.Settings().group(ItemGroup.MISC).rarity(rarity));
 
         this.maxLevel = maxLevel;
         this.maxExperience = Utils.getExperienceToLevel(maxLevel);
@@ -34,7 +32,8 @@ public class XpBook extends Item {
     @Override
     public void appendTooltip(ItemStack stack, @Nullable World world, List<Text> tooltip, TooltipContext context) {
         final int bookLevel = MyComponents.XP_COMPONENT.get(stack).getLevel();
-        tooltip.add(Text.translatable("item.xp_storage.xp_books.tooltip", bookLevel, maxLevel));
+        tooltip.add(Text.translatable("item.xp_storage.xp_books.tooltip", bookLevel, maxLevel)
+                .formatted(Formatting.GRAY));
 
         if (ModConfig.get().cosmetic.bookTooltip) {
             final int bookExperience = MyComponents.XP_COMPONENT.get(stack).getAmount();
@@ -61,8 +60,13 @@ public class XpBook extends Item {
 
     @Override
     public int getItemBarStep(ItemStack stack) {
-        final int bookLevel = MyComponents.XP_COMPONENT.get(stack).getLevel();
-        return Math.round((bookLevel * 13) / (float)this.maxExperience);
+        final int bookExperience = MyComponents.XP_COMPONENT.get(stack).getAmount();
+        return Math.round((bookExperience * 13) / (float)this.maxExperience);
+    }
+
+    @Override
+    public boolean isItemBarVisible(ItemStack stack) {
+        return MyComponents.XP_COMPONENT.get(stack).getAmount() > 0;
     }
 
     @Override

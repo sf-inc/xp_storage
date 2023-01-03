@@ -6,6 +6,7 @@ import me.shedaniel.autoconfig.serializer.GsonConfigSerializer;
 import me.shedaniel.autoconfig.serializer.PartitioningSerializer;
 import net.fabricmc.api.ModInitializer;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.Rarity;
 import net.minecraft.util.registry.Registry;
 
 public class Xpstorage implements ModInitializer {
@@ -18,9 +19,9 @@ public class Xpstorage implements ModInitializer {
     public void onInitialize() {
         AutoConfig.register(ModConfig.class, PartitioningSerializer.wrap(GsonConfigSerializer::new));
 
-        xp_book1 = new XpBook(ModConfig.get().books.book1.maxLevel);
-        xp_book2 = new XpBook(ModConfig.get().books.book2.maxLevel);
-        xp_book3 = new XpBook(ModConfig.get().books.book3.maxLevel);
+        xp_book1 = new XpBook(ModConfig.get().books.book1.maxLevel, false, Rarity.COMMON);
+        xp_book2 = new XpBook(ModConfig.get().books.book2.maxLevel, true, Rarity.UNCOMMON);
+        xp_book3 = new XpBook(ModConfig.get().books.book3.maxLevel, true, Rarity.RARE);
 
         Registry.register(Registry.ITEM, new Identifier("xp_storage", "xp_book"), xp_book1);
         if (ModConfig.get().books.nbBooks > 1)
