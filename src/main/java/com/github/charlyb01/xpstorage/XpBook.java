@@ -96,7 +96,6 @@ public class XpBook extends Item {
                 } else {
                     MyComponents.XP_COMPONENT.get(stack).setAmount(bookExperience + playerExperience);
                     user.addExperience(-playerExperience);
-                    user.experienceProgress = 0.0F;
                 }
             }
         }
