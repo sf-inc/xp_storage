@@ -5,9 +5,12 @@ import me.shedaniel.autoconfig.AutoConfig;
 import me.shedaniel.autoconfig.serializer.GsonConfigSerializer;
 import me.shedaniel.autoconfig.serializer.PartitioningSerializer;
 import net.fabricmc.api.ModInitializer;
+import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
+import net.minecraft.item.ItemGroups;
+import net.minecraft.registry.Registries;
+import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.Rarity;
-import net.minecraft.util.registry.Registry;
 
 public class Xpstorage implements ModInitializer {
 
@@ -23,10 +26,18 @@ public class Xpstorage implements ModInitializer {
         xp_book2 = new XpBook(ModConfig.get().books.book2.maxLevel, true, Rarity.UNCOMMON);
         xp_book3 = new XpBook(ModConfig.get().books.book3.maxLevel, true, Rarity.RARE);
 
-        Registry.register(Registry.ITEM, new Identifier("xp_storage", "xp_book"), xp_book1);
+        Registry.register(Registries.ITEM, new Identifier("xp_storage", "xp_book"), xp_book1);
         if (ModConfig.get().books.nbBooks > 1)
-            Registry.register(Registry.ITEM, new Identifier("xp_storage", "xp_book2"), xp_book2);
+            Registry.register(Registries.ITEM, new Identifier("xp_storage", "xp_book2"), xp_book2);
         if (ModConfig.get().books.nbBooks > 2)
-            Registry.register(Registry.ITEM, new Identifier("xp_storage", "xp_book3"), xp_book3);
+            Registry.register(Registries.ITEM, new Identifier("xp_storage", "xp_book3"), xp_book3);
+
+        ItemGroupEvents.modifyEntriesEvent(ItemGroups.TOOLS).register(entries -> {
+            entries.add(xp_book1);
+            if (ModConfig.get().books.nbBooks > 1)
+                entries.add(xp_book2);
+            if (ModConfig.get().books.nbBooks > 2)
+                entries.add(xp_book3);
+        });
     }
 }

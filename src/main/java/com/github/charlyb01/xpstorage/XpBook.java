@@ -6,7 +6,6 @@ import net.minecraft.client.item.TooltipContext;
 import net.minecraft.entity.ExperienceOrbEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundEvents;
@@ -22,8 +21,8 @@ public class XpBook extends Item {
     private final int maxExperience;
 
     public XpBook(final int maxLevel, final boolean isFireproof, final Rarity rarity) {
-        super(isFireproof ? new Item.Settings().group(ItemGroup.MISC).rarity(rarity).fireproof()
-                : new Item.Settings().group(ItemGroup.MISC).rarity(rarity));
+        super(isFireproof ? new Item.Settings().rarity(rarity).fireproof()
+                : new Item.Settings().rarity(rarity));
 
         this.maxLevel = maxLevel;
         this.maxExperience = Utils.getExperienceToLevel(maxLevel);
