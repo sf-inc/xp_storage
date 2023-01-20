@@ -11,7 +11,7 @@ public class CosmeticConfig implements ConfigData {
     public boolean bottleTooltip = true;
 
     @ConfigEntry.BoundedDiscrete(min = 0, max = 100)
-    public int glint = 33;
+    public int glint = 100;
 
     @ConfigEntry.ColorPicker
     public int colorBar1 = Integer.parseInt("a1fbe8", 16);

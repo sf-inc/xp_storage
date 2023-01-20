@@ -43,8 +43,8 @@ public class XpBook extends Item {
 
     @Override
     public boolean hasGlint(ItemStack stack) {
-        final int bookLevel = MyComponents.XP_COMPONENT.get(stack).getLevel();
-        return (bookLevel / (float) this.maxExperience) * 100 >= ModConfig.get().cosmetic.glint;
+        final int bookExperience = MyComponents.XP_COMPONENT.get(stack).getAmount();
+        return (bookExperience / (float) this.maxExperience) * 100 >= ModConfig.get().cosmetic.glint;
     }
 
     @Override
