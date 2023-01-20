@@ -4,6 +4,10 @@
 * **x.X versions** are either updates that add content or major bug fixes
 * **x.x.X versions** are either small content update (language translation, new textures, ...) or bug fixes
 
+## v1.5.1
+
+* XP Books can't stack (again)
+
 ## v1.5
 
 * Port to 1.19.3
