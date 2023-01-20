@@ -1,4 +1,5 @@
 {
+  "item.xp_storage.crystallized_lapis": "Crystallized Lapis",
   "item.xp_storage.xp_book": "Libro de XP I",
   "item.xp_storage.xp_book2": "Libro de XP II",
   "item.xp_storage.xp_book3": "Libro de XP III",
@@ -12,13 +13,13 @@
   "text.autoconfig.xp_storage.category.books": "Libros",
   "text.autoconfig.xp_storage.option.books.nbBooks": "Número de libros",
   "text.autoconfig.xp_storage.option.books.book1": "Libro de XP I",
-  "text.autoconfig.xp_storage.option.books.book1.maxLevel": "Capacidad (nivel)",
+  "text.autoconfig.xp_storage.option.books.book1.capacity": "Capacidad (nivel)",
   "text.autoconfig.xp_storage.option.books.book1.xpFromUsing": "Experiencia recuperada del uso (%)",
   "text.autoconfig.xp_storage.option.books.book2": "Libro de XP II",
-  "text.autoconfig.xp_storage.option.books.book2.maxLevel": "Capacidad (nivel)",
+  "text.autoconfig.xp_storage.option.books.book2.capacity": "Capacidad (nivel)",
   "text.autoconfig.xp_storage.option.books.book2.xpFromUsing": "Experiencia recuperada del uso (%)",
   "text.autoconfig.xp_storage.option.books.book3": "Libro de XP III",
-  "text.autoconfig.xp_storage.option.books.book3.maxLevel": "Capacidad (nivel)",
+  "text.autoconfig.xp_storage.option.books.book3.capacity": "Capacidad (nivel)",
   "text.autoconfig.xp_storage.option.books.book3.xpFromUsing": "Experiencia recuperada del uso (%)",
 
   "text.autoconfig.xp_storage.category.bottles": "Bottles",

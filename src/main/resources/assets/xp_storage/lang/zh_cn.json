@@ -1,4 +1,5 @@
 {
+  "item.xp_storage.crystallized_lapis": "Crystallized Lapis",
   "item.xp_storage.xp_book": "一阶经验书",
   "item.xp_storage.xp_book2": "二阶经验书",
   "item.xp_storage.xp_book3": "三阶经验书",
@@ -12,13 +13,13 @@
   "text.autoconfig.xp_storage.category.books": "Books",
   "text.autoconfig.xp_storage.option.books.nbBooks": "Number of books",
   "text.autoconfig.xp_storage.option.books.book1": "一阶经验书",
-  "text.autoconfig.xp_storage.option.books.book1.maxLevel": "一阶经验书容量 (lvl)",
+  "text.autoconfig.xp_storage.option.books.book1.capacity": "一阶经验书容量 (lvl)",
   "text.autoconfig.xp_storage.option.books.book1.xpFromUsing": "使用经验书获得的经验 (%)",
   "text.autoconfig.xp_storage.option.books.book2": "二阶经验书",
-  "text.autoconfig.xp_storage.option.books.book2.maxLevel": "二阶经验书容量 (lvl)",
+  "text.autoconfig.xp_storage.option.books.book2.capacity": "二阶经验书容量 (lvl)",
   "text.autoconfig.xp_storage.option.books.book2.xpFromUsing": "使用经验书获得的经验 (%)",
   "text.autoconfig.xp_storage.option.books.book3": "三阶经验书",
-  "text.autoconfig.xp_storage.option.books.book3.maxLevel": "三阶经验书容量 (lvl)",
+  "text.autoconfig.xp_storage.option.books.book3.capacity": "三阶经验书容量 (lvl)",
   "text.autoconfig.xp_storage.option.books.book3.xpFromUsing": "使用经验书获得的经验 (%)",
 
   "text.autoconfig.xp_storage.category.bottles": "Bottles",

@@ -22,13 +22,13 @@ public class BookConfig implements ConfigData {
     public static class Book {
         @ConfigEntry.BoundedDiscrete(min = 10, max = 100)
         @ConfigEntry.Gui.RequiresRestart
-        public int maxLevel;
+        public int capacity;
 
         @ConfigEntry.BoundedDiscrete(min = 50, max = 100)
         public int xpFromUsing;
 
-        public Book(final int maxLevel, final int xpFromUsing) {
-            this.maxLevel = maxLevel;
+        public Book(final int capacity, final int xpFromUsing) {
+            this.capacity = capacity;
             this.xpFromUsing = xpFromUsing;
         }
     }

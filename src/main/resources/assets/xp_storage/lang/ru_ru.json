@@ -1,4 +1,5 @@
 {
+  "item.xp_storage.crystallized_lapis": "Crystallized Lapis",
   "item.xp_storage.xp_book": "Книга опыта I",
   "item.xp_storage.xp_book2": "Книга опыта II",
   "item.xp_storage.xp_book3": "Книга опыта III",
@@ -12,13 +13,13 @@
   "text.autoconfig.xp_storage.category.books": "Книги",
   "text.autoconfig.xp_storage.option.books.nbBooks": "Номер книги",
   "text.autoconfig.xp_storage.option.books.book1": "Книга опыта I",
-  "text.autoconfig.xp_storage.option.books.book1.maxLevel": "Вместимость (lvl)",
+  "text.autoconfig.xp_storage.option.books.book1.capacity": "Вместимость (lvl)",
   "text.autoconfig.xp_storage.option.books.book1.xpFromUsing": "Опыт, извлеченный от использования (%)",
   "text.autoconfig.xp_storage.option.books.book2": "Книга опыта II",
-  "text.autoconfig.xp_storage.option.books.book2.maxLevel": "Вместимость (lvl)",
+  "text.autoconfig.xp_storage.option.books.book2.capacity": "Вместимость (lvl)",
   "text.autoconfig.xp_storage.option.books.book2.xpFromUsing": "Опыт, извлеченный от использования (%)",
   "text.autoconfig.xp_storage.option.books.book3": "Книга опыта III",
-  "text.autoconfig.xp_storage.option.books.book3.maxLevel": "Вместимость (lvl)",
+  "text.autoconfig.xp_storage.option.books.book3.capacity": "Вместимость (lvl)",
   "text.autoconfig.xp_storage.option.books.book3.xpFromUsing": "Опыт, извлеченный от использования (%)",
 
   "text.autoconfig.xp_storage.category.bottles": "Бутылки",
