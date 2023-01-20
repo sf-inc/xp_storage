@@ -4,6 +4,15 @@
 * **x.X versions** are either updates that add content or major bug fixes
 * **x.x.X versions** are either small content update (language translation, new textures, ...) or bug fixes
 
+## v1.5
+
+* Port to 1.19.3
+* XP Books use CC api to store levels and experience (not damage anymore, incompatible with older versions)
+* XP Bottles brew per level increment depending on XP Book level, giving possibility to have an exact amount
+* XP Bottles can store up to a maximum capacity of level
+* Fix vanilla experience adding (mojang bug)
+* Readd books' parameters (fireproof and rarity)
+
 ## v1.4.3
 
 * Reworked configs in tabs
