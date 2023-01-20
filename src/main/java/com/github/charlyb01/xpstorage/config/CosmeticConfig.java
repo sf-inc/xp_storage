@@ -14,11 +14,11 @@ public class CosmeticConfig implements ConfigData {
     public int glint = 33;
 
     @ConfigEntry.ColorPicker
-    public int colorBar1 = Integer.parseInt("9518d3", 16);
+    public int colorBar1 = Integer.parseInt("a1fbe8", 16);
 
     @ConfigEntry.ColorPicker
-    public int colorBar2 = Integer.parseInt("ab94bb", 16);
+    public int colorBar2 = Integer.parseInt("5a575a", 16);
 
     @ConfigEntry.ColorPicker
-    public int colorBar3 = Integer.parseInt("a4d5cd", 16);
+    public int colorBar3 = Integer.parseInt("e0e277", 16);
 }
