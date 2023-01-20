@@ -21,8 +21,8 @@ public class XpBook extends Item {
     private final int maxExperience;
 
     public XpBook(final int maxLevel, final boolean isFireproof, final Rarity rarity) {
-        super(isFireproof ? new Item.Settings().rarity(rarity).fireproof()
-                : new Item.Settings().rarity(rarity));
+        super(isFireproof ? new Item.Settings().maxCount(1).rarity(rarity).fireproof()
+                : new Item.Settings().maxCount(1).rarity(rarity));
 
         this.maxLevel = maxLevel;
         this.maxExperience = Utils.getExperienceToLevel(maxLevel);
