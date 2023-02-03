@@ -1,0 +1,13 @@
+
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "xp_storage:crystallized_lapis"
+    }
+  ],
+  "result": {
+    "count": 2,
+    "item": "xp_storage:crystallized_lapis_dust"
+  }
+}
