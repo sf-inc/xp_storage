@@ -14,7 +14,7 @@ import net.minecraft.util.Identifier;
 import net.minecraft.util.Rarity;
 
 public class Xpstorage implements ModInitializer {
-    public final String MOD_ID = "xp_storage";
+    public static final String MOD_ID = "xp_storage";
 
     public static final Item CRYSTALLIZED_LAPIS = new Item(new Item.Settings());
     public static XpBook xp_book1;
