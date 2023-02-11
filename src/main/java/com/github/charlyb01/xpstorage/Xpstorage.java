@@ -19,6 +19,7 @@ public class Xpstorage implements ModInitializer {
 
     public static final Item CRYSTALLIZED_LAPIS = new Item(new Item.Settings());
     public static final Item CRYSTALLIZED_LAPIS_DUST = new Item(new Item.Settings());
+    public static final Item SOLIDIFIED_XP_ORB = new Item(new Item.Settings());
     public static XpBook xp_book1;
     public static XpBook xp_book2;
     public static XpBook xp_book3;
@@ -33,6 +34,7 @@ public class Xpstorage implements ModInitializer {
 
         Registry.register(Registries.ITEM, new Identifier(MOD_ID, "crystallized_lapis"), CRYSTALLIZED_LAPIS);
         Registry.register(Registries.ITEM, new Identifier(MOD_ID, "crystallized_lapis_dust"), CRYSTALLIZED_LAPIS_DUST);
+        Registry.register(Registries.ITEM, new Identifier(MOD_ID, "solidified_xp_orb"), SOLIDIFIED_XP_ORB);
         Registry.register(Registries.ITEM, new Identifier(MOD_ID, "xp_book"), xp_book1);
         if (ModConfig.get().books.nbBooks > 1)
             Registry.register(Registries.ITEM, new Identifier(MOD_ID, "xp_book2"), xp_book2);

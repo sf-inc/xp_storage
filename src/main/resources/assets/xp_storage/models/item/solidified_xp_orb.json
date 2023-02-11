@@ -1,0 +1,6 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "xp_storage:item/solidified_xp_orb"
+  }
+}
