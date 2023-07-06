@@ -27,8 +27,8 @@ public abstract class XpBottleEntityMixin extends ThrownItemEntity {
         if (amount <= 0)
             return;
 
-        if (this.world instanceof ServerWorld serverWorld) {
-            this.world.syncWorldEvent(2002, this.getBlockPos(), PotionUtil.getColor(Potions.WATER));
+        if (this.getWorld() instanceof ServerWorld serverWorld) {
+            this.getWorld().syncWorldEvent(2002, this.getBlockPos(), PotionUtil.getColor(Potions.WATER));
             ExperienceOrbEntity.spawn(serverWorld, this.getPos(), amount);
 
             this.discard();
