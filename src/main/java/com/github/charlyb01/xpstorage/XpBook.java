@@ -19,24 +19,28 @@ import java.util.List;
 public class XpBook extends Item {
     private final int maxLevel;
     private final int maxExperience;
+    private final int xpFromUsing;
+    private final int colorBar;
 
-    public XpBook(final int maxLevel, final boolean isFireproof, final Rarity rarity) {
+    public XpBook(final int maxLevel, final int xpFromUsing, final int colorBar, final boolean isFireproof, final Rarity rarity) {
         super(isFireproof ? new Item.Settings().maxCount(1).rarity(rarity).fireproof()
                 : new Item.Settings().maxCount(1).rarity(rarity));
 
         this.maxLevel = maxLevel;
         this.maxExperience = Utils.getExperienceToLevel(maxLevel);
+        this.xpFromUsing = xpFromUsing;
+        this.colorBar = colorBar;
     }
 
     @Override
     public void appendTooltip(ItemStack stack, @Nullable World world, List<Text> tooltip, TooltipContext context) {
         final int bookLevel = MyComponents.XP_COMPONENT.get(stack).getLevel();
-        tooltip.add(Text.translatable("item.xp_storage.xp_books.tooltip", bookLevel, maxLevel)
+        tooltip.add(Text.translatable("item.xp_storage.xp_books.tooltip", bookLevel, this.maxLevel)
                 .formatted(Formatting.GRAY));
 
         if (ModConfig.get().cosmetic.bookTooltip) {
             final int bookExperience = MyComponents.XP_COMPONENT.get(stack).getAmount();
-            tooltip.add(Text.translatable("item.xp_storage.xp_books.advanced_tooltip", bookExperience, maxExperience)
+            tooltip.add(Text.translatable("item.xp_storage.xp_books.advanced_tooltip", bookExperience, this.maxExperience)
                     .formatted(Formatting.GRAY).formatted(Formatting.ITALIC));
         }
     }
@@ -49,18 +53,13 @@ public class XpBook extends Item {
 
     @Override
     public int getItemBarColor(ItemStack stack) {
-        if (stack.isOf(Xpstorage.xp_book1))
-            return ModConfig.get().cosmetic.colorBar1;
-        else if (stack.isOf(Xpstorage.xp_book2))
-            return ModConfig.get().cosmetic.colorBar2;
-        else
-            return ModConfig.get().cosmetic.colorBar3;
+        return this.colorBar;
     }
 
     @Override
     public int getItemBarStep(ItemStack stack) {
         final int bookExperience = MyComponents.XP_COMPONENT.get(stack).getAmount();
-        return Math.round((bookExperience * 13) / (float)this.maxExperience);
+        return Math.round((bookExperience * 13) / (float) this.maxExperience);
     }
 
     @Override
@@ -74,28 +73,22 @@ public class XpBook extends Item {
         final int bookExperience = MyComponents.XP_COMPONENT.get(stack).getAmount();
         final int playerExperience = user.totalExperience;
 
-        int xpFromUse = ModConfig.get().books.book1.xpFromUsing;
-        if (stack.isOf(Xpstorage.xp_book2))
-            xpFromUse = ModConfig.get().books.book2.xpFromUsing;
-        else if (stack.isOf(Xpstorage.xp_book3))
-            xpFromUse = ModConfig.get().books.book3.xpFromUsing;
-
         if (world.isClient) {
             // Play sound when filling
-            if (!user.isSneaking() && playerExperience > 0 && bookExperience < maxExperience) {
+            if (!user.isSneaking() && playerExperience > 0 && bookExperience < this.maxExperience) {
                 user.playSound(SoundEvents.ENTITY_EXPERIENCE_ORB_PICKUP, 1.0F, 1.0F);
             }
         } else {
             // Empty / Fill
             if (user.isSneaking()) {
-                final int retrievedExperience = Math.round(bookExperience * (xpFromUse / 100.0F));
+                final int retrievedExperience = Math.round(bookExperience * (this.xpFromUsing / 100.0F));
                 ExperienceOrbEntity.spawn((ServerWorld) world, user.getPos(), retrievedExperience);
                 MyComponents.XP_COMPONENT.get(stack).setAmount(0);
             } else {
                 // Check max value
-                if (maxExperience - bookExperience < playerExperience) {
-                    user.addExperience(bookExperience - maxExperience);
-                    MyComponents.XP_COMPONENT.get(stack).setAmount(maxExperience);
+                if (this.maxExperience - bookExperience < playerExperience) {
+                    user.addExperience(bookExperience - this.maxExperience);
+                    MyComponents.XP_COMPONENT.get(stack).setAmount(this.maxExperience);
                 } else {
                     MyComponents.XP_COMPONENT.get(stack).setAmount(bookExperience + playerExperience);
                     user.addExperience(-playerExperience);

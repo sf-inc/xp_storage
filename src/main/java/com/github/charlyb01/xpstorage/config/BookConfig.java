@@ -25,6 +25,7 @@ public class BookConfig implements ConfigData {
         public int capacity;
 
         @ConfigEntry.BoundedDiscrete(min = 50, max = 100)
+        @ConfigEntry.Gui.RequiresRestart
         public int xpFromUsing;
 
         public Book(final int capacity, final int xpFromUsing) {

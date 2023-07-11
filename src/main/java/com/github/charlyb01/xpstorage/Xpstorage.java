@@ -27,10 +27,14 @@ public class Xpstorage implements ModInitializer {
     @Override
     public void onInitialize() {
         AutoConfig.register(ModConfig.class, PartitioningSerializer.wrap(GsonConfigSerializer::new));
+        ModConfig config = ModConfig.get();
 
-        xp_book1 = new XpBook(ModConfig.get().books.book1.capacity, false, Rarity.COMMON);
-        xp_book2 = new XpBook(ModConfig.get().books.book2.capacity, true, Rarity.UNCOMMON);
-        xp_book3 = new XpBook(ModConfig.get().books.book3.capacity, true, Rarity.RARE);
+        xp_book1 = new XpBook(config.books.book1.capacity, config.books.book1.xpFromUsing, config.cosmetic.colorBar1,
+                false, Rarity.COMMON);
+        xp_book2 = new XpBook(config.books.book2.capacity, config.books.book2.xpFromUsing, config.cosmetic.colorBar2,
+                true, Rarity.UNCOMMON);
+        xp_book3 = new XpBook(config.books.book3.capacity, config.books.book3.xpFromUsing, config.cosmetic.colorBar3,
+                true, Rarity.RARE);
 
         Registry.register(Registries.ITEM, new Identifier(MOD_ID, "crystallized_lapis"), CRYSTALLIZED_LAPIS);
         // Registry.register(Registries.ITEM, new Identifier(MOD_ID, "crystallized_lapis_dust"), CRYSTALLIZED_LAPIS_DUST);
