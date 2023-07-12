@@ -71,7 +71,7 @@ public class XpBook extends Item {
     public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {
         ItemStack stack = (user.getMainHandStack().getItem() instanceof XpBook) ? user.getMainHandStack() : user.getOffHandStack();
         final int bookExperience = MyComponents.XP_COMPONENT.get(stack).getAmount();
-        final int playerExperience = user.totalExperience;
+        int playerExperience = Utils.getPlayerExperience(user);
 
         if (world.isClient) {
             // Play sound when filling

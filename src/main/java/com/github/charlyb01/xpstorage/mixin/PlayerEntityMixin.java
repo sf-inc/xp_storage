@@ -22,11 +22,14 @@ public abstract class PlayerEntityMixin {
     @Inject(method = "addExperience", at = @At("HEAD"), cancellable = true)
     private void correctAddExperience(int experience, CallbackInfo ci) {
         this.addScore(experience);
-
         this.totalExperience = MathHelper.clamp(this.totalExperience + experience, 0, Integer.MAX_VALUE);
+
+        int playerExperience = Utils.getPlayerExperience((PlayerEntity) (Object) this);
+        playerExperience += experience;
+
         this.experienceLevel = 0;
-        this.addExperienceLevels(Utils.getLevelFromExperience(this.totalExperience));
-        int deltaExperience = this.totalExperience - Utils.getExperienceToLevel(this.experienceLevel);
+        this.addExperienceLevels(Utils.getLevelFromExperience(playerExperience));
+        int deltaExperience = playerExperience - Utils.getExperienceToLevel(this.experienceLevel);
         this.experienceProgress = deltaExperience / (float)this.getNextLevelExperience();
 
         ci.cancel();

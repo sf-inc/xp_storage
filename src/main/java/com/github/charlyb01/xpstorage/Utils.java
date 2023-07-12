@@ -1,5 +1,7 @@
 package com.github.charlyb01.xpstorage;
 
+import net.minecraft.entity.player.PlayerEntity;
+
 public class Utils {
 
     public static int getExperienceFromLevel(final int level) {
@@ -33,5 +35,11 @@ public class Utils {
         }
 
         return xp == experience ? level : level - 1;
+    }
+
+    public  static int getPlayerExperience(final PlayerEntity player) {
+        int playerExperience = Utils.getExperienceToLevel(player.experienceLevel);
+        playerExperience += Math.round(player.experienceProgress * Utils.getExperienceFromLevel(player.experienceLevel));
+        return playerExperience;
     }
 }
