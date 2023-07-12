@@ -4,6 +4,15 @@
 * **x.X versions** are either updates that add content or major bug fixes
 * **x.x.X versions** are either small content update (language translation, new textures, ...) or bug fixes
 
+## v1.5.2
+
+* Port to 1.20.1
+* Fix XP duplication glitch introduced in 1.5 and 1.5.1 (#22)
+* Redesigned XP Books texture to match their ingredient
+* XP Books now need Crystallized Lapis in their recipe instead of Lapis Lazuli
+  * Crystallized Lapis is made of Lapis Lazuli and Amethyst Shard
+  * This comes from XP Storage - Trinkets mod
+
 ## v1.5.1
 
 * XP Books can't stack (again)
