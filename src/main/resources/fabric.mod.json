@@ -8,7 +8,7 @@
     "Pardys"
   ],
   "contact": {
-    "homepage": "https://www.curseforge.com/minecraft/mc-mods/xp-storage",
+    "homepage": "https://modrinth.com/mod/xp-storage",
     "issues": "https://github.com/charlyb01/xp_storage/issues",
     "sources": "https://github.com/charlyb01/xp_storage"
   },
@@ -37,10 +37,6 @@
     "fabric-api": ">=0.70.0"
   },
   "custom": {
-    "modupdater": {
-      "strategy": "curseforge",
-      "projectID": 403434
-    },
     "cardinal-components": [
       "xp_storage:xp_component"
     ]
