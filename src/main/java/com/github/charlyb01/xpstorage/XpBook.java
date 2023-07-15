@@ -16,7 +16,7 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
-public class XpBook extends Item {
+public class XpBook extends Item implements BookInfo {
     private final int maxLevel;
     private final int maxExperience;
     private final int xpFromUsing;
@@ -97,5 +97,25 @@ public class XpBook extends Item {
         }
 
         return new TypedActionResult<>(ActionResult.SUCCESS, user.getStackInHand(hand));
+    }
+
+    @Override
+    public int getMaxLevel() {
+        return this.maxLevel;
+    }
+
+    @Override
+    public int getMaxExperience() {
+        return this.maxExperience;
+    }
+
+    @Override
+    public int getXpFromUsing() {
+        return this.xpFromUsing;
+    }
+
+    @Override
+    public int getColorBar() {
+        return this.colorBar;
     }
 }
