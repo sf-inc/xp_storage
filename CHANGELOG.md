@@ -4,6 +4,11 @@
 * **x.X versions** are either updates that add content or major bug fixes
 * **x.x.X versions** are either small content update (language translation, new textures, ...) or bug fixes
 
+## v1.5.3
+
+* Update mod API to let other mods know XP Books information (needed for XP Storage - Trinkets)
+* Recipes are now discoverable via ingredients
+
 ## v1.5.2
 
 * Port to 1.20.1
