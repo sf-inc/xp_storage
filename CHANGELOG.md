@@ -4,6 +4,14 @@
 * **x.X versions** are either updates that add content or major bug fixes
 * **x.x.X versions** are either small content update (language translation, new textures, ...) or bug fixes
 
+## v1.5.4
+
+* Fix XP duplication glitch when brewing potion
+  * The duplication appears if potions are quick moved into the brewing stand,
+    they stack while they shouldn't, and XP is duplicated
+  * The issue is within minecraft and the fix is not trivial when modding, so
+    the workaround was to ignore slots with more than one potion
+
 ## v1.5.3
 
 * Update mod API to let other mods know XP Books information (needed for XP Storage - Trinkets)
