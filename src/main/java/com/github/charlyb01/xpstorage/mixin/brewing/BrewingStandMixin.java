@@ -45,7 +45,10 @@ public abstract class BrewingStandMixin extends LockableContainerBlockEntity {
 
         for (int i = 0; i < 3; ++i) {
             ItemStack potion = slots.get(i);
-            if (potion.isEmpty())
+            // Due to a minecraft edge case, you can stack potion with quick move.
+            // getMaxItemCount is not taken into account when item is stackable.
+            // The fix would be trivial, but not with mixin
+            if (potion.isEmpty() || potion.getCount() > 1)
                 continue;
 
             if (potion.isOf(Items.EXPERIENCE_BOTTLE)) {
@@ -79,7 +82,8 @@ public abstract class BrewingStandMixin extends LockableContainerBlockEntity {
 
         for (int i = 0; i < 3; ++i) {
             ItemStack potion = slots.get(i);
-            if (potion.isEmpty())
+            // See above
+            if (potion.isEmpty() || potion.getCount() > 1)
                 continue;
 
             if (potion.isOf(Items.EXPERIENCE_BOTTLE)) {
