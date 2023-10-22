@@ -4,6 +4,11 @@
 * **x.X versions** are either updates that add content or major bug fixes
 * **x.x.X versions** are either small content update (language translation, new textures, ...) or bug fixes
 
+## v1.5.5
+
+* Fix XP sound playing even though adding 0 experience, as discovering a recipe
+  do (#23 & #25)
+
 ## v1.5.4
 
 * Fix XP duplication glitch when brewing potion
