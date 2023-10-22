@@ -21,6 +21,8 @@ public abstract class PlayerEntityMixin {
 
     @Inject(method = "addExperience", at = @At("HEAD"), cancellable = true)
     private void correctAddExperience(int experience, CallbackInfo ci) {
+        if (experience == 0) return;
+
         this.addScore(experience);
         this.totalExperience = MathHelper.clamp(this.totalExperience + experience, 0, Integer.MAX_VALUE);
 
