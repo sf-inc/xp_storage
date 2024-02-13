@@ -1,0 +1,41 @@
+{
+  "item.xp_storage.crystallized_lapis": "結晶化ラピスラズリ",
+  "item.xp_storage.crystallized_lapis_dust": "結晶化ラピスラズリダスト",
+  "item.xp_storage.solidified_xp_orb": "凝固した経験値オーブ",
+  "item.xp_storage.xp_book": "経験値の本 I",
+  "item.xp_storage.xp_book2": "経験値の本 II",
+  "item.xp_storage.xp_book3": "経験値の本 III",
+  "item.xp_storage.xp_books.tooltip": "%2$s中%1$sレベルを保存中",
+  "item.xp_storage.xp_books.advanced_tooltip": "%2$s中%2$sの経験値が保存されています",
+  "item.xp_storage.experience_bottle.tooltip.classic": "旧来の経験値保存機構",
+  "item.xp_storage.experience_bottle.tooltip.amount": "%1$sレベルを保存中",
+
+  "text.autoconfig.xp_storage.title": "XP Storage構成",
+
+  "text.autoconfig.xp_storage.category.books": "経験値の本",
+  "text.autoconfig.xp_storage.option.books.nbBooks": "冊数",
+  "text.autoconfig.xp_storage.option.books.book1": "経験値の本 I",
+  "text.autoconfig.xp_storage.option.books.book1.capacity": "容量（レベル）",
+  "text.autoconfig.xp_storage.option.books.book1.xpFromUsing": "経験値の還元率 (%)",
+  "text.autoconfig.xp_storage.option.books.book2": "経験値の本 II",
+  "text.autoconfig.xp_storage.option.books.book2.capacity": "容量（レベル）",
+  "text.autoconfig.xp_storage.option.books.book2.xpFromUsing": "経験値の還元率 (%)",
+  "text.autoconfig.xp_storage.option.books.book3": "経験値の本 III",
+  "text.autoconfig.xp_storage.option.books.book3.capacity": "容量（レベル）",
+  "text.autoconfig.xp_storage.option.books.book3.xpFromUsing": "経験値の還元率 (%)",
+
+  "text.autoconfig.xp_storage.category.bottles": "エンチャントの瓶",
+  "text.autoconfig.xp_storage.option.bottles.enableBrewing": "経験値を醸造可能",
+  "text.autoconfig.xp_storage.option.bottles.maxLevel": "容量（レベル）",
+  "text.autoconfig.xp_storage.option.bottles.xpFromBrewing1": "1瓶あたりの経験値増加量 - 経験値の本 I",
+  "text.autoconfig.xp_storage.option.bottles.xpFromBrewing2": "1瓶あたりの経験値増加量 - 経験値の本 II",
+  "text.autoconfig.xp_storage.option.bottles.xpFromBrewing3": "1瓶あたりの経験値増加量 - 経験値の本 III",
+
+  "text.autoconfig.xp_storage.category.cosmetic": "外観",
+  "text.autoconfig.xp_storage.option.cosmetic.bookTooltip": "経験値の本に詳細な説明を表示する",
+  "text.autoconfig.xp_storage.option.cosmetic.bottleTooltip": "エンチャントの瓶に「旧来」である旨を表示する",
+  "text.autoconfig.xp_storage.option.cosmetic.glint": "経験値の本に揺らめく光が表示されるようになるレベルの割合 (%)",
+  "text.autoconfig.xp_storage.option.cosmetic.colorBar1": "経験値の本 Iのゲージ色",
+  "text.autoconfig.xp_storage.option.cosmetic.colorBar2": "経験値の本 IIのゲージ色",
+  "text.autoconfig.xp_storage.option.cosmetic.colorBar3": "経験値の本 IIIのゲージ色"
+}
