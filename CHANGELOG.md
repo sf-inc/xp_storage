@@ -4,6 +4,11 @@
 * **x.X versions** are either updates that add content or major bug fixes
 * **x.x.X versions** are either small content update (language translation, new textures, ...) or bug fixes
 
+## v1.5.7
+
+* Fix compatibility issue with LevelZ (#24)
+* Add Japanese translation
+
 ## v1.5.6
 
 * Port to 1.20.2
