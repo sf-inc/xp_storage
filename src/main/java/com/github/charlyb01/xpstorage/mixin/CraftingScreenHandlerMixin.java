@@ -16,7 +16,7 @@ import org.spongepowered.asm.mixin.injection.ModifyVariable;
 @Mixin(CraftingScreenHandler.class)
 public class CraftingScreenHandlerMixin {
 
-    @ModifyVariable(method = "updateResult", at = @At(value = "INVOKE", target = "Lnet/minecraft/inventory/CraftingResultInventory;setStack(ILnet/minecraft/item/ItemStack;)V"))
+    @ModifyVariable(method = "updateResult", at = @At(value = "INVOKE", target = "Lnet/minecraft/inventory/CraftingResultInventory;setStack(ILnet/minecraft/item/ItemStack;)V"), ordinal = 0)
     private static ItemStack transferExperience(ItemStack itemStack, ScreenHandler handler, World world, PlayerEntity player,
                                                 RecipeInputInventory craftingInventory, CraftingResultInventory resultInventory) {
         if (itemStack.getItem() instanceof XpBook &&
