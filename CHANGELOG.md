@@ -6,6 +6,10 @@
 
 ## v1.5.6
 
+* Fix compatibility issue with LevelZ (#24)
+
+## v1.5.6
+
 * Port to 1.20.2
 
 ## v1.5.5
