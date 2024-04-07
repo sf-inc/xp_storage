@@ -1,0 +1,41 @@
+{
+  "item.xp_storage.crystallized_lapis": "Lapislazzulo cristallizato",
+  "item.xp_storage.crystallized_lapis_dust": "Polvere di lapislazzulo cristallizato",
+  "item.xp_storage.solidified_xp_orb": "Particella di esperienza solida",
+  "item.xp_storage.xp_book": "Libro XP I",
+  "item.xp_storage.xp_book2": "Libro XP II",
+  "item.xp_storage.xp_book3": "Libro XP III",
+  "item.xp_storage.xp_books.tooltip": "%1$s / %2$s livelli",
+  "item.xp_storage.xp_books.advanced_tooltip": "%1$s / %2$s esperienza",
+  "item.xp_storage.experience_bottle.tooltip.classic": "Il classico",
+  "item.xp_storage.experience_bottle.tooltip.amount": "%1$s livelli",
+
+  "text.autoconfig.xp_storage.title": "XP Storage Configs",
+
+  "text.autoconfig.xp_storage.category.books": "Libri",
+  "text.autoconfig.xp_storage.option.books.nbBooks": "Numero di libri",
+  "text.autoconfig.xp_storage.option.books.book1": "Libro XP I",
+  "text.autoconfig.xp_storage.option.books.book1.capacity": "Capacità (lvl)",
+  "text.autoconfig.xp_storage.option.books.book1.xpFromUsing": "XP recuperati all'uso (%)",
+  "text.autoconfig.xp_storage.option.books.book2": "Libro XP II",
+  "text.autoconfig.xp_storage.option.books.book2.capacity": "Capacità (lvl)",
+  "text.autoconfig.xp_storage.option.books.book2.xpFromUsing": "XP recuperati all'uso (%)",
+  "text.autoconfig.xp_storage.option.books.book3": "Libro XP III",
+  "text.autoconfig.xp_storage.option.books.book3.capacity": "Capacità (lvl)",
+  "text.autoconfig.xp_storage.option.books.book3.xpFromUsing": "XP recuperati all'uso (%)",
+
+  "text.autoconfig.xp_storage.category.bottles": "Bottiglie",
+  "text.autoconfig.xp_storage.option.bottles.enableBrewing": "Abilita fermentazione XP",
+  "text.autoconfig.xp_storage.option.bottles.maxLevel": "Capacità (lvl)",
+  "text.autoconfig.xp_storage.option.bottles.xpFromBrewing1": "Livelli aggiunti per bottiglia con Libro XP I",
+  "text.autoconfig.xp_storage.option.bottles.xpFromBrewing2": "Livelli aggiunti per bottiglia con Libro XP II",
+  "text.autoconfig.xp_storage.option.bottles.xpFromBrewing3": "Livelli aggiunti per bottiglia con Libro XP III",
+
+  "text.autoconfig.xp_storage.category.cosmetic": "Cosmetica",
+  "text.autoconfig.xp_storage.option.cosmetic.bookTooltip": "I libri mostrano le statistiche avanzate",
+  "text.autoconfig.xp_storage.option.cosmetic.bottleTooltip": "Le bottiglie mostrano lo stato classico",
+  "text.autoconfig.xp_storage.option.cosmetic.glint": "I libri iniziano a brillare (%)",
+  "text.autoconfig.xp_storage.option.cosmetic.colorBar1": "Colore barra Libro XP I",
+  "text.autoconfig.xp_storage.option.cosmetic.colorBar2": "Colore barra Libro XP II",
+  "text.autoconfig.xp_storage.option.cosmetic.colorBar3": "Colore barra Libro XP III"
+}
