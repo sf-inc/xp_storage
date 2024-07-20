@@ -34,12 +34,12 @@ public class Xpstorage implements ModInitializer {
         xp_book3 = new XpBook(config.books.book3.capacity, config.books.book3.xpFromUsing, config.cosmetic.colorBar3,
                 true, Rarity.RARE);
 
-        Registry.register(Registries.ITEM, new Identifier(MOD_ID, "crystallized_lapis"), CRYSTALLIZED_LAPIS);
-        Registry.register(Registries.ITEM, new Identifier(MOD_ID, "xp_book"), xp_book1);
+        Registry.register(Registries.ITEM, id("crystallized_lapis"), CRYSTALLIZED_LAPIS);
+        Registry.register(Registries.ITEM, id("xp_book"), xp_book1);
         if (ModConfig.get().books.nbBooks > 1)
-            Registry.register(Registries.ITEM, new Identifier(MOD_ID, "xp_book2"), xp_book2);
+            Registry.register(Registries.ITEM, id("xp_book2"), xp_book2);
         if (ModConfig.get().books.nbBooks > 2)
-            Registry.register(Registries.ITEM, new Identifier(MOD_ID, "xp_book3"), xp_book3);
+            Registry.register(Registries.ITEM, id("xp_book3"), xp_book3);
 
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.INGREDIENTS).register(entries -> {
             entries.addAfter(Items.LAPIS_LAZULI, CRYSTALLIZED_LAPIS);
@@ -51,5 +51,9 @@ public class Xpstorage implements ModInitializer {
             if (ModConfig.get().books.nbBooks > 2)
                 entries.add(xp_book3);
         });
+    }
+
+    public static Identifier id(final String path) {
+        return Identifier.of(MOD_ID, path);
     }
 }

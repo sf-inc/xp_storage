@@ -1,7 +1,7 @@
 package com.github.charlyb01.xpstorage.mixin;
 
 import com.github.charlyb01.xpstorage.XpBook;
-import com.github.charlyb01.xpstorage.cardinal.MyComponents;
+import com.github.charlyb01.xpstorage.component.MyComponents;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.CraftingResultInventory;
 import net.minecraft.inventory.RecipeInputInventory;
@@ -22,8 +22,8 @@ public class CraftingScreenHandlerMixin {
         if (itemStack.getItem() instanceof XpBook &&
                 craftingInventory.getStack(4).getItem() instanceof XpBook) {
 
-            final int experience = MyComponents.XP_COMPONENT.get(craftingInventory.getStack(4)).getAmount();
-            MyComponents.XP_COMPONENT.get(itemStack).setAmount(experience);
+            final int experience = MyComponents.XP_COMPONENT_CC.get(craftingInventory.getStack(4)).getAmount();
+            MyComponents.XP_COMPONENT_CC.get(itemStack).setAmount(experience);
         }
         return itemStack;
     }

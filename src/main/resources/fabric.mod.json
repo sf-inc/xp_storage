@@ -23,7 +23,7 @@
       "com.github.charlyb01.xpstorage.Xpstorage"
     ],
     "cardinal-components": [
-      "com.github.charlyb01.xpstorage.cardinal.MyComponents"
+      "com.github.charlyb01.xpstorage.component.MyComponents"
     ],
     "modmenu": [
       "com.github.charlyb01.xpstorage.config.ModMenuIntegration"
@@ -33,8 +33,8 @@
     "xpstorage.mixins.json"
   ],
   "depends": {
-    "fabricloader": ">=0.14.12",
-    "fabric-api": ">=0.70.0"
+    "fabricloader": ">=0.15.11",
+    "fabric-api": ">=0.100.4"
   },
   "custom": {
     "cardinal-components": [

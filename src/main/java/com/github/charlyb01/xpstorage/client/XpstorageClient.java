@@ -1,6 +1,7 @@
 package com.github.charlyb01.xpstorage.client;
 
-import com.github.charlyb01.xpstorage.cardinal.MyComponents;
+import com.github.charlyb01.xpstorage.component.MyComponents;
+import com.github.charlyb01.xpstorage.component.XpAmountData;
 import com.github.charlyb01.xpstorage.config.ModConfig;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.api.EnvType;
@@ -14,11 +15,11 @@ import net.minecraft.util.Formatting;
 public class XpstorageClient implements ClientModInitializer {
     @Override
     public void onInitializeClient() {
-        ItemTooltipCallback.EVENT.register((stack, context, lines) -> {
+        ItemTooltipCallback.EVENT.register((stack, context, type, lines) -> {
             if (stack.getItem() == Items.EXPERIENCE_BOTTLE) {
-                int xpAmount = MyComponents.XP_COMPONENT.get(stack).getLevel();
-                if (xpAmount > 0) {
-                    lines.add(Text.translatable("item.xp_storage.experience_bottle.tooltip.amount", xpAmount)
+                int level = stack.getOrDefault(MyComponents.XP_COMPONENT, XpAmountData.EMPTY).level();
+                if (level > 0) {
+                    lines.add(Text.translatable("item.xp_storage.experience_bottle.tooltip.amount", level)
                             .formatted(Formatting.GRAY));
                 } else if (ModConfig.get().bottles.enableBrewing && ModConfig.get().cosmetic.bottleTooltip) {
                     lines.add(Text.translatable("item.xp_storage.experience_bottle.tooltip.classic")

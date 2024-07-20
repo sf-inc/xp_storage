@@ -12,7 +12,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 @Mixin(BrewingRecipeRegistry.class)
 public class BrewingRecipeMixin {
     @Inject(method = "isValidIngredient", at = @At("HEAD"), cancellable = true)
-    private static void registerXpBookIngredient(ItemStack stack, CallbackInfoReturnable<Boolean> cir) {
+    private void registerXpBookIngredient(ItemStack stack, CallbackInfoReturnable<Boolean> cir) {
         if (ModConfig.get().bottles.enableBrewing && stack.getItem() instanceof XpBook) {
             cir.setReturnValue(true);
         }

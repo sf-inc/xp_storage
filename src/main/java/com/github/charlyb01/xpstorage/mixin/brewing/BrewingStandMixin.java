@@ -3,7 +3,8 @@ package com.github.charlyb01.xpstorage.mixin.brewing;
 import com.github.charlyb01.xpstorage.Utils;
 import com.github.charlyb01.xpstorage.XpBook;
 import com.github.charlyb01.xpstorage.Xpstorage;
-import com.github.charlyb01.xpstorage.cardinal.MyComponents;
+import com.github.charlyb01.xpstorage.component.MyComponents;
+import com.github.charlyb01.xpstorage.component.XpAmountData;
 import com.github.charlyb01.xpstorage.config.ModConfig;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntityType;
@@ -11,8 +12,7 @@ import net.minecraft.block.entity.BrewingStandBlockEntity;
 import net.minecraft.block.entity.LockableContainerBlockEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
-import net.minecraft.potion.PotionUtil;
-import net.minecraft.potion.Potions;
+import net.minecraft.recipe.BrewingRecipeRegistry;
 import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
@@ -30,12 +30,13 @@ public abstract class BrewingStandMixin extends LockableContainerBlockEntity {
     }
 
     @Inject(method = "canCraft", at = @At("HEAD"), cancellable = true)
-    private static void canUseXpBooks(DefaultedList<ItemStack> slots, CallbackInfoReturnable<Boolean> cir) {
+    private static void canUseXpBooks(BrewingRecipeRegistry brewingRecipeRegistry, DefaultedList<ItemStack> slots, CallbackInfoReturnable<Boolean> cir) {
         ItemStack ingredient = slots.get(3);
-        if (ingredient.isEmpty() || !(ingredient.getItem() instanceof XpBook))
+        if (ingredient.isEmpty() || !(ingredient.getItem() instanceof XpBook)
+                || !ingredient.contains(MyComponents.XP_COMPONENT))
             return;
 
-        final int bookExperience = MyComponents.XP_COMPONENT.get(ingredient).getAmount();
+        final int bookExperience = ingredient.get(MyComponents.XP_COMPONENT).amount();
         int levelIncrement = ModConfig.get().bottles.xpFromBrewing1;
         if (ingredient.isOf(Xpstorage.xp_book2)) {
             levelIncrement = ModConfig.get().bottles.xpFromBrewing2;
@@ -51,14 +52,14 @@ public abstract class BrewingStandMixin extends LockableContainerBlockEntity {
             if (potion.isEmpty() || potion.getCount() > 1)
                 continue;
 
-            if (potion.isOf(Items.EXPERIENCE_BOTTLE)) {
-                final int currentLevel = MyComponents.XP_COMPONENT.get(potion).getLevel();
+            if (potion.isOf(Items.EXPERIENCE_BOTTLE) && potion.contains(MyComponents.XP_COMPONENT)) {
+                final int currentLevel = potion.get(MyComponents.XP_COMPONENT).level();
                 final int nextLevel = currentLevel + levelIncrement;
                 final int xpForNextLevel = Utils.getExperienceFromLevelToLevel(currentLevel, nextLevel);
                 if (bookExperience >= xpForNextLevel && nextLevel <= ModConfig.get().bottles.maxLevel) {
                     cir.setReturnValue(true);
                 }
-            } else if (potion.isOf(Items.POTION) && PotionUtil.getPotion(potion).equals(Potions.MUNDANE)) {
+            } else if (Utils.isMundanePotion(potion)) {
                 if (bookExperience >= Utils.getExperienceFromLevel(levelIncrement)
                         && levelIncrement <= ModConfig.get().bottles.maxLevel) {
                     cir.setReturnValue(true);
@@ -70,7 +71,8 @@ public abstract class BrewingStandMixin extends LockableContainerBlockEntity {
     @Inject(method = "craft", at = @At("HEAD"), cancellable = true)
     private static void craftXpBottles(World world, BlockPos pos, DefaultedList<ItemStack> slots, CallbackInfo ci) {
         ItemStack ingredient = slots.get(3);
-        if (ingredient.isEmpty() || !(ingredient.getItem() instanceof XpBook))
+        if (ingredient.isEmpty() || !(ingredient.getItem() instanceof XpBook)
+                || !ingredient.contains(MyComponents.XP_COMPONENT))
             return;
 
         int levelIncrement = ModConfig.get().bottles.xpFromBrewing1;
@@ -86,23 +88,25 @@ public abstract class BrewingStandMixin extends LockableContainerBlockEntity {
             if (potion.isEmpty() || potion.getCount() > 1)
                 continue;
 
-            if (potion.isOf(Items.EXPERIENCE_BOTTLE)) {
-                final int currentLevel = MyComponents.XP_COMPONENT.get(potion).getLevel();
+            final int bookExperience = ingredient.getOrDefault(MyComponents.XP_COMPONENT, XpAmountData.EMPTY).amount();
+
+            if (potion.isOf(Items.EXPERIENCE_BOTTLE) && potion.contains(MyComponents.XP_COMPONENT)) {
+                final int currentLevel = potion.get(MyComponents.XP_COMPONENT).level();
                 final int nextLevel = currentLevel + levelIncrement;
                 final int xpForNextLevel = Utils.getExperienceFromLevelToLevel(currentLevel, nextLevel);
-                final int bookExperience = MyComponents.XP_COMPONENT.get(ingredient).getAmount();
                 if (bookExperience >= xpForNextLevel && nextLevel <= ModConfig.get().bottles.maxLevel) {
-                    MyComponents.XP_COMPONENT.get(potion).setLevel(nextLevel);
-                    MyComponents.XP_COMPONENT.get(ingredient).setAmount(bookExperience - xpForNextLevel);
+                    potion.set(MyComponents.XP_COMPONENT, new XpAmountData(Utils.getExperienceToLevel(nextLevel), nextLevel));
+                    int amount = bookExperience - xpForNextLevel;
+                    ingredient.set(MyComponents.XP_COMPONENT, new XpAmountData(amount, Utils.getLevelFromExperience(amount)));
                 }
-            } else if (potion.isOf(Items.POTION) && PotionUtil.getPotion(potion).equals(Potions.MUNDANE)) {
+            } else if (Utils.isMundanePotion(potion)) {
                 final int xpForFirstLevels = Utils.getExperienceToLevel(levelIncrement);
-                final int bookExperience = MyComponents.XP_COMPONENT.get(ingredient).getAmount();
                 if (bookExperience >= xpForFirstLevels && levelIncrement <= ModConfig.get().bottles.maxLevel) {
                     ItemStack xpBottle = new ItemStack(Items.EXPERIENCE_BOTTLE);
                     slots.set(i, xpBottle);
-                    MyComponents.XP_COMPONENT.get(xpBottle).setLevel(levelIncrement);
-                    MyComponents.XP_COMPONENT.get(ingredient).setAmount(bookExperience - xpForFirstLevels);
+                    xpBottle.set(MyComponents.XP_COMPONENT, new XpAmountData(xpForFirstLevels, levelIncrement));
+                    int amount = bookExperience - xpForFirstLevels;
+                    ingredient.set(MyComponents.XP_COMPONENT, new XpAmountData(amount, Utils.getLevelFromExperience(amount)));
                 }
             }
         }

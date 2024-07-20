@@ -1,6 +1,11 @@
 package com.github.charlyb01.xpstorage;
 
+import net.minecraft.component.DataComponentTypes;
+import net.minecraft.component.type.PotionContentsComponent;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.item.ItemStack;
+import net.minecraft.item.Items;
+import net.minecraft.potion.Potions;
 
 public class Utils {
 
@@ -41,5 +46,13 @@ public class Utils {
         int playerExperience = Utils.getExperienceToLevel(player.experienceLevel);
         playerExperience += Math.round(player.experienceProgress * Utils.getExperienceFromLevel(player.experienceLevel));
         return playerExperience;
+    }
+
+    public static boolean isMundanePotion(ItemStack stack) {
+        if (!stack.isOf(Items.POTION)) return false;
+        if (!stack.contains(DataComponentTypes.POTION_CONTENTS)) return false;
+
+        PotionContentsComponent potionContentsComponent = stack.get(DataComponentTypes.POTION_CONTENTS);
+        return potionContentsComponent.matches(Potions.MUNDANE);
     }
 }

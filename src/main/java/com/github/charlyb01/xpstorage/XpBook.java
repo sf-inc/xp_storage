@@ -1,18 +1,18 @@
 package com.github.charlyb01.xpstorage;
 
-import com.github.charlyb01.xpstorage.cardinal.MyComponents;
+import com.github.charlyb01.xpstorage.component.MyComponents;
+import com.github.charlyb01.xpstorage.component.XpAmountData;
 import com.github.charlyb01.xpstorage.config.ModConfig;
-import net.minecraft.client.item.TooltipContext;
 import net.minecraft.entity.ExperienceOrbEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.tooltip.TooltipType;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.text.Text;
 import net.minecraft.util.*;
 import net.minecraft.world.World;
-import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
@@ -23,8 +23,8 @@ public class XpBook extends Item implements BookInfo {
     private final int colorBar;
 
     public XpBook(final int maxLevel, final int xpFromUsing, final int colorBar, final boolean isFireproof, final Rarity rarity) {
-        super(isFireproof ? new Item.Settings().maxCount(1).rarity(rarity).fireproof()
-                : new Item.Settings().maxCount(1).rarity(rarity));
+        super(isFireproof ? new Item.Settings().maxCount(1).rarity(rarity).component(MyComponents.XP_COMPONENT, XpAmountData.EMPTY).fireproof()
+                : new Item.Settings().maxCount(1).rarity(rarity).component(MyComponents.XP_COMPONENT, XpAmountData.EMPTY));
 
         this.maxLevel = maxLevel;
         this.maxExperience = Utils.getExperienceToLevel(maxLevel);
@@ -33,13 +33,14 @@ public class XpBook extends Item implements BookInfo {
     }
 
     @Override
-    public void appendTooltip(ItemStack stack, @Nullable World world, List<Text> tooltip, TooltipContext context) {
-        final int bookLevel = MyComponents.XP_COMPONENT.get(stack).getLevel();
+    public void appendTooltip(ItemStack stack, Item.TooltipContext context, List<Text> tooltip, TooltipType type) {
+        XpAmountData xpAmountData = stack.getOrDefault(MyComponents.XP_COMPONENT, XpAmountData.EMPTY);
+        final int bookLevel = xpAmountData.level();
         tooltip.add(Text.translatable("item.xp_storage.xp_books.tooltip", bookLevel, this.maxLevel)
                 .formatted(Formatting.GRAY));
 
         if (ModConfig.get().cosmetic.bookTooltip) {
-            final int bookExperience = MyComponents.XP_COMPONENT.get(stack).getAmount();
+            final int bookExperience = xpAmountData.amount();
             tooltip.add(Text.translatable("item.xp_storage.xp_books.advanced_tooltip", bookExperience, this.maxExperience)
                     .formatted(Formatting.GRAY).formatted(Formatting.ITALIC));
         }
@@ -47,7 +48,8 @@ public class XpBook extends Item implements BookInfo {
 
     @Override
     public boolean hasGlint(ItemStack stack) {
-        final int bookExperience = MyComponents.XP_COMPONENT.get(stack).getAmount();
+        XpAmountData xpAmountData = stack.getOrDefault(MyComponents.XP_COMPONENT, XpAmountData.EMPTY);
+        final int bookExperience = xpAmountData.amount();
         return (bookExperience / (float) this.maxExperience) * 100 >= ModConfig.get().cosmetic.glint;
     }
 
@@ -58,19 +60,22 @@ public class XpBook extends Item implements BookInfo {
 
     @Override
     public int getItemBarStep(ItemStack stack) {
-        final int bookExperience = MyComponents.XP_COMPONENT.get(stack).getAmount();
+        XpAmountData xpAmountData = stack.getOrDefault(MyComponents.XP_COMPONENT, XpAmountData.EMPTY);
+        final int bookExperience = xpAmountData.amount();
         return Math.round((bookExperience * 13) / (float) this.maxExperience);
     }
 
     @Override
     public boolean isItemBarVisible(ItemStack stack) {
-        return MyComponents.XP_COMPONENT.get(stack).getAmount() > 0;
+        XpAmountData xpAmountData = stack.getOrDefault(MyComponents.XP_COMPONENT, XpAmountData.EMPTY);
+        return xpAmountData.amount() > 0;
     }
 
     @Override
     public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {
         ItemStack stack = (user.getMainHandStack().getItem() instanceof XpBook) ? user.getMainHandStack() : user.getOffHandStack();
-        final int bookExperience = MyComponents.XP_COMPONENT.get(stack).getAmount();
+        XpAmountData xpAmountData = stack.getOrDefault(MyComponents.XP_COMPONENT, XpAmountData.EMPTY);
+        final int bookExperience = xpAmountData.amount();
         int playerExperience = Utils.getPlayerExperience(user);
 
         if (world.isClient) {
@@ -83,14 +88,15 @@ public class XpBook extends Item implements BookInfo {
             if (user.isSneaking()) {
                 final int retrievedExperience = Math.round(bookExperience * (this.xpFromUsing / 100.0F));
                 ExperienceOrbEntity.spawn((ServerWorld) world, user.getPos(), retrievedExperience);
-                MyComponents.XP_COMPONENT.get(stack).setAmount(0);
+                stack.set(MyComponents.XP_COMPONENT, XpAmountData.EMPTY);
             } else {
                 // Check max value
                 if (this.maxExperience - bookExperience < playerExperience) {
                     user.addExperience(bookExperience - this.maxExperience);
-                    MyComponents.XP_COMPONENT.get(stack).setAmount(this.maxExperience);
+                    stack.set(MyComponents.XP_COMPONENT, new XpAmountData(this.maxExperience, this.maxLevel));
                 } else {
-                    MyComponents.XP_COMPONENT.get(stack).setAmount(bookExperience + playerExperience);
+                    int amount = bookExperience + playerExperience;
+                    stack.set(MyComponents.XP_COMPONENT, new XpAmountData(amount, Utils.getLevelFromExperience(amount)));
                     user.addExperience(-playerExperience);
                 }
             }

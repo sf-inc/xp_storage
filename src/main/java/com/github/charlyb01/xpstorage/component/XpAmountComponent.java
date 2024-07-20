@@ -1,17 +1,16 @@
-package com.github.charlyb01.xpstorage.cardinal;
+package com.github.charlyb01.xpstorage.component;
 
 import com.github.charlyb01.xpstorage.Utils;
 import net.minecraft.nbt.NbtCompound;
+import net.minecraft.registry.RegistryWrapper;
+import org.ladysnake.cca.api.v3.component.Component;
 
-class XpAmountComponent implements ExperienceComponent {
+class XpAmountComponent implements Component, ExperienceComponent {
     private int level = 0;
     private int amount = 0;
 
     @Override
     public int getAmount() { return this.amount; }
-
-    @Override
-    public int getLevel() { return this.level; }
 
     @Override
     public void setAmount(final int amount) {
@@ -26,13 +25,13 @@ class XpAmountComponent implements ExperienceComponent {
     }
 
     @Override
-    public void readFromNbt(NbtCompound tag) {
+    public void readFromNbt(NbtCompound tag, RegistryWrapper.WrapperLookup registryLookup) {
         this.amount = tag.getInt("xp_amount");
         this.level = tag.getInt("xp_level");
     }
 
     @Override
-    public void writeToNbt(NbtCompound tag) {
+    public void writeToNbt(NbtCompound tag, RegistryWrapper.WrapperLookup registryLookup) {
         tag.putInt("xp_amount", this.amount);
         tag.putInt("xp_level", this.level);
     }
