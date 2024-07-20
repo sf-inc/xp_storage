@@ -39,6 +39,11 @@
   "custom": {
     "cardinal-components": [
       "xp_storage:xp_component"
-    ]
+    ],
+    "modmenu": {
+      "links": {
+        "modmenu.discord": "https://discord.gg/eNwkve8k7c"
+      }
+    }
   }
 }
