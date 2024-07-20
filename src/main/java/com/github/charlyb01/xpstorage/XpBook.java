@@ -22,9 +22,10 @@ public class XpBook extends Item implements BookInfo {
     private final int xpFromUsing;
     private final int colorBar;
 
+    private static final Item.Settings DEFAULT_SETTING = new Item.Settings().maxCount(1).component(MyComponents.XP_COMPONENT, XpAmountData.EMPTY);
+
     public XpBook(final int maxLevel, final int xpFromUsing, final int colorBar, final boolean isFireproof, final Rarity rarity) {
-        super(isFireproof ? new Item.Settings().maxCount(1).rarity(rarity).component(MyComponents.XP_COMPONENT, XpAmountData.EMPTY).fireproof()
-                : new Item.Settings().maxCount(1).rarity(rarity).component(MyComponents.XP_COMPONENT, XpAmountData.EMPTY));
+        super(isFireproof ? DEFAULT_SETTING.rarity(rarity).fireproof() : DEFAULT_SETTING.rarity(rarity));
 
         this.maxLevel = maxLevel;
         this.maxExperience = Utils.getExperienceToLevel(maxLevel);
