@@ -1,23 +1,23 @@
 {
   "type": "minecraft:crafting_shaped",
   "pattern": [
-    " N ",
+    " D ",
     "LBL",
     " L "
   ],
   "key": {
     "B": {
-      "item": "xp_storage:xp_book"
+      "item": "minecraft:book"
     },
     "L": {
       "item": "xp_storage:crystallized_lapis"
     },
-    "N": {
-      "item": "minecraft:netherite_ingot"
+    "D": {
+      "item": "minecraft:diamond"
     }
   },
   "result": {
-    "item": "xp_storage:xp_book2",
+    "id": "xp_storage:xp_book",
     "count": 1
   }
 }

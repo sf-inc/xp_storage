@@ -2,6 +2,7 @@ package com.github.charlyb01.xpstorage.mixin;
 
 import com.github.charlyb01.xpstorage.XpBook;
 import com.github.charlyb01.xpstorage.component.MyComponents;
+import com.github.charlyb01.xpstorage.component.XpAmountData;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.CraftingResultInventory;
 import net.minecraft.inventory.RecipeInputInventory;
@@ -17,14 +18,12 @@ import org.spongepowered.asm.mixin.injection.ModifyVariable;
 public class CraftingScreenHandlerMixin {
 
     @ModifyVariable(method = "updateResult", at = @At(value = "INVOKE", target = "Lnet/minecraft/inventory/CraftingResultInventory;setStack(ILnet/minecraft/item/ItemStack;)V"), ordinal = 0)
-    private static ItemStack transferExperience(ItemStack itemStack, ScreenHandler handler, World world, PlayerEntity player,
+    private static ItemStack transferExperience(ItemStack outBook, ScreenHandler handler, World world, PlayerEntity player,
                                                 RecipeInputInventory craftingInventory, CraftingResultInventory resultInventory) {
-        if (itemStack.getItem() instanceof XpBook &&
-                craftingInventory.getStack(4).getItem() instanceof XpBook) {
-
-            final int experience = MyComponents.XP_COMPONENT_CC.get(craftingInventory.getStack(4)).getAmount();
-            MyComponents.XP_COMPONENT_CC.get(itemStack).setAmount(experience);
+        ItemStack inBook = craftingInventory.getStack(4);
+        if (outBook.getItem() instanceof XpBook && inBook.getItem() instanceof XpBook) {
+            outBook.set(MyComponents.XP_COMPONENT, inBook.getOrDefault(MyComponents.XP_COMPONENT, XpAmountData.EMPTY));
         }
-        return itemStack;
+        return outBook;
     }
 }
