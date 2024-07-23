@@ -1,23 +1,24 @@
 {
   "type": "minecraft:crafting_shaped",
-  "pattern": [
-    " D ",
-    "LBL",
-    " L "
-  ],
+  "category": "equipment",
   "key": {
-    "B": {
+    "b": {
       "item": "minecraft:book"
     },
-    "L": {
+    "c": {
       "item": "xp_storage:crystallized_lapis"
     },
-    "D": {
+    "d": {
       "item": "minecraft:diamond"
     }
   },
+  "pattern": [
+    " d ",
+    "cbc",
+    " c "
+  ],
   "result": {
-    "id": "xp_storage:xp_book",
-    "count": 1
+    "count": 1,
+    "id": "xp_storage:xp_book"
   }
 }

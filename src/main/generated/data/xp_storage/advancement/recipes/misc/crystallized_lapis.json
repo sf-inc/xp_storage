@@ -5,9 +5,10 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "minecraft:lapis_lazuli"
-            ]
+            "count": {
+              "min": 4
+            },
+            "items": "minecraft:lapis_lazuli"
           }
         ]
       },
@@ -22,8 +23,8 @@
   },
   "requirements": [
     [
-      "has_lapis_lazuli",
-      "has_the_recipe"
+      "has_the_recipe",
+      "has_lapis_lazuli"
     ]
   ],
   "rewards": {

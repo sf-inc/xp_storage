@@ -5,9 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "xp_storage:crystallized_lapis"
-            ]
+            "items": "xp_storage:crystallized_lapis"
           }
         ]
       },
@@ -22,8 +20,8 @@
   },
   "requirements": [
     [
-      "has_crystallized_lapis",
-      "has_the_recipe"
+      "has_the_recipe",
+      "has_crystallized_lapis"
     ]
   ],
   "rewards": {

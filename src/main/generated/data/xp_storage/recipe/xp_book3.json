@@ -1,23 +1,24 @@
 {
   "type": "minecraft:crafting_shaped",
-  "pattern": [
-    " N ",
-    "LBL",
-    " L "
-  ],
+  "category": "equipment",
   "key": {
-    "B": {
+    "b": {
       "item": "xp_storage:xp_book2"
     },
-    "L": {
+    "c": {
       "item": "xp_storage:crystallized_lapis"
     },
-    "N": {
+    "n": {
       "item": "minecraft:nether_star"
     }
   },
+  "pattern": [
+    " n ",
+    "cbc",
+    " c "
+  ],
   "result": {
-    "id": "xp_storage:xp_book3",
-    "count": 1
+    "count": 1,
+    "id": "xp_storage:xp_book3"
   }
 }
