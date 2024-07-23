@@ -1,12 +1,12 @@
 {
-  "parent": "xp_storage:recipes/root",
+  "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_xp_book": {
+    "has_lapis_lazuli": {
       "conditions": {
         "items": [
           {
             "items": [
-              "xp_storage:xp_book"
+              "minecraft:lapis_lazuli"
             ]
           }
         ]
@@ -15,20 +15,20 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "xp_storage:xp_book2"
+        "recipe": "xp_storage:crystallized_lapis"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
   },
   "requirements": [
     [
-      "has_xp_book",
+      "has_lapis_lazuli",
       "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
-      "xp_storage:xp_book2"
+      "xp_storage:crystallized_lapis"
     ]
   }
 }

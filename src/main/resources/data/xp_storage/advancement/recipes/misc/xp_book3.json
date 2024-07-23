@@ -1,5 +1,5 @@
 {
-  "parent": "xp_storage:recipes/root",
+  "parent": "minecraft:recipes/root",
   "criteria": {
     "has_xp_book2": {
       "conditions": {
