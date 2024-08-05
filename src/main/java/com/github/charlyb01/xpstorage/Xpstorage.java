@@ -27,19 +27,22 @@ public class Xpstorage implements ModInitializer {
         AutoConfig.register(ModConfig.class, PartitioningSerializer.wrap(GsonConfigSerializer::new));
         ModConfig config = ModConfig.get();
 
+        Registry.register(Registries.ITEM, id("crystallized_lapis"), CRYSTALLIZED_LAPIS);
+
         xp_book1 = new XpBook(config.books.book1.capacity, config.books.book1.xpFromUsing, config.cosmetic.colorBar1,
                 false, Rarity.COMMON);
-        xp_book2 = new XpBook(config.books.book2.capacity, config.books.book2.xpFromUsing, config.cosmetic.colorBar2,
-                true, Rarity.UNCOMMON);
-        xp_book3 = new XpBook(config.books.book3.capacity, config.books.book3.xpFromUsing, config.cosmetic.colorBar3,
-                true, Rarity.RARE);
-
-        Registry.register(Registries.ITEM, id("crystallized_lapis"), CRYSTALLIZED_LAPIS);
         Registry.register(Registries.ITEM, id("xp_book"), xp_book1);
-        if (ModConfig.get().books.nbBooks > 1)
+
+        if (ModConfig.get().books.nbBooks > 1) {
+            xp_book2 = new XpBook(config.books.book2.capacity, config.books.book2.xpFromUsing, config.cosmetic.colorBar2,
+                    true, Rarity.UNCOMMON);
             Registry.register(Registries.ITEM, id("xp_book2"), xp_book2);
-        if (ModConfig.get().books.nbBooks > 2)
+        }
+        if (ModConfig.get().books.nbBooks > 2) {
+            xp_book3 = new XpBook(config.books.book3.capacity, config.books.book3.xpFromUsing, config.cosmetic.colorBar3,
+                    true, Rarity.RARE);
             Registry.register(Registries.ITEM, id("xp_book3"), xp_book3);
+        }
 
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.INGREDIENTS).register(entries -> {
             entries.addAfter(Items.LAPIS_LAZULI, CRYSTALLIZED_LAPIS);
