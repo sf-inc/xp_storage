@@ -4,6 +4,9 @@
 * **x.X versions** are either updates that add content or major bug fixes
 * **x.x.X versions** are either small content update (language translation, new textures, ...) or bug fixes
 
+## v1.5.10
+* Fix crash on startup when number of xp book lowered
+
 ## v1.5.9
 * Fix recipes issues (introduced in 1.21 port)
 
