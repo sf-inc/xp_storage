@@ -1,8 +1,6 @@
 {
   "item.xp_storage.crystallized_lapis": "Crystallized Lapis",
-  "item.xp_storage.xp_book": "XP Book I",
-  "item.xp_storage.xp_book2": "XP Book II",
-  "item.xp_storage.xp_book3": "XP Book III",
+  "item.xp_storage.xp_book": "XP Book",
   "item.xp_storage.xp_books.tooltip": "%1$s / %2$s levels stored",
   "item.xp_storage.xp_books.advanced_tooltip": "%1$s / %2$s experience stored",
   "item.xp_storage.experience_bottle.tooltip.classic": "The classic one",

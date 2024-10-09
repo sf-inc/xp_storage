@@ -15,13 +15,5 @@ public class CosmeticConfig implements ConfigData {
 
     @ConfigEntry.ColorPicker
     @ConfigEntry.Gui.RequiresRestart
-    public int colorBar1 = Integer.parseInt("a1fbe8", 16);
-
-    @ConfigEntry.ColorPicker
-    @ConfigEntry.Gui.RequiresRestart
-    public int colorBar2 = Integer.parseInt("5a575a", 16);
-
-    @ConfigEntry.ColorPicker
-    @ConfigEntry.Gui.RequiresRestart
-    public int colorBar3 = Integer.parseInt("e0e277", 16);
+    public int colorBar = Integer.parseInt("a1fbe8", 16);
 }

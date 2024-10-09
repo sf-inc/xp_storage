@@ -29,7 +29,7 @@ public class RecipeProvider extends FabricRecipeProvider {
                         FabricRecipeProvider.conditionsFromItem(NumberRange.IntRange.atLeast(4), Items.LAPIS_LAZULI))
                 .offerTo(exporter);
 
-        ShapedRecipeJsonBuilder.create(RecipeCategory.TOOLS, Xpstorage.xp_book1)
+        ShapedRecipeJsonBuilder.create(RecipeCategory.TOOLS, Xpstorage.xp_book)
                 .pattern(" d ")
                 .pattern("cbc")
                 .pattern(" c ")
@@ -38,28 +38,6 @@ public class RecipeProvider extends FabricRecipeProvider {
                 .input('d', Items.DIAMOND)
                 .criterion(FabricRecipeProvider.hasItem(Xpstorage.CRYSTALLIZED_LAPIS),
                         FabricRecipeProvider.conditionsFromItem(Xpstorage.CRYSTALLIZED_LAPIS))
-                .offerTo(exporter);
-
-        ShapedRecipeJsonBuilder.create(RecipeCategory.TOOLS, Xpstorage.xp_book2)
-                .pattern(" n ")
-                .pattern("cbc")
-                .pattern(" c ")
-                .input('c', Xpstorage.CRYSTALLIZED_LAPIS)
-                .input('b', Xpstorage.xp_book1)
-                .input('n', Items.NETHERITE_INGOT)
-                .criterion(FabricRecipeProvider.hasItem(Xpstorage.xp_book1),
-                        FabricRecipeProvider.conditionsFromItem(Xpstorage.xp_book1))
-                .offerTo(exporter);
-
-        ShapedRecipeJsonBuilder.create(RecipeCategory.TOOLS, Xpstorage.xp_book3)
-                .pattern(" n ")
-                .pattern("cbc")
-                .pattern(" c ")
-                .input('c', Xpstorage.CRYSTALLIZED_LAPIS)
-                .input('b', Xpstorage.xp_book2)
-                .input('n', Items.NETHER_STAR)
-                .criterion(FabricRecipeProvider.hasItem(Xpstorage.xp_book2),
-                        FabricRecipeProvider.conditionsFromItem(Xpstorage.xp_book2))
                 .offerTo(exporter);
     }
 }

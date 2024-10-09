@@ -3,7 +3,6 @@
   "package": "com.github.charlyb01.xpstorage.mixin",
   "compatibilityLevel": "JAVA_21",
   "mixins": [
-    "CraftingScreenHandlerMixin",
     "PlayerEntityMixin",
     "XpBottleEntityMixin",
     "XpBottleItemMixin",

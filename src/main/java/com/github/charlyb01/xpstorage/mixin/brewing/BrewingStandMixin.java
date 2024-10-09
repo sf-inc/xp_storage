@@ -2,7 +2,6 @@ package com.github.charlyb01.xpstorage.mixin.brewing;
 
 import com.github.charlyb01.xpstorage.Utils;
 import com.github.charlyb01.xpstorage.XpBook;
-import com.github.charlyb01.xpstorage.Xpstorage;
 import com.github.charlyb01.xpstorage.component.MyComponents;
 import com.github.charlyb01.xpstorage.component.XpAmountData;
 import com.github.charlyb01.xpstorage.config.ModConfig;
@@ -37,12 +36,7 @@ public abstract class BrewingStandMixin extends LockableContainerBlockEntity {
             return;
 
         final int bookExperience = ingredient.get(MyComponents.XP_COMPONENT).amount();
-        int levelIncrement = ModConfig.get().bottles.xpFromBrewing1;
-        if (ingredient.isOf(Xpstorage.xp_book2)) {
-            levelIncrement = ModConfig.get().bottles.xpFromBrewing2;
-        } else if (ingredient.isOf(Xpstorage.xp_book3)) {
-            levelIncrement = ModConfig.get().bottles.xpFromBrewing3;
-        }
+        int levelIncrement = ModConfig.get().bottles.xpFromBrewing;
 
         for (int i = 0; i < 3; ++i) {
             ItemStack potion = slots.get(i);
@@ -75,12 +69,7 @@ public abstract class BrewingStandMixin extends LockableContainerBlockEntity {
                 || !ingredient.contains(MyComponents.XP_COMPONENT))
             return;
 
-        int levelIncrement = ModConfig.get().bottles.xpFromBrewing1;
-        if (ingredient.isOf(Xpstorage.xp_book2)) {
-            levelIncrement = ModConfig.get().bottles.xpFromBrewing2;
-        } else if (ingredient.isOf(Xpstorage.xp_book3)) {
-            levelIncrement = ModConfig.get().bottles.xpFromBrewing3;
-        }
+        int levelIncrement = ModConfig.get().bottles.xpFromBrewing;
 
         for (int i = 0; i < 3; ++i) {
             ItemStack potion = slots.get(i);

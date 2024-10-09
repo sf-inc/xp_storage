@@ -1,6 +1,0 @@
-{
-  "parent": "item/generated",
-  "textures": {
-    "layer0": "xp_storage:item/xp_book2"
-  }
-}

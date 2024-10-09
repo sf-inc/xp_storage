@@ -14,9 +14,16 @@ import org.ladysnake.cca.api.v3.item.ItemComponentInitializer;
 import org.ladysnake.cca.api.v3.item.ItemComponentMigrationRegistry;
 
 public final class MyComponents implements EntityComponentInitializer, ItemComponentInitializer {
+    private static final Identifier BOOK_COMPONENT_ID = Identifier.of(Xpstorage.MOD_ID, "book_component");
     private static final Identifier XP_COMPONENT_ID = Identifier.of(Xpstorage.MOD_ID, "xp_component");
     public static final ComponentKey<ExperienceComponent> XP_COMPONENT_CC =
             ComponentRegistry.getOrCreate(XP_COMPONENT_ID, ExperienceComponent.class);
+
+    public static final ComponentType<BookData> BOOK_COMPONENT = Registry.register(
+            Registries.DATA_COMPONENT_TYPE,
+            BOOK_COMPONENT_ID,
+            ComponentType.<BookData>builder().codec(BookData.CODEC).build()
+    );
 
     public static final ComponentType<XpAmountData> XP_COMPONENT = Registry.register(
             Registries.DATA_COMPONENT_TYPE,
