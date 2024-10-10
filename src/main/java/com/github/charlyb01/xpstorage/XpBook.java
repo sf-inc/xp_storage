@@ -17,7 +17,7 @@ import net.minecraft.world.World;
 
 import java.util.List;
 
-public class XpBook extends Item implements BookInfo {
+public class XpBook extends Item {
     public XpBook() {
         super(new Item.Settings()
                 .maxCount(1)
@@ -30,12 +30,12 @@ public class XpBook extends Item implements BookInfo {
     public void appendTooltip(ItemStack stack, Item.TooltipContext context, List<Text> tooltip, TooltipType type) {
         XpAmountData xpAmountData = stack.getOrDefault(MyComponents.XP_COMPONENT, XpAmountData.EMPTY);
         final int bookLevel = xpAmountData.level();
-        tooltip.add(Text.translatable("item.xp_storage.xp_books.tooltip", bookLevel, this.getMaxXpLevel(stack))
+        tooltip.add(Text.translatable("item.xp_storage.xp_books.tooltip", bookLevel, getMaxXpLevel(stack))
                 .formatted(Formatting.GRAY));
 
         if (ModConfig.get().cosmetic.bookTooltip) {
             final int bookExperience = xpAmountData.amount();
-            tooltip.add(Text.translatable("item.xp_storage.xp_books.advanced_tooltip", bookExperience, this.getMaxXpAmount(stack))
+            tooltip.add(Text.translatable("item.xp_storage.xp_books.advanced_tooltip", bookExperience, getMaxXpAmount(stack))
                     .formatted(Formatting.GRAY).formatted(Formatting.ITALIC));
         }
     }
@@ -44,19 +44,19 @@ public class XpBook extends Item implements BookInfo {
     public boolean hasGlint(ItemStack stack) {
         XpAmountData xpAmountData = stack.getOrDefault(MyComponents.XP_COMPONENT, XpAmountData.EMPTY);
         final int bookExperience = xpAmountData.amount();
-        return (bookExperience / (float) this.getMaxXpAmount(stack)) * 100 >= ModConfig.get().cosmetic.glint;
+        return (bookExperience / (float) getMaxXpAmount(stack)) * 100 >= ModConfig.get().cosmetic.glint;
     }
 
     @Override
     public int getItemBarColor(ItemStack stack) {
-        return ModConfig.get().cosmetic.colorBar;
+        return ModConfig.get().books.bookList.get(getBookLevel(stack)).barColor;
     }
 
     @Override
     public int getItemBarStep(ItemStack stack) {
         XpAmountData xpAmountData = stack.getOrDefault(MyComponents.XP_COMPONENT, XpAmountData.EMPTY);
         final int bookExperience = xpAmountData.amount();
-        return Math.round((bookExperience * 13) / (float) this.getMaxXpAmount(stack));
+        return Math.round((bookExperience * 13) / (float) getMaxXpAmount(stack));
     }
 
     @Override
@@ -72,8 +72,8 @@ public class XpBook extends Item implements BookInfo {
         final int bookExperience = xpAmountData.amount();
         int playerExperience = Utils.getPlayerExperience(user);
 
-        final int maxExperience = this.getMaxXpAmount(stack);
-        final int maxLevel = this.getMaxXpLevel(stack);
+        final int maxExperience = getMaxXpAmount(stack);
+        final int maxLevel = getMaxXpLevel(stack);
 
         if (world.isClient) {
             // Play sound when filling
@@ -83,7 +83,7 @@ public class XpBook extends Item implements BookInfo {
         } else {
             // Empty / Fill
             if (user.isSneaking()) {
-                final int retrievedExperience = Math.round(bookExperience * (this.getXpFromUsing(stack) / 100.0F));
+                final int retrievedExperience = Math.round(bookExperience * (getXpFromUsing(stack) / 100.0F));
                 ExperienceOrbEntity.spawn((ServerWorld) world, user.getPos(), retrievedExperience);
                 stack.set(MyComponents.XP_COMPONENT, XpAmountData.EMPTY);
             } else {
@@ -102,23 +102,24 @@ public class XpBook extends Item implements BookInfo {
         return new TypedActionResult<>(ActionResult.SUCCESS, user.getStackInHand(hand));
     }
 
-    @Override
-    public int getBookLevel(ItemStack stack) {
-        return stack.getOrDefault(MyComponents.BOOK_COMPONENT, BookData.ZERO).level();
+    public static int getBookLevel(ItemStack stack) {
+        return Math.min(stack.getOrDefault(MyComponents.BOOK_COMPONENT, BookData.ZERO).level(),
+                ModConfig.get().books.bookList.size() - 1);
     }
 
-    @Override
-    public int getMaxXpLevel(ItemStack stack) {
-        return ModConfig.get().books.book.capacity;
+    public static int getMaxXpLevel(ItemStack stack) {
+        return ModConfig.get().books.bookList.get(getBookLevel(stack)).capacity;
     }
 
-    @Override
-    public int getMaxXpAmount(ItemStack stack) {
-        return Utils.getExperienceToLevel(this.getMaxXpLevel(stack));
+    public static int getMaxXpAmount(ItemStack stack) {
+        return Utils.getExperienceToLevel(getMaxXpLevel(stack));
     }
 
-    @Override
-    public int getXpFromUsing(ItemStack stack) {
-        return ModConfig.get().books.book.xpFromUsing;
+    public static int getXpFromUsing(ItemStack stack) {
+        return ModConfig.get().books.bookList.get(getBookLevel(stack)).xpFromUsing;
+    }
+
+    public static int getXpFromBrewing(ItemStack stack) {
+        return ModConfig.get().books.bookList.get(getBookLevel(stack)).xpFromBrewing;
     }
 }

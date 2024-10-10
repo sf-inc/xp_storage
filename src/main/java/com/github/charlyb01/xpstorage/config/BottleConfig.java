@@ -10,13 +10,4 @@ public class BottleConfig implements ConfigData {
 
     @ConfigEntry.BoundedDiscrete(min = 1, max = 100)
     public int maxLevel = 30;
-
-    @ConfigEntry.BoundedDiscrete(min = 1, max = 100)
-    public int xpFromBrewing = 1;
-
-    @ConfigEntry.BoundedDiscrete(min = 1, max = 100)
-    public int xpFromBrewing2 = 3;
-
-    @ConfigEntry.BoundedDiscrete(min = 1, max = 100)
-    public int xpFromBrewing3 = 10;
 }

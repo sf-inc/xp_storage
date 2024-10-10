@@ -36,7 +36,7 @@ public abstract class BrewingStandMixin extends LockableContainerBlockEntity {
             return;
 
         final int bookExperience = ingredient.get(MyComponents.XP_COMPONENT).amount();
-        int levelIncrement = ModConfig.get().bottles.xpFromBrewing;
+        int levelIncrement = XpBook.getXpFromBrewing(ingredient);
 
         for (int i = 0; i < 3; ++i) {
             ItemStack potion = slots.get(i);
@@ -69,7 +69,7 @@ public abstract class BrewingStandMixin extends LockableContainerBlockEntity {
                 || !ingredient.contains(MyComponents.XP_COMPONENT))
             return;
 
-        int levelIncrement = ModConfig.get().bottles.xpFromBrewing;
+        int levelIncrement = XpBook.getXpFromBrewing(ingredient);
 
         for (int i = 0; i < 3; ++i) {
             ItemStack potion = slots.get(i);

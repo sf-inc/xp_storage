@@ -12,8 +12,4 @@ public class CosmeticConfig implements ConfigData {
 
     @ConfigEntry.BoundedDiscrete(min = 0, max = 100)
     public int glint = 100;
-
-    @ConfigEntry.ColorPicker
-    @ConfigEntry.Gui.RequiresRestart
-    public int colorBar = Integer.parseInt("a1fbe8", 16);
 }
