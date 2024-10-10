@@ -49,7 +49,9 @@ public class XpBook extends Item {
 
     @Override
     public int getItemBarColor(ItemStack stack) {
-        return ModConfig.get().books.bookList.get(getBookLevel(stack)).barColor;
+        int bookLevel = getBookLevel(stack);
+        return bookLevel > 0 ? ModConfig.get().books.bookUpgrades.get(bookLevel - 1).barColor
+                : ModConfig.get().books.baseBook.barColor;
     }
 
     @Override
@@ -104,11 +106,13 @@ public class XpBook extends Item {
 
     public static int getBookLevel(ItemStack stack) {
         return Math.min(stack.getOrDefault(MyComponents.BOOK_COMPONENT, BookData.ZERO).level(),
-                ModConfig.get().books.bookList.size() - 1);
+                ModConfig.get().books.bookUpgrades.size());
     }
 
     public static int getMaxXpLevel(ItemStack stack) {
-        return ModConfig.get().books.bookList.get(getBookLevel(stack)).capacity;
+        int bookLevel = getBookLevel(stack);
+        return bookLevel > 0 ? ModConfig.get().books.bookUpgrades.get(bookLevel - 1).capacity
+                : ModConfig.get().books.baseBook.capacity;
     }
 
     public static int getMaxXpAmount(ItemStack stack) {
@@ -116,10 +120,14 @@ public class XpBook extends Item {
     }
 
     public static int getXpFromUsing(ItemStack stack) {
-        return ModConfig.get().books.bookList.get(getBookLevel(stack)).xpFromUsing;
+        int bookLevel = getBookLevel(stack);
+        return bookLevel > 0 ? ModConfig.get().books.bookUpgrades.get(bookLevel - 1).xpFromUsing
+                : ModConfig.get().books.baseBook.xpFromUsing;
     }
 
     public static int getXpFromBrewing(ItemStack stack) {
-        return ModConfig.get().books.bookList.get(getBookLevel(stack)).xpFromBrewing;
+        int bookLevel = getBookLevel(stack);
+        return bookLevel > 0 ? ModConfig.get().books.bookUpgrades.get(bookLevel - 1).xpFromBrewing
+                : ModConfig.get().books.baseBook.xpFromBrewing;
     }
 }

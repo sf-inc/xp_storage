@@ -8,34 +8,48 @@ import java.util.List;
 
 @Config(name = "books")
 public class BookConfig implements ConfigData {
-    public List<Book> bookList = List.of(
-            new Book(30, 85, 1, Integer.parseInt("a1fbe8", 16)),
-            new Book(42, 90, 3, Integer.parseInt("5a575a", 16)),
-            new Book(69, 95, 10, Integer.parseInt("e0e277", 16))
+    @ConfigEntry.Gui.CollapsibleObject
+    public Book baseBook = new Book();
+
+    public List<BookUpgrade> bookUpgrades = List.of(
+            new BookUpgrade(30, 90, 3, Integer.parseInt("a1fbe8", 16), "minecraft:diamond"),
+            new BookUpgrade(50, 95, 5, Integer.parseInt("5a575a", 16), "minecraft:netherite_ingot"),
+            new BookUpgrade(100, 100, 10, Integer.parseInt("e0e277", 16), "minecraft:nether_star")
     );
 
     public static class Book {
         @ConfigEntry.BoundedDiscrete(min = 10, max = 100)
-        public int capacity;
+        public int capacity = 15;
+        @ConfigEntry.BoundedDiscrete(min = 50, max = 100)
+        public int xpFromUsing = 85;
+        @ConfigEntry.BoundedDiscrete(min = 1, max = 100)
+        public int xpFromBrewing = 1;
+        @ConfigEntry.ColorPicker
+        public int barColor = Integer.parseInt("1c53a8", 16);
+    }
 
+    public static class BookUpgrade {
+        @ConfigEntry.BoundedDiscrete(min = 10, max = 100)
+        public int capacity;
         @ConfigEntry.BoundedDiscrete(min = 50, max = 100)
         public int xpFromUsing;
-
         @ConfigEntry.BoundedDiscrete(min = 1, max = 100)
         public int xpFromBrewing;
-
         @ConfigEntry.ColorPicker
         public int barColor;
+        public String item;
 
-        public Book(final int capacity, final int xpFromUsing, final int xpFromBrewing, final int barColor) {
+        public BookUpgrade(final int capacity, final int xpFromUsing, final int xpFromBrewing, final int barColor,
+                           final String item) {
             this.capacity = capacity;
             this.xpFromUsing = xpFromUsing;
             this.xpFromBrewing = xpFromBrewing;
             this.barColor = barColor;
+            this.item = item;
         }
 
-        public Book() {
-            this(10,100,1,Integer.parseInt("ffffff", 16));
+        public BookUpgrade() {
+            this(10, 100, 1, Integer.parseInt("ffffff", 16), "minecraft:diamond");
         }
     }
 }
