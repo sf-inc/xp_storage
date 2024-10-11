@@ -1,10 +1,17 @@
 {
   "item.xp_storage.crystallized_lapis": "Crystallized Lapis",
+  "item.xp_storage.xp_book_upgrade_smithing_template": "Smithing Template",
+  "item.xp_storage.smithing_template.xp_book_upgrade.additions_slot_description": "Add diamond, netherite ingot or nether star",
+  "item.xp_storage.smithing_template.xp_book_upgrade.applies_to": "XP Book",
+  "item.xp_storage.smithing_template.xp_book_upgrade.base_slot_description": "Add an XP Book",
+  "item.xp_storage.smithing_template.xp_book_upgrade.ingredients": "Diamond, Netherite Ingot & Nether Star",
   "item.xp_storage.xp_book": "XP Book",
   "item.xp_storage.xp_books.tooltip": "%1$s / %2$s levels stored",
   "item.xp_storage.xp_books.advanced_tooltip": "%1$s / %2$s experience stored",
   "item.xp_storage.experience_bottle.tooltip.classic": "The classic one",
   "item.xp_storage.experience_bottle.tooltip.amount": "%1$s levels stored",
+
+  "upgrade.xp_storage.xp_book_upgrade": "XP Book Upgrade",
 
   "text.autoconfig.xp_storage.title": "XP Storage Configs",
 

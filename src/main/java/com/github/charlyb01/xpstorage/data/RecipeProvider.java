@@ -43,6 +43,26 @@ public class RecipeProvider extends FabricRecipeProvider {
                         FabricRecipeProvider.conditionsFromItem(ItemRegistry.CRYSTALLIZED_LAPIS))
                 .offerTo(exporter);
 
+        ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ItemRegistry.XP_BOOK_UPGRADE)
+                .pattern("lll")
+                .pattern("ldl")
+                .pattern("lll")
+                .input('l', ItemRegistry.CRYSTALLIZED_LAPIS)
+                .input('d', Items.DIAMOND)
+                .criterion(FabricRecipeProvider.hasItem(ItemRegistry.CRYSTALLIZED_LAPIS),
+                        FabricRecipeProvider.conditionsFromItem(ItemRegistry.CRYSTALLIZED_LAPIS))
+                .offerTo(exporter);
+
+        ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ItemRegistry.XP_BOOK_UPGRADE, 2)
+                .pattern(" l ")
+                .pattern("lul")
+                .pattern(" l ")
+                .input('l', ItemRegistry.CRYSTALLIZED_LAPIS)
+                .input('u', ItemRegistry.XP_BOOK_UPGRADE)
+                .criterion(FabricRecipeProvider.hasItem(ItemRegistry.CRYSTALLIZED_LAPIS),
+                        FabricRecipeProvider.conditionsFromItem(ItemRegistry.CRYSTALLIZED_LAPIS))
+                .offerTo(exporter, getItemPath(ItemRegistry.XP_BOOK_UPGRADE) + "_duplication");
+
         offerXpBookUpgradeRecipe(exporter, Items.DIAMOND, 0, 30, 90, 3, Integer.parseInt("a1fbe8", 16));
         offerXpBookUpgradeRecipe(exporter, Items.NETHERITE_INGOT, 1, 50, 95, 5, Integer.parseInt("5a575a", 16));
         offerXpBookUpgradeRecipe(exporter, Items.NETHER_STAR, 2, 100, 100, 10, Integer.parseInt("e0e277", 16));
@@ -53,7 +73,7 @@ public class RecipeProvider extends FabricRecipeProvider {
         XpBookUpgradeRecipeBuilder
                 .create(
                         RecipeCategory.MISC,
-                        Ingredient.ofItems(Items.LEATHER), // Placeholder
+                        Ingredient.ofItems(ItemRegistry.XP_BOOK_UPGRADE),
                         Ingredient.ofItems(ItemRegistry.XP_BOOK),
                         Ingredient.ofItems(ingredient),
                         baseLevel,

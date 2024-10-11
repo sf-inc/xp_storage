@@ -12,6 +12,6 @@
   "resultXpFromBrewing": 5,
   "resultXpFromUsing": 95,
   "template": {
-    "item": "minecraft:leather"
+    "item": "xp_storage:xp_book_upgrade_smithing_template"
   }
 }
