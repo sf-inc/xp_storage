@@ -3,15 +3,15 @@
   "criteria": {
     "has_the_recipe": {
       "conditions": {
-        "recipe": "xp_storage:xp_book2"
+        "recipe": "xp_storage:nether_star_xp_book_upgrade"
       },
       "trigger": "minecraft:recipe_unlocked"
     },
-    "has_xp_book": {
+    "has_xp_book_upgrade_ingredient": {
       "conditions": {
         "items": [
           {
-            "items": "xp_storage:xp_book"
+            "items": "minecraft:nether_star"
           }
         ]
       },
@@ -21,12 +21,12 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_xp_book"
+      "has_xp_book_upgrade_ingredient"
     ]
   ],
   "rewards": {
     "recipes": [
-      "xp_storage:xp_book2"
+      "xp_storage:nether_star_xp_book_upgrade"
     ]
   }
 }

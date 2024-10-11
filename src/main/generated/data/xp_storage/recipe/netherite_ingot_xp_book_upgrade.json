@@ -1,0 +1,17 @@
+{
+  "type": "xp_storage:xp_book_upgrade",
+  "addition": {
+    "item": "minecraft:netherite_ingot"
+  },
+  "base": {
+    "item": "xp_storage:xp_book"
+  },
+  "baseLevel": 1,
+  "resultBarColor": 5920602,
+  "resultCapacity": 50,
+  "resultXpFromBrewing": 5,
+  "resultXpFromUsing": 95,
+  "template": {
+    "item": "minecraft:leather"
+  }
+}

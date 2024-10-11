@@ -1,0 +1,17 @@
+{
+  "type": "xp_storage:xp_book_upgrade",
+  "addition": {
+    "item": "minecraft:nether_star"
+  },
+  "base": {
+    "item": "xp_storage:xp_book"
+  },
+  "baseLevel": 2,
+  "resultBarColor": 14738039,
+  "resultCapacity": 100,
+  "resultXpFromBrewing": 10,
+  "resultXpFromUsing": 100,
+  "template": {
+    "item": "minecraft:leather"
+  }
+}

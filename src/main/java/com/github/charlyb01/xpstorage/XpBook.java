@@ -21,7 +21,7 @@ public class XpBook extends Item {
     public XpBook() {
         super(new Item.Settings()
                 .maxCount(1)
-                .component(MyComponents.BOOK_COMPONENT, BookData.ZERO)
+                .component(MyComponents.BOOK_COMPONENT, BookData.getDefault())
                 .component(MyComponents.XP_COMPONENT, XpAmountData.EMPTY)
         );
     }
@@ -49,9 +49,7 @@ public class XpBook extends Item {
 
     @Override
     public int getItemBarColor(ItemStack stack) {
-        int bookLevel = getBookLevel(stack);
-        return bookLevel > 0 ? ModConfig.get().books.bookUpgrades.get(bookLevel - 1).barColor
-                : ModConfig.get().books.baseBook.barColor;
+        return stack.getOrDefault(MyComponents.BOOK_COMPONENT, BookData.getDefault()).barColor();
     }
 
     @Override
@@ -105,14 +103,11 @@ public class XpBook extends Item {
     }
 
     public static int getBookLevel(ItemStack stack) {
-        return Math.min(stack.getOrDefault(MyComponents.BOOK_COMPONENT, BookData.ZERO).level(),
-                ModConfig.get().books.bookUpgrades.size());
+        return stack.getOrDefault(MyComponents.BOOK_COMPONENT, BookData.getDefault()).level();
     }
 
     public static int getMaxXpLevel(ItemStack stack) {
-        int bookLevel = getBookLevel(stack);
-        return bookLevel > 0 ? ModConfig.get().books.bookUpgrades.get(bookLevel - 1).capacity
-                : ModConfig.get().books.baseBook.capacity;
+        return stack.getOrDefault(MyComponents.BOOK_COMPONENT, BookData.getDefault()).capacity();
     }
 
     public static int getMaxXpAmount(ItemStack stack) {
@@ -120,14 +115,10 @@ public class XpBook extends Item {
     }
 
     public static int getXpFromUsing(ItemStack stack) {
-        int bookLevel = getBookLevel(stack);
-        return bookLevel > 0 ? ModConfig.get().books.bookUpgrades.get(bookLevel - 1).xpFromUsing
-                : ModConfig.get().books.baseBook.xpFromUsing;
+        return stack.getOrDefault(MyComponents.BOOK_COMPONENT, BookData.getDefault()).xpFromUsing();
     }
 
     public static int getXpFromBrewing(ItemStack stack) {
-        int bookLevel = getBookLevel(stack);
-        return bookLevel > 0 ? ModConfig.get().books.bookUpgrades.get(bookLevel - 1).xpFromBrewing
-                : ModConfig.get().books.baseBook.xpFromBrewing;
+        return stack.getOrDefault(MyComponents.BOOK_COMPONENT, BookData.getDefault()).xpFromBrewing();
     }
 }

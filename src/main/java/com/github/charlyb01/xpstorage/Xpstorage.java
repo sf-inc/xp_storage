@@ -1,6 +1,7 @@
 package com.github.charlyb01.xpstorage;
 
 import com.github.charlyb01.xpstorage.config.ModConfig;
+import com.github.charlyb01.xpstorage.recipe.RecipeRegistry;
 import me.shedaniel.autoconfig.AutoConfig;
 import me.shedaniel.autoconfig.serializer.GsonConfigSerializer;
 import me.shedaniel.autoconfig.serializer.PartitioningSerializer;
@@ -15,13 +16,19 @@ import net.minecraft.util.Identifier;
 
 public class Xpstorage implements ModInitializer {
     public static final String MOD_ID = "xp_storage";
+    public static boolean areConfigsInit = false;
 
     public static final Item CRYSTALLIZED_LAPIS = new Item(new Item.Settings());
     public static final XpBook xp_book = new XpBook();
 
     @Override
     public void onInitialize() {
-        AutoConfig.register(ModConfig.class, PartitioningSerializer.wrap(GsonConfigSerializer::new));
+        if (!areConfigsInit) {
+            AutoConfig.register(ModConfig.class, PartitioningSerializer.wrap(GsonConfigSerializer::new));
+            areConfigsInit = true;
+        }
+
+        RecipeRegistry.init();
 
         Registry.register(Registries.ITEM, id("crystallized_lapis"), CRYSTALLIZED_LAPIS);
         Registry.register(Registries.ITEM, id("xp_book"), xp_book);
