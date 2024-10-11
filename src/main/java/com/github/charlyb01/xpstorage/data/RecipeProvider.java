@@ -33,12 +33,11 @@ public class RecipeProvider extends FabricRecipeProvider {
                 .offerTo(exporter);
 
         ShapedRecipeJsonBuilder.create(RecipeCategory.TOOLS, Xpstorage.xp_book)
-                .pattern(" d ")
+                .pattern(" c ")
                 .pattern("cbc")
                 .pattern(" c ")
                 .input('c', Xpstorage.CRYSTALLIZED_LAPIS)
                 .input('b', Items.BOOK)
-                .input('d', Items.DIAMOND)
                 .criterion(FabricRecipeProvider.hasItem(Xpstorage.CRYSTALLIZED_LAPIS),
                         FabricRecipeProvider.conditionsFromItem(Xpstorage.CRYSTALLIZED_LAPIS))
                 .offerTo(exporter);

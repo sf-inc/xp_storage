@@ -7,13 +7,10 @@
     },
     "c": {
       "item": "xp_storage:crystallized_lapis"
-    },
-    "d": {
-      "item": "minecraft:diamond"
     }
   },
   "pattern": [
-    " d ",
+    " c ",
     "cbc",
     " c "
   ],
