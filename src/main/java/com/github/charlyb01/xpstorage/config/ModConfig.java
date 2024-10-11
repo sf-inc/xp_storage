@@ -1,6 +1,6 @@
 package com.github.charlyb01.xpstorage.config;
 
-import com.github.charlyb01.xpstorage.Xpstorage;
+import com.github.charlyb01.xpstorage.XpStorage;
 import me.shedaniel.autoconfig.AutoConfig;
 import me.shedaniel.autoconfig.annotation.Config;
 import me.shedaniel.autoconfig.annotation.ConfigEntry;
@@ -22,9 +22,9 @@ public class ModConfig extends PartitioningSerializer.GlobalData {
     public CosmeticConfig cosmetic = new CosmeticConfig();
 
     public static ModConfig get() {
-        if (!Xpstorage.areConfigsInit) {
+        if (!XpStorage.areConfigsInit) {
             AutoConfig.register(ModConfig.class, PartitioningSerializer.wrap(GsonConfigSerializer::new));
-            Xpstorage.areConfigsInit = true;
+            XpStorage.areConfigsInit = true;
         }
 
         return AutoConfig.getConfigHolder(ModConfig.class).getConfig();

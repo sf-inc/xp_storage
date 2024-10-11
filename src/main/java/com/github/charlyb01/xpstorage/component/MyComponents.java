@@ -1,6 +1,6 @@
 package com.github.charlyb01.xpstorage.component;
 
-import com.github.charlyb01.xpstorage.Xpstorage;
+import com.github.charlyb01.xpstorage.XpStorage;
 import net.minecraft.component.ComponentType;
 import net.minecraft.entity.projectile.thrown.ExperienceBottleEntity;
 import net.minecraft.registry.Registries;
@@ -14,8 +14,8 @@ import org.ladysnake.cca.api.v3.item.ItemComponentInitializer;
 import org.ladysnake.cca.api.v3.item.ItemComponentMigrationRegistry;
 
 public final class MyComponents implements EntityComponentInitializer, ItemComponentInitializer {
-    private static final Identifier BOOK_COMPONENT_ID = Identifier.of(Xpstorage.MOD_ID, "book_component");
-    private static final Identifier XP_COMPONENT_ID = Identifier.of(Xpstorage.MOD_ID, "xp_component");
+    private static final Identifier BOOK_COMPONENT_ID = Identifier.of(XpStorage.MOD_ID, "book_component");
+    private static final Identifier XP_COMPONENT_ID = Identifier.of(XpStorage.MOD_ID, "xp_component");
     public static final ComponentKey<ExperienceComponent> XP_COMPONENT_CC =
             ComponentRegistry.getOrCreate(XP_COMPONENT_ID, ExperienceComponent.class);
 

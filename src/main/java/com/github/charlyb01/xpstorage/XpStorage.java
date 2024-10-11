@@ -9,7 +9,7 @@ import me.shedaniel.autoconfig.serializer.PartitioningSerializer;
 import net.fabricmc.api.ModInitializer;
 import net.minecraft.util.Identifier;
 
-public class Xpstorage implements ModInitializer {
+public class XpStorage implements ModInitializer {
     public static final String MOD_ID = "xp_storage";
     public static boolean areConfigsInit = false;
 

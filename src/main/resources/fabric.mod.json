@@ -17,10 +17,10 @@
   "environment": "*",
   "entrypoints": {
     "client": [
-      "com.github.charlyb01.xpstorage.client.XpstorageClient"
+      "com.github.charlyb01.xpstorage.client.XpStorageClient"
     ],
     "main": [
-      "com.github.charlyb01.xpstorage.Xpstorage"
+      "com.github.charlyb01.xpstorage.XpStorage"
     ],
     "cardinal-components": [
       "com.github.charlyb01.xpstorage.component.MyComponents"

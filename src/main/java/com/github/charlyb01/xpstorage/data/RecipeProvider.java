@@ -1,6 +1,6 @@
 package com.github.charlyb01.xpstorage.data;
 
-import com.github.charlyb01.xpstorage.Xpstorage;
+import com.github.charlyb01.xpstorage.XpStorage;
 import com.github.charlyb01.xpstorage.item.ItemRegistry;
 import com.github.charlyb01.xpstorage.recipe.XpBookUpgradeRecipeBuilder;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
@@ -63,6 +63,6 @@ public class RecipeProvider extends FabricRecipeProvider {
                         resultBarColor
                 )
                 .criterion("has_xp_book_upgrade_ingredient", conditionsFromItem(ingredient))
-                .offerTo(exporter, Xpstorage.id(getItemPath(ingredient) + "_xp_book_upgrade"));
+                .offerTo(exporter, XpStorage.id(getItemPath(ingredient) + "_xp_book_upgrade"));
     }
 }
