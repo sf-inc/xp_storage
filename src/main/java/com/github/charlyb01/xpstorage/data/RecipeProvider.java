@@ -1,6 +1,7 @@
 package com.github.charlyb01.xpstorage.data;
 
 import com.github.charlyb01.xpstorage.Xpstorage;
+import com.github.charlyb01.xpstorage.item.ItemRegistry;
 import com.github.charlyb01.xpstorage.recipe.XpBookUpgradeRecipeBuilder;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
@@ -22,7 +23,7 @@ public class RecipeProvider extends FabricRecipeProvider {
 
     @Override
     public void generate(RecipeExporter exporter) {
-        ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, Xpstorage.CRYSTALLIZED_LAPIS, 2)
+        ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ItemRegistry.CRYSTALLIZED_LAPIS, 2)
                 .pattern(" l ")
                 .pattern("lal")
                 .pattern(" l ")
@@ -32,14 +33,14 @@ public class RecipeProvider extends FabricRecipeProvider {
                         FabricRecipeProvider.conditionsFromItem(NumberRange.IntRange.atLeast(4), Items.LAPIS_LAZULI))
                 .offerTo(exporter);
 
-        ShapedRecipeJsonBuilder.create(RecipeCategory.TOOLS, Xpstorage.xp_book)
+        ShapedRecipeJsonBuilder.create(RecipeCategory.TOOLS, ItemRegistry.XP_BOOK)
                 .pattern(" c ")
                 .pattern("cbc")
                 .pattern(" c ")
-                .input('c', Xpstorage.CRYSTALLIZED_LAPIS)
+                .input('c', ItemRegistry.CRYSTALLIZED_LAPIS)
                 .input('b', Items.BOOK)
-                .criterion(FabricRecipeProvider.hasItem(Xpstorage.CRYSTALLIZED_LAPIS),
-                        FabricRecipeProvider.conditionsFromItem(Xpstorage.CRYSTALLIZED_LAPIS))
+                .criterion(FabricRecipeProvider.hasItem(ItemRegistry.CRYSTALLIZED_LAPIS),
+                        FabricRecipeProvider.conditionsFromItem(ItemRegistry.CRYSTALLIZED_LAPIS))
                 .offerTo(exporter);
 
         offerXpBookUpgradeRecipe(exporter, Items.DIAMOND, 0, 30, 90, 3, Integer.parseInt("a1fbe8", 16));
@@ -53,7 +54,7 @@ public class RecipeProvider extends FabricRecipeProvider {
                 .create(
                         RecipeCategory.MISC,
                         Ingredient.ofItems(Items.LEATHER), // Placeholder
-                        Ingredient.ofItems(Xpstorage.xp_book),
+                        Ingredient.ofItems(ItemRegistry.XP_BOOK),
                         Ingredient.ofItems(ingredient),
                         baseLevel,
                         resultCapacity,

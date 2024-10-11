@@ -1,9 +1,9 @@
 package com.github.charlyb01.xpstorage.recipe;
 
 import com.github.charlyb01.xpstorage.XpBook;
-import com.github.charlyb01.xpstorage.Xpstorage;
 import com.github.charlyb01.xpstorage.component.BookData;
 import com.github.charlyb01.xpstorage.component.MyComponents;
+import com.github.charlyb01.xpstorage.item.ItemRegistry;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
@@ -65,7 +65,7 @@ public class XpBookUpgradeRecipe implements SmithingRecipe {
 
     @Override
     public ItemStack getResult(RegistryWrapper.WrapperLookup registriesLookup) {
-        return new ItemStack(Xpstorage.xp_book);
+        return new ItemStack(ItemRegistry.XP_BOOK);
     }
 
     @Override
