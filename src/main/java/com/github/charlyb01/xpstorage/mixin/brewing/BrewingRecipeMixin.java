@@ -1,6 +1,6 @@
 package com.github.charlyb01.xpstorage.mixin.brewing;
 
-import com.github.charlyb01.xpstorage.XpBook;
+import com.github.charlyb01.xpstorage.item.XpBook;
 import com.github.charlyb01.xpstorage.config.ModConfig;
 import com.llamalad7.mixinextras.injector.ModifyReturnValue;
 import net.minecraft.item.ItemStack;

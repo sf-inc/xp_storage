@@ -1,5 +1,6 @@
-package com.github.charlyb01.xpstorage;
+package com.github.charlyb01.xpstorage.item;
 
+import com.github.charlyb01.xpstorage.Utils;
 import com.github.charlyb01.xpstorage.component.BookData;
 import com.github.charlyb01.xpstorage.component.MyComponents;
 import com.github.charlyb01.xpstorage.component.XpAmountData;

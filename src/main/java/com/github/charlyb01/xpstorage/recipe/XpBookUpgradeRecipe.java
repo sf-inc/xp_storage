@@ -1,6 +1,6 @@
 package com.github.charlyb01.xpstorage.recipe;
 
-import com.github.charlyb01.xpstorage.XpBook;
+import com.github.charlyb01.xpstorage.item.XpBook;
 import com.github.charlyb01.xpstorage.component.BookData;
 import com.github.charlyb01.xpstorage.component.MyComponents;
 import com.github.charlyb01.xpstorage.item.ItemRegistry;

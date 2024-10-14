@@ -1,7 +1,7 @@
 package com.github.charlyb01.xpstorage.mixin.brewing;
 
 import com.github.charlyb01.xpstorage.Utils;
-import com.github.charlyb01.xpstorage.XpBook;
+import com.github.charlyb01.xpstorage.item.XpBook;
 import com.github.charlyb01.xpstorage.component.MyComponents;
 import com.github.charlyb01.xpstorage.component.XpAmountData;
 import com.github.charlyb01.xpstorage.config.ModConfig;

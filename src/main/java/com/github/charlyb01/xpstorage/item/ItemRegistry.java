@@ -1,6 +1,5 @@
 package com.github.charlyb01.xpstorage.item;
 
-import com.github.charlyb01.xpstorage.XpBook;
 import com.github.charlyb01.xpstorage.XpStorage;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.minecraft.item.Item;
