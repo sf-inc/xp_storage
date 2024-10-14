@@ -22,6 +22,7 @@ public class XpBook extends Item {
     public XpBook() {
         super(new Item.Settings()
                 .maxCount(1)
+                .rarity(Rarity.UNCOMMON)
                 .component(MyComponents.BOOK_COMPONENT, BookData.getDefault())
                 .component(MyComponents.XP_COMPONENT, XpAmountData.EMPTY)
         );
