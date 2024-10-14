@@ -4,6 +4,7 @@ import com.github.charlyb01.xpstorage.Utils;
 import com.github.charlyb01.xpstorage.component.BookData;
 import com.github.charlyb01.xpstorage.component.MyComponents;
 import com.github.charlyb01.xpstorage.component.XpAmountData;
+import com.github.charlyb01.xpstorage.config.ExperienceTooltip;
 import com.github.charlyb01.xpstorage.config.ModConfig;
 import net.minecraft.entity.ExperienceOrbEntity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -30,15 +31,21 @@ public class XpBook extends Item {
 
     @Override
     public void appendTooltip(ItemStack stack, Item.TooltipContext context, List<Text> tooltip, TooltipType type) {
+        final int bookLevel = getBookLevel(stack);
         XpAmountData xpAmountData = stack.getOrDefault(MyComponents.XP_COMPONENT, XpAmountData.EMPTY);
-        final int bookLevel = xpAmountData.level();
-        tooltip.add(Text.translatable("item.xp_storage.xp_books.tooltip", bookLevel, getMaxXpLevel(stack))
-                .formatted(Formatting.GRAY));
+        final int xpLevel = xpAmountData.level();
+        final int xpAmount = xpAmountData.amount();
 
-        if (ModConfig.get().cosmetic.bookTooltip) {
-            final int bookExperience = xpAmountData.amount();
-            tooltip.add(Text.translatable("item.xp_storage.xp_books.advanced_tooltip", bookExperience, getMaxXpAmount(stack))
-                    .formatted(Formatting.GRAY).formatted(Formatting.ITALIC));
+        tooltip.add(Text.translatable("item.xp_storage.xp_book.tooltip.upgrade", bookLevel));
+        tooltip.add(Text.translatable("item.xp_storage.tooltip")
+                .formatted(Formatting.GRAY));
+        if (!ModConfig.get().cosmetic.bookTooltip.equals(ExperienceTooltip.POINT)) {
+            tooltip.add(Text.translatable("item.xp_storage.xp_book.tooltip.level", xpLevel, getMaxXpLevel(stack))
+                    .formatted(Formatting.BLUE));
+        }
+        if (!ModConfig.get().cosmetic.bookTooltip.equals(ExperienceTooltip.LEVEL)) {
+            tooltip.add(Text.translatable("item.xp_storage.xp_book.tooltip.point", xpAmount, getMaxXpAmount(stack))
+                    .formatted(Formatting.BLUE));
         }
     }
 

@@ -6,9 +6,10 @@ import me.shedaniel.autoconfig.annotation.ConfigEntry;
 
 @Config(name = "cosmetic")
 public class CosmeticConfig implements ConfigData {
-    public boolean bookTooltip = false;
-
-    public boolean bottleTooltip = true;
+    @ConfigEntry.Gui.EnumHandler(option = ConfigEntry.Gui.EnumHandler.EnumDisplayOption.BUTTON)
+    public ExperienceTooltip bookTooltip = ExperienceTooltip.LEVEL;
+    @ConfigEntry.Gui.EnumHandler(option = ConfigEntry.Gui.EnumHandler.EnumDisplayOption.BUTTON)
+    public ExperienceTooltip bottleTooltip = ExperienceTooltip.LEVEL;
 
     @ConfigEntry.BoundedDiscrete(min = 0, max = 100)
     public int glint = 100;
