@@ -18,11 +18,10 @@
   "text.autoconfig.xp_storage.title": "XP Storage Configs",
 
   "text.autoconfig.xp_storage.category.books": "Books",
-  "text.autoconfig.xp_storage.option.books.baseBook": "XP Book",
-  "text.autoconfig.xp_storage.option.books.baseBook.capacity": "Capacity (lvl)",
-  "text.autoconfig.xp_storage.option.books.baseBook.xpFromUsing": "Experience retrieved from use (%)",
-  "text.autoconfig.xp_storage.option.books.baseBook.xpFromBrewing": "Levels added per bottle",
-  "text.autoconfig.xp_storage.option.books.baseBook.barColor": "Bar color",
+  "text.autoconfig.xp_storage.option.books.capacity": "Capacity (lvl)",
+  "text.autoconfig.xp_storage.option.books.xpFromUsing": "Experience retrieved from use (%)",
+  "text.autoconfig.xp_storage.option.books.xpFromBrewing": "Levels added per bottle",
+  "text.autoconfig.xp_storage.option.books.barColor": "Bar color",
 
   "text.autoconfig.xp_storage.category.bottles": "Bottles",
   "text.autoconfig.xp_storage.option.bottles.enableBrewing": "Enable brewing experience",
