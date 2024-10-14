@@ -11,14 +11,10 @@ import net.minecraft.util.Identifier;
 
 public class XpStorage implements ModInitializer {
     public static final String MOD_ID = "xp_storage";
-    public static boolean areConfigsInit = false;
 
     @Override
     public void onInitialize() {
-        if (!areConfigsInit) {
-            AutoConfig.register(ModConfig.class, PartitioningSerializer.wrap(GsonConfigSerializer::new));
-            areConfigsInit = true;
-        }
+        AutoConfig.register(ModConfig.class, PartitioningSerializer.wrap(GsonConfigSerializer::new));
 
         ItemRegistry.init();
         RecipeRegistry.init();
