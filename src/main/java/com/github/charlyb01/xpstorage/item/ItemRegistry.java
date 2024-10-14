@@ -47,11 +47,15 @@ public class ItemRegistry {
                     Identifier.ofVanilla("item/empty_slot_ingot"))
     );
     public static final XpBook XP_BOOK = new XpBook();
+    public static final Item XP_BOOK2 = new Item(new Item.Settings());
+    public static final Item XP_BOOK3 = new Item(new Item.Settings());
 
     public static void init() {
         Registry.register(Registries.ITEM, XpStorage.id("crystallized_lapis"), CRYSTALLIZED_LAPIS);
         Registry.register(Registries.ITEM, XpStorage.id("xp_book_upgrade_smithing_template"), XP_BOOK_UPGRADE);
         Registry.register(Registries.ITEM, XpStorage.id("xp_book"), XP_BOOK);
+        Registry.register(Registries.ITEM, XpStorage.id("xp_book2"), XP_BOOK2);
+        Registry.register(Registries.ITEM, XpStorage.id("xp_book3"), XP_BOOK3);
 
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.INGREDIENTS).register(entries -> {
             entries.addAfter(Items.LAPIS_LAZULI, CRYSTALLIZED_LAPIS);

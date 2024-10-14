@@ -2,6 +2,7 @@ package com.github.charlyb01.xpstorage.data;
 
 import com.github.charlyb01.xpstorage.XpStorage;
 import com.github.charlyb01.xpstorage.item.ItemRegistry;
+import com.github.charlyb01.xpstorage.recipe.XpBookDeprecateRecipeBuilder;
 import com.github.charlyb01.xpstorage.recipe.XpBookUpgradeRecipeBuilder;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
@@ -66,6 +67,10 @@ public class RecipeProvider extends FabricRecipeProvider {
         offerXpBookUpgradeRecipe(exporter, Items.DIAMOND, 0, 30, 90, 3, Integer.parseInt("a1fbe8", 16));
         offerXpBookUpgradeRecipe(exporter, Items.NETHERITE_INGOT, 1, 50, 95, 5, Integer.parseInt("5a575a", 16));
         offerXpBookUpgradeRecipe(exporter, Items.NETHER_STAR, 2, 100, 100, 10, Integer.parseInt("e0e277", 16));
+
+        offerXpBookDeprecateRecipe(exporter, ItemRegistry.XP_BOOK);
+        offerXpBookDeprecateRecipe(exporter, ItemRegistry.XP_BOOK2);
+        offerXpBookDeprecateRecipe(exporter, ItemRegistry.XP_BOOK3);
     }
 
     public static void offerXpBookUpgradeRecipe(RecipeExporter exporter, Item ingredient, int baseLevel, int resultCapacity,
@@ -84,5 +89,15 @@ public class RecipeProvider extends FabricRecipeProvider {
                 )
                 .criterion("has_xp_book_upgrade_ingredient", conditionsFromItem(ingredient))
                 .offerTo(exporter, XpStorage.id(getItemPath(ingredient) + "_xp_book_upgrade"));
+    }
+
+    public static void offerXpBookDeprecateRecipe(RecipeExporter exporter, Item ingredient) {
+        XpBookDeprecateRecipeBuilder
+                .create(
+                        RecipeCategory.MISC,
+                        Ingredient.ofItems(ingredient)
+                )
+                .criterion("has_deprecated_xp_book", conditionsFromItem(ingredient))
+                .offerTo(exporter, XpStorage.id(getItemPath(ingredient) + "_deprecate"));
     }
 }
