@@ -61,6 +61,7 @@ public class ItemRegistry {
             entries.addAfter(Items.LAPIS_LAZULI, CRYSTALLIZED_LAPIS);
             entries.addAfter(Items.NETHERITE_UPGRADE_SMITHING_TEMPLATE, XP_BOOK_UPGRADE);
         });
-        ItemGroupEvents.modifyEntriesEvent(ItemGroups.TOOLS).register(entries -> entries.add(XP_BOOK));
+        ItemGroupEvents.modifyEntriesEvent(ItemGroups.TOOLS).register(entries ->
+                entries.addAfter(Items.WRITABLE_BOOK, XP_BOOK));
     }
 }
