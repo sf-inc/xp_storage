@@ -4,6 +4,35 @@
 * **x.X versions** are either updates that add content or major bug fixes
 * **x.x.X versions** are either small content update (language translation, new textures, ...) or bug fixes
 
+## v1.6
+* Deprecate XP Book II and XP Book III in favor of the main XP Book
+  * You can't craft them or use them anymore
+  * No data is lost though, you can convert them to XP Book in the crafting table
+  * They will be entirely removed in a future update, this version brings a transition phase
+  * A tooltip is shown when needed to let player know the book should be updated
+  * The XP Book I becomes a XP Book but can also need an update if it has too much xp stored in it
+    (again, no xp should be lost in the process)
+* XP Book I is renamed XP Book as it will be the only item remaining
+* XP Book texture is changed, the "level indicator" is removed as there is only one item
+* Book data (capacity, xp from use, xp from brewing and bar color) uses item data component
+* Book data also includes the book level, which represents the number of upgrades it got.
+  This is the replacement for XP Book I, XP Book II, XP Book III
+* XP Book recipe is changed and removes the precious ingredient (diamond), as it has less
+  default capacity than before
+* XP Book Upgrade Smithing Template can be crafted to upgrade the book data
+  * There are three possible upgrades included in the mod, corresponding to previous
+  XP Book I, XP Book II, XP Book III data
+  * Upgrades recipes can be updated by players in datapack in order to update book data of upgrades. If books
+  are upgraded before updating the recipes, the upgraded books will keep their old custom data
+  * New recipes can be added for more XP Book upgrades
+  * The smithing ingredient, template, and every new book data can be configured in it
+  * The XP Book Upgrade Smithing Template can be duplicated with a less expensive recipe
+* XP Book has UNCOMMON rarity level
+* XP Book tooltip is enhanced to show the book level
+* XP Book and XP Bottles tooltip are updated to display a more vanillla-ish tooltip
+  * You can configure if you want them to show xp levels, xp points, or both
+  * XP Bottles without xp data don't show custom tooltip anymore
+
 ## v1.5.10
 * Fix crash on startup when number of xp book lowered
 
