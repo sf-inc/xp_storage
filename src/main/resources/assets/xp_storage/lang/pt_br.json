@@ -1,0 +1,38 @@
+{
+  "item.xp_storage.crystallized_lapis": "lápis cristalizado",
+  "item.xp_storage.xp_book_upgrade_smithing_template": "Molde de ferraria",
+  "item.xp_storage.smithing_template.xp_book_upgrade.additions_slot_description": "Adicione diamante, lingote de netherita ou estrela do nether",
+  "item.xp_storage.smithing_template.xp_book_upgrade.applies_to": "Livro de xp",
+  "item.xp_storage.smithing_template.xp_book_upgrade.base_slot_description": "Adicione um livro de xp",
+  "item.xp_storage.smithing_template.xp_book_upgrade.ingredients": "Diamante, lingote de netherita e estrela do nether",
+  "item.xp_storage.xp_book": "Livro de xp I",
+  "item.xp_storage.xp_book2": "Livro de xp II",
+  "item.xp_storage.xp_book3": "Livro de xp III",
+  "item.xp_storage.tooltip": "Experiência armazenada:",
+  "item.xp_storage.xp_book.tooltip.upgrade": "Melhoria: %1$s",
+  "item.xp_storage.xp_book.tooltip.level": "%1$s / %2$s níveis",
+  "item.xp_storage.xp_book.tooltip.point": "%1$s / %2$s pontos",
+  "item.xp_storage.xp_bottle.tooltip.level": "%1$s níveis",
+  "item.xp_storage.xp_bottle.tooltip.point": "%1$s pontos",
+  "item.xp_storage.tooltip.deprecated": "Atualização necessária!",
+  "item.xp_storage.tooltip.deprecated_how": "Coloque em uma bancada de trabalho",
+
+  "upgrade.xp_storage.xp_book_upgrade": "Melhoria do livro de xp",
+
+  "text.autoconfig.xp_storage.title": "Configurações de armazenamento de xp",
+
+  "text.autoconfig.xp_storage.category.books": "Livros",
+  "text.autoconfig.xp_storage.option.books.capacity": "Capacidade (nível)",
+  "text.autoconfig.xp_storage.option.books.xpFromUsing": "Experiência recuperada ao usar (%)",
+  "text.autoconfig.xp_storage.option.books.xpFromBrewing": "Níveis adicionados por garrafa",
+  "text.autoconfig.xp_storage.option.books.barColor": "Cor da barra",
+
+  "text.autoconfig.xp_storage.category.bottles": "Garrafas",
+  "text.autoconfig.xp_storage.option.bottles.enableBrewing": "Permitir criação de experiência",
+  "text.autoconfig.xp_storage.option.bottles.maxLevel": "Capacidade (nível)",
+
+  "text.autoconfig.xp_storage.category.cosmetic": "Cosmético",
+  "text.autoconfig.xp_storage.option.cosmetic.bookTooltip": "Exibição da dica de ferramenta dos livros armazenados",
+  "text.autoconfig.xp_storage.option.cosmetic.bottleTooltip": "Exibição da dica de ferramenta das garrafas armazenadas",
+  "text.autoconfig.xp_storage.option.cosmetic.glint": "Livros começam a brilhar (%)"
+}
