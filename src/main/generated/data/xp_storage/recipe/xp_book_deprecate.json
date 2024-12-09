@@ -1,6 +1,4 @@
 {
   "type": "xp_storage:xp_book_deprecate",
-  "base": {
-    "item": "xp_storage:xp_book"
-  }
+  "base": "xp_storage:xp_book"
 }

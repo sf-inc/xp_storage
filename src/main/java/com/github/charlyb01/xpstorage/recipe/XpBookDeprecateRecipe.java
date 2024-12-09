@@ -11,6 +11,7 @@ import net.minecraft.network.RegistryByteBuf;
 import net.minecraft.network.codec.PacketCodec;
 import net.minecraft.recipe.CraftingRecipe;
 import net.minecraft.recipe.Ingredient;
+import net.minecraft.recipe.IngredientPlacement;
 import net.minecraft.recipe.RecipeSerializer;
 import net.minecraft.recipe.book.CraftingRecipeCategory;
 import net.minecraft.recipe.input.CraftingRecipeInput;
@@ -20,7 +21,7 @@ import net.minecraft.world.World;
 public class XpBookDeprecateRecipe implements CraftingRecipe {
     final Ingredient base;
 
-    private final int BASE_LEVEL = 15;
+    private static final int BASE_LEVEL = 15;
     private static final BookData UPGRADE_1 = new BookData(1, 30, 90, 3, Integer.parseInt("a1fbe8", 16));
     private static final BookData UPGRADE_2 = new BookData(2, 50, 95, 5, Integer.parseInt("5a575a", 16));
     private static final BookData UPGRADE_3 = new BookData(3, 100, 100, 10, Integer.parseInt("e0e277", 16));
@@ -31,14 +32,10 @@ public class XpBookDeprecateRecipe implements CraftingRecipe {
 
     @Override
     public boolean matches(CraftingRecipeInput input, World world) {
-        if (input.getSize() != 1) return false;
+        if (input.size() != 1) return false;
 
         ItemStack stack = input.getStackInSlot(0);
-        if (stack.get(MyComponents.XP_COMPONENT) == null) {
-            return false;
-        }
-
-        XpAmountData xpAmountData = stack.getOrDefault(MyComponents.XP_COMPONENT, XpAmountData.EMPTY);
+       XpAmountData xpAmountData = stack.getOrDefault(MyComponents.XP_COMPONENT, XpAmountData.EMPTY);
         return xpAmountData.level() > BASE_LEVEL;
     }
 
@@ -65,17 +62,12 @@ public class XpBookDeprecateRecipe implements CraftingRecipe {
     }
 
     @Override
-    public boolean fits(int width, int height) {
-        return width >= 1 && height >= 1;
+    public IngredientPlacement getIngredientPlacement() {
+        return IngredientPlacement.NONE;
     }
 
     @Override
-    public ItemStack getResult(RegistryWrapper.WrapperLookup registriesLookup) {
-        return new ItemStack(ItemRegistry.XP_BOOK);
-    }
-
-    @Override
-    public RecipeSerializer<?> getSerializer() {
+    public RecipeSerializer<XpBookDeprecateRecipe> getSerializer() {
         return RecipeRegistry.XP_BOOK_DEPRECATE;
     }
 
@@ -87,12 +79,14 @@ public class XpBookDeprecateRecipe implements CraftingRecipe {
     public static class Serializer implements RecipeSerializer<XpBookDeprecateRecipe> {
         private static final MapCodec<XpBookDeprecateRecipe> CODEC = RecordCodecBuilder.mapCodec(
                 instance -> instance.group(
-                                Ingredient.ALLOW_EMPTY_CODEC.fieldOf("base").forGetter(recipe -> recipe.base)
+                                Ingredient.CODEC.fieldOf("base").forGetter(recipe -> recipe.base)
                         )
                         .apply(instance, XpBookDeprecateRecipe::new)
         );
-        public static final PacketCodec<RegistryByteBuf, XpBookDeprecateRecipe> PACKET_CODEC = PacketCodec.ofStatic(
-                XpBookDeprecateRecipe.Serializer::write, XpBookDeprecateRecipe.Serializer::read
+        public static final PacketCodec<RegistryByteBuf, XpBookDeprecateRecipe> PACKET_CODEC = PacketCodec.tuple(
+                Ingredient.PACKET_CODEC,
+                recipe -> recipe.base,
+                XpBookDeprecateRecipe::new
         );
 
         @Override
@@ -103,15 +97,6 @@ public class XpBookDeprecateRecipe implements CraftingRecipe {
         @Override
         public PacketCodec<RegistryByteBuf, XpBookDeprecateRecipe> packetCodec() {
             return PACKET_CODEC;
-        }
-
-        private static XpBookDeprecateRecipe read(RegistryByteBuf buf) {
-            Ingredient base = Ingredient.PACKET_CODEC.decode(buf);
-            return new XpBookDeprecateRecipe(base);
-        }
-
-        private static void write(RegistryByteBuf buf, XpBookDeprecateRecipe recipe) {
-            Ingredient.PACKET_CODEC.encode(buf, recipe.base);
         }
     }
 }

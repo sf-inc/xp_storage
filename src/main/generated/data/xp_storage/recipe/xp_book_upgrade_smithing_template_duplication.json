@@ -2,12 +2,8 @@
   "type": "minecraft:crafting_shaped",
   "category": "misc",
   "key": {
-    "l": {
-      "item": "xp_storage:crystallized_lapis"
-    },
-    "u": {
-      "item": "xp_storage:xp_book_upgrade_smithing_template"
-    }
+    "l": "xp_storage:crystallized_lapis",
+    "u": "xp_storage:xp_book_upgrade_smithing_template"
   },
   "pattern": [
     " l ",

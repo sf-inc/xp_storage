@@ -2,12 +2,8 @@
   "type": "minecraft:crafting_shaped",
   "category": "misc",
   "key": {
-    "a": {
-      "item": "minecraft:amethyst_shard"
-    },
-    "l": {
-      "item": "minecraft:lapis_lazuli"
-    }
+    "a": "minecraft:amethyst_shard",
+    "l": "minecraft:lapis_lazuli"
   },
   "pattern": [
     " l ",

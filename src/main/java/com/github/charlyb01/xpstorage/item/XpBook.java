@@ -20,8 +20,8 @@ import net.minecraft.world.World;
 import java.util.List;
 
 public class XpBook extends Item {
-    public XpBook() {
-        super(new Item.Settings()
+    public XpBook(Settings settings) {
+        super(settings
                 .maxCount(1)
                 .rarity(Rarity.UNCOMMON)
                 .component(MyComponents.BOOK_COMPONENT, BookData.getDefault())
@@ -75,7 +75,7 @@ public class XpBook extends Item {
     }
 
     @Override
-    public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {
+    public ActionResult use(World world, PlayerEntity user, Hand hand) {
         ItemStack stack = (user.getMainHandStack().getItem() instanceof XpBook) ? user.getMainHandStack() : user.getOffHandStack();
         XpAmountData xpAmountData = stack.getOrDefault(MyComponents.XP_COMPONENT, XpAmountData.EMPTY);
         final int bookExperience = xpAmountData.amount();
@@ -108,7 +108,7 @@ public class XpBook extends Item {
             }
         }
 
-        return new TypedActionResult<>(ActionResult.SUCCESS, user.getStackInHand(hand));
+        return ActionResult.SUCCESS;
     }
 
     public static int getBookLevel(ItemStack stack) {

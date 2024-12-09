@@ -2,12 +2,8 @@
   "type": "minecraft:crafting_shaped",
   "category": "misc",
   "key": {
-    "d": {
-      "item": "minecraft:diamond"
-    },
-    "l": {
-      "item": "xp_storage:crystallized_lapis"
-    }
+    "d": "minecraft:diamond",
+    "l": "xp_storage:crystallized_lapis"
   },
   "pattern": [
     "lll",

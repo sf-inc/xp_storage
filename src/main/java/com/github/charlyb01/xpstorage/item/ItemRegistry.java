@@ -16,7 +16,6 @@ import net.minecraft.util.Util;
 import java.util.List;
 
 public class ItemRegistry {
-    private static final Formatting TITLE_FORMATTING = Formatting.GRAY;
     private static final Formatting DESCRIPTION_FORMATTING = Formatting.BLUE;
     private static final Text XP_BOOK_UPGRADE_APPLIES_TO_TEXT = Text.translatable(
                     Util.createTranslationKey("item", XpStorage.id("smithing_template.xp_book_upgrade.applies_to"))
@@ -26,8 +25,6 @@ public class ItemRegistry {
                     Util.createTranslationKey("item", XpStorage.id("smithing_template.xp_book_upgrade.ingredients"))
             )
             .formatted(DESCRIPTION_FORMATTING);
-    private static final Text XP_BOOK_UPGRADE_TEXT = Text.translatable(Util.createTranslationKey("upgrade", XpStorage.id("xp_book_upgrade")))
-            .formatted(TITLE_FORMATTING);
     private static final Text XP_BOOK_UPGRADE_BASE_SLOT_DESCRIPTION_TEXT = Text.translatable(
             Util.createTranslationKey("item", XpStorage.id("smithing_template.xp_book_upgrade.base_slot_description"))
     );
@@ -35,20 +32,20 @@ public class ItemRegistry {
             Util.createTranslationKey("item", XpStorage.id("smithing_template.xp_book_upgrade.additions_slot_description"))
     );
 
-    public static final Item CRYSTALLIZED_LAPIS = new Item(new Item.Settings());
+    public static final Item CRYSTALLIZED_LAPIS = new Item(new Item.Settings().registryKey(ItemKeys.CRYSTALLIZED_LAPIS_KEY));
     public static final Item XP_BOOK_UPGRADE = new SmithingTemplateItem(
             XP_BOOK_UPGRADE_APPLIES_TO_TEXT,
             XP_BOOK_UPGRADE_INGREDIENTS_TEXT,
-            XP_BOOK_UPGRADE_TEXT,
             XP_BOOK_UPGRADE_BASE_SLOT_DESCRIPTION_TEXT,
             XP_BOOK_UPGRADE_ADDITIONS_SLOT_DESCRIPTION_TEXT,
             List.of(XpStorage.id(("item/empty_slot_book"))),
             List.of(Identifier.ofVanilla("item/empty_slot_diamond"),
-                    Identifier.ofVanilla("item/empty_slot_ingot"))
+                    Identifier.ofVanilla("item/empty_slot_ingot")),
+            new Item.Settings().registryKey(ItemKeys.XP_BOOK_UPGRADE_KEY)
     );
-    public static final XpBook XP_BOOK = new XpBook();
-    public static final Item XP_BOOK2 = new Item(new Item.Settings());
-    public static final Item XP_BOOK3 = new Item(new Item.Settings());
+    public static final XpBook XP_BOOK = new XpBook(new Item.Settings().registryKey(ItemKeys.XP_BOOK_KEY));
+    public static final Item XP_BOOK2 = new Item(new Item.Settings().registryKey(ItemKeys.XP_BOOK2_KEY));
+    public static final Item XP_BOOK3 = new Item(new Item.Settings().registryKey(ItemKeys.XP_BOOK3_KEY));
 
     public static void init() {
         Registry.register(Registries.ITEM, XpStorage.id("crystallized_lapis"), CRYSTALLIZED_LAPIS);

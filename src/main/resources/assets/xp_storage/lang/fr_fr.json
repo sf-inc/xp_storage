@@ -1,6 +1,6 @@
 {
   "item.xp_storage.crystallized_lapis": "Lapis cristallisé",
-  "item.xp_storage.xp_book_upgrade_smithing_template": "Modèle de forge",
+  "item.xp_storage.xp_book_upgrade_smithing_template": "Amélioration de livre d'expérience",
   "item.xp_storage.smithing_template.xp_book_upgrade.additions_slot_description": "Ajoutez un diamant, un lingot de Netherite ou une étoile du Nether",
   "item.xp_storage.smithing_template.xp_book_upgrade.applies_to": "Livre d'expérience",
   "item.xp_storage.smithing_template.xp_book_upgrade.base_slot_description": "Ajoutez un livre d'expérience",
@@ -16,9 +16,6 @@
   "item.xp_storage.xp_bottle.tooltip.point": "%1$s points",
   "item.xp_storage.tooltip.deprecated": "MISE A JOUR REQUISE !",
   "item.xp_storage.tooltip.deprecated_how": "Mettre dans une table de craft",
-
-  "upgrade.xp_storage.xp_book_upgrade": "Amélioration de livre d'expérience",
-
   "text.autoconfig.xp_storage.title": "XP Storage Configs",
 
   "text.autoconfig.xp_storage.category.books": "Livres",

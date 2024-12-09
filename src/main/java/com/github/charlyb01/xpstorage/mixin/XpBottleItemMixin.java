@@ -1,16 +1,17 @@
 package com.github.charlyb01.xpstorage.mixin;
 
 import com.github.charlyb01.xpstorage.component.MyComponents;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.entity.projectile.thrown.ExperienceBottleEntity;
+import com.github.charlyb01.xpstorage.component.XpAmountData;
+import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
+import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
+import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.projectile.ProjectileEntity;
 import net.minecraft.item.ExperienceBottleItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.Hand;
-import net.minecraft.world.World;
+import net.minecraft.server.world.ServerWorld;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
-import org.spongepowered.asm.mixin.injection.ModifyVariable;
 
 @Mixin(ExperienceBottleItem.class)
 public class XpBottleItemMixin extends Item {
@@ -18,14 +19,13 @@ public class XpBottleItemMixin extends Item {
         super(settings);
     }
 
-    @ModifyVariable(method = "use", at = @At(value = "INVOKE",
-            target = "Lnet/minecraft/world/World;spawnEntity(Lnet/minecraft/entity/Entity;)Z"))
-    private ExperienceBottleEntity setExperienceToEntity(ExperienceBottleEntity experienceBottleEntity, World world,
-                                                         PlayerEntity user, Hand hand) {
-        ItemStack experienceBottleItem = user.getStackInHand(hand);
-        if (!experienceBottleItem.contains(MyComponents.XP_COMPONENT)) return experienceBottleEntity;
-
-        final int level = experienceBottleItem.get(MyComponents.XP_COMPONENT).level();
+    @WrapOperation(method = "use", at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/projectile/ProjectileEntity;spawnWithVelocity(Lnet/minecraft/entity/projectile/ProjectileEntity$ProjectileCreator;Lnet/minecraft/server/world/ServerWorld;Lnet/minecraft/item/ItemStack;Lnet/minecraft/entity/LivingEntity;FFF)Lnet/minecraft/entity/projectile/ProjectileEntity;"))
+    private <T extends ProjectileEntity> T setExperienceToEntity(ProjectileEntity.ProjectileCreator<T> creator, ServerWorld world,
+                                                                 ItemStack projectileStack, LivingEntity shooter,
+                                                                 float roll, float power, float divergence,
+                                                                 Operation<T> original) {
+        T experienceBottleEntity = original.call(creator, world, projectileStack, shooter, roll, power, divergence);
+        final int level = projectileStack.getOrDefault(MyComponents.XP_COMPONENT, XpAmountData.EMPTY).level();
         if (level > 0) {
             MyComponents.XP_COMPONENT_CC.get(experienceBottleEntity).setLevel(level);
         }
